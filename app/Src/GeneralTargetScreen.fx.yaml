@@ -50,22 +50,24 @@ GeneralTargetScreen As screen:
             Color: =RGBA(255, 255, 255, 1)
             Font: =Font.Lato
             FontWeight: =FontWeight.Bold
-            Height: =ContainerTargets.Height/14
+            Height: =recTopGeneral.Height
             Size: =18
             Text: ="GENERAL"
             Width: =recTopGeneral.Width/1.6
             X: =25
-            Y: =20
+            Y: =recTopGeneral.Y
             ZIndex: =3
 
         galExceedsMeetNI As gallery.galleryHorizontal:
             Fill: =RGBA(0, 0, 0, 1)
-            Height: =51
+            Height: =recTopGeneral.Height
             Items: =["Exceeds","Meet","N.I."]
             TemplateSize: =109
             Width: =364
-            X: =2*lblGeneral.X+lblGeneral.Width
-            Y: =20
+            X: |-
+                =//2*lblGeneral.X+lblGeneral.Width
+                Parent.Width-icnSaveTargetScore.Width-Self.Width
+            Y: =recTopGeneral.Y
             ZIndex: =4
 
             lblExceedsMeetNI As label:
@@ -81,7 +83,7 @@ GeneralTargetScreen As screen:
 
         icnSaveTargetScore As icon.Save:
             Color: =White
-            Height: =lblGeneral.Height
+            Height: =recTopGeneral.Height
             Icon: =Icon.Save
             OnSelect: |-
                 =
@@ -120,7 +122,7 @@ GeneralTargetScreen As screen:
             PaddingTop: =5
             Width: =49
             X: =recTopGeneral.Width-icnSaveTargetScore.Width
-            Y: =20
+            Y: =recTopGeneral.Y
             ZIndex: =5
 
         recBottom As rectangle:
@@ -185,8 +187,11 @@ GeneralTargetScreen As screen:
                 RadioSelectionFill: =ColorFade(_primaryColor,-10%)
                 RadioSize: =28
                 Reset: =ResetControl
-                Width: =recTopGeneral.Width-lblGeneral.X-lblGeneral.Width
-                X: =2*lblGeneral.X+lblGeneral.Width
+                Width: |
+                    =recTopGeneral.Width-lblGeneral.X-lblGeneral.Width
+                X: |-
+                    =//2*lblGeneral.X+lblGeneral.Width
+                    galExceedsMeetNI.X
                 ZIndex: =2
 
             lblNIValue1 As label:
@@ -227,7 +232,9 @@ GeneralTargetScreen As screen:
                 {Id:1, Value: Sum(Filter(galGeneralTarget.AllItems,radioGeneralTarget.SelectedText.'data-ADB4D7A662F548B49FAC2B986E348A1BId'=1),radioGeneralTarget.Selected.Id)})
             TemplateSize: =112
             Width: =365
-            X: =2*lblGeneral.X+lblGeneral.Width
+            X: |-
+                =//2*lblGeneral.X+lblGeneral.Width
+                galExceedsMeetNI.X
             Y: =recBottom.Y+5
             ZIndex: =9
 
