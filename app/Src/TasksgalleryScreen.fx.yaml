@@ -1,0 +1,767 @@
+TasksgalleryScreen As screen:
+    OnVisible: |-
+        = ClearCollect(
+            CollTasksComments,
+            'Tasks Comments'
+        )
+
+    backgroundComponent_16 As backgroundComponent:
+        Default: ="Tasks"
+        Items: =MenuItemsCollection
+        SetMenuWidth: =backgroundComponent_16.MenuWidth
+
+    Gallery8_3 As gallery.variableTemplateHeightGallery:
+        BorderColor: =RGBA(128, 128, 128, 1)
+        BorderThickness: =2
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =If(Self.Visible, Min(CountRows(Self.AllItems) * (Self.TemplateHeight + Self.TemplatePadding)+20,Parent.Height/4.1),0)
+        Items: |
+            =Switch(
+                Gallery4_1.Selected.Value,"Assigned to me",SortByColumns(
+                    Search(
+                        Filter(
+                            AddColumns(
+                                'Tasks Management',
+                                "SearchbyOwner",
+                                'Created By'.DisplayName,"SearchbyTitle",Title
+                            ),               
+                            User().Email in To.Email && Status="Completed"
+                        ),
+                        txt_Title_2.Text,
+                        "SearchbyOwner","SearchbyTitle"
+                    ),
+                    "Created",
+                    If(VarShortCompleted,Descending,Ascending)
+                ),
+                "Assigned by me",SortByColumns(
+                    Search(
+                        Filter(
+                            AddColumns(
+                                'Tasks Management',
+                                "SearchbyOwner",
+                                'Created By'.DisplayName,"SearchbyTitle",Title
+                            ),               
+                           'Created By'.DisplayName = User().FullName && Status="Completed"
+                        ),
+                        txt_Title_2.Text,
+                        "SearchbyOwner","SearchbyTitle"
+                    ),
+                    "Created",
+                   If(VarShortCompleted,Descending,Ascending)
+                )
+            )
+        Layout: =Layout.Vertical
+        ShowScrollbar: =false
+        TemplateSize: =Max(Gallery11_1.Height,Label10_1.Height)
+        Visible: =Checkbox3.Value=true &&CountRows(Gallery8_3.AllItems)>0
+        Width: =Rectangle5_1.Width
+        X: =Rectangle5_1.X
+        Y: =Rectangle5_1.Y+Rectangle5_1.Height
+        ZIndex: =2
+
+        Label10_1 As label:
+            AutoHeight: =true
+            Height: |-
+                =//gal_NotCompleted.TemplateHeight
+                40
+            OnSelect: =Select(Parent)
+            Text: =ThisItem.Title
+            Width: =Button11_18.Width+100
+            X: |
+                =Checkbox1_3.X+Checkbox1_3.Width+15
+            Y: =3
+            ZIndex: =1
+
+        Checkbox1_3 As checkbox:
+            BorderColor: =
+            BorderStyle: =BorderStyle.None
+            CheckboxBorderColor: =_primaryColor
+            CheckmarkFill: =_primaryColor
+            Default: =If(ThisItem.Status="Completed",true,false)
+            Height: =gal_MyTask.TemplateHeight/2
+            OnCheck: |-
+                =Patch('Tasks Management',LookUp('Tasks Management',gal_NotCompleted.Selected.ID=ID),({Status:"Completed"}));Notify("Your Task is Completed");
+            OnSelect: =Select(Parent)
+            OnUncheck: |-
+                =
+                Patch('Tasks Management',LookUp('Tasks Management',Gallery8_3.Selected.ID=ID),({Status:"Not completed"}));Notify("Your Task is marked as incompleted");
+            Size: =10
+            Text: =""
+            Tooltip: =If(Checkbox1_3.Value=false,"Mark as Complete","Mark as Incomplete")
+            Width: =56
+            X: =6
+            ZIndex: =2
+
+        Label15_1 As label:
+            Height: =Label10_1.Height
+            OnSelect: =Select(Parent)
+            PaddingLeft: =20
+            PaddingRight: =20
+            Text: |-
+                =CountRows(
+                 Filter(CollTasksComments,'Ref Task Id'.Id=ThisItem.ID
+                )
+                )
+            Width: =gal_NotCompleted.Width/8
+            X: =Label14_1.Width+Label14_1.X
+            ZIndex: =3
+
+        Label14_1 As label:
+            Height: =Label10_1.Height
+            OnSelect: =Select(Parent)
+            PaddingLeft: =15
+            PaddingRight: =15
+            Text: =Text(ThisItem.'Due date',"mmmm,d")
+            Width: =gal_NotCompleted.Width/8
+            X: =Gallery11_1.X+Gallery11_1.Width
+            ZIndex: =4
+
+        Gallery11_1 As gallery.variableTemplateHeightGallery:
+            Height: |
+                =CountRows(Self.AllItems) * (Self.TemplateHeight + Self.TemplatePadding) + Self.TemplatePadding
+            Items: =Switch( Gallery4_1.Selected.Id,1, Filter(ThisItem.To,DisplayName=User().FullName),2,ThisItem.To)
+            Layout: =Layout.Vertical
+            ShowScrollbar: =false
+            TemplatePadding: =0
+            TemplateSize: =37
+            Width: =gal_NotCompleted.Width/8
+            X: |+
+                =Parent.Width/1.6-10
+                
+            ZIndex: =5
+
+            Label7_3 As label:
+                AutoHeight: =true
+                Height: =Gallery11_1.TemplateHeight
+                LineHeight: =1.5
+                OnSelect: =Select(Parent)
+                Text: =ThisItem.DisplayName
+                Width: =148.25
+                ZIndex: =1
+
+        Rectangle1_8 As rectangle:
+            Fill: =RGBA(204, 204, 204, 1)
+            Height: =1
+            Width: =Gallery8_3.Width
+            Y: |
+                =Max(Gallery11_1.Height+Gallery11_1.Y,Label10_1.Height+Label10_1.Y)
+            ZIndex: =6
+
+        NextArrow1_3 As icon.ChevronRight:
+            AccessibleLabel: =Self.Tooltip
+            Color: =RGBA(116, 116, 116, 1)
+            Height: =47
+            Icon: =Icon.Hamburger
+            OnSelect: |-
+                =Set(VarEditDelete,false);
+                
+                
+                Set(TaskInfo,ThisItem);
+                ClearCollect(CollTaskUsers,LookUp('Tasks Management', ID=ThisItem.ID,To));
+                Set(
+                    VarNewtask,
+                    false
+                );
+                Navigate(EditTaskScreen);
+            PaddingBottom: =10
+            PaddingLeft: =10
+            PaddingRight: =10
+            PaddingTop: =10
+            TabIndex: =0
+            Tooltip: ="View item details"
+            Width: =55
+            X: =gal_Goals.Width- Self.Width-10
+            ZIndex: =7
+
+    Gallery4_1 As gallery.galleryHorizontal:
+        Fill: =RGBA(0, 0, 0, 1)
+        Height: =55
+        Items: |-
+            =Table({Id:1,Value:"Assigned to me"},{Id:2,Value:"Assigned by me"})
+        TemplatePadding: =0
+        TemplateSize: =159
+        Width: =Parent.Width-Self.X
+        X: =backgroundComponent_16.MenuWidth
+        Y: =85
+        ZIndex: =3
+
+        Button4_1 As button:
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =0
+            Color: |-
+                =If(ThisItem.IsSelected, ColorFade(ColorValue("#ff6601"),20%),White)
+            Fill: =RGBA(0, 0, 0, 0)
+            Font: =Font.'Segoe UI'
+            Height: =53
+            HoverColor: |-
+                =
+                If(ThisItem.IsSelected,White,ColorFade(_primaryColor,50%))
+            HoverFill: =
+            OnSelect: =Select(Parent)
+            PaddingTop: =0
+            PressedColor: =White
+            PressedFill: =ColorFade(Black,20%)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: =ThisItem.Value
+            Width: =159
+            ZIndex: =1
+
+        Rectangle4_1 As rectangle:
+            Fill: |-
+                =If(ThisItem.IsSelected, ColorFade(ColorValue("#ff6601"),20%),Black)
+            Height: =4
+            OnSelect: =Select(Parent)
+            Width: =158
+            X: =1
+            Y: =51
+            ZIndex: =2
+
+    Button3_4 As button:
+        Fill: =ColorFade(_primaryColor,-10%)
+        Height: =35
+        HoverFill: =ColorFade(_primaryColor, -20%)
+        OnSelect: =Set(VarNewtask,true);Set(VarRelatedtask,true);Clear(CollTaskUsers);Reset(ComBox_To); Set(countInitialItemsTask,CountRows( gal_MyTask.AllItems));Navigate(NewTaskScreen);
+        RadiusBottomLeft: =5
+        RadiusBottomRight: =5
+        RadiusTopLeft: =5
+        RadiusTopRight: =5
+        Size: =12
+        Text: ="New task"
+        Width: =140
+        X: =Parent.Width-Self.Width-20
+        Y: =Gallery4_1.Y+10
+        ZIndex: =4
+
+    txt_Title_2 As text:
+        BorderColor: =_txtColorFill
+        Default: =//If(_editGoalRequest,editGoalRecord.Title,"")
+        Fill: =RGBA(255, 255, 255, 0.93)
+        FocusedBorderColor: =_primaryColor
+        FocusedBorderThickness: =2
+        Height: =35
+        HintText: ="Search by task title"
+        HoverBorderColor: =ColorFade( Self.BorderColor,10%)
+        HoverColor: =Black
+        HoverFill: =ColorFade(Self.Fill,10%)
+        Reset: =ResetControl
+        Size: =12
+        Width: =300
+        X: =(Gallery4_1.X+Gallery4_1.Width)-Button3_4.Width-Self.Width-35
+        Y: =Gallery4_1.Y+10
+        ZIndex: =5
+
+    Icon3_1 As icon.Search:
+        Color: =RGBA(0, 0, 0, 1)
+        Height: =35
+        Icon: =Icon.Search
+        PaddingBottom: =5
+        PaddingTop: =5
+        Width: =42
+        X: =txt_Title_2.X+txt_Title_2.Width-Self.Width
+        Y: =94
+        ZIndex: =6
+
+    gal_NotCompleted As gallery.variableTemplateHeightGallery:
+        BorderColor: =RGBA(128, 128, 128, 1)
+        BorderThickness: =2
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: |
+            =If(Self.Visible, Min(CountRows(Self.AllItems) * (Self.TemplateHeight)+10,Parent.Height/4.1),0)
+            //Parent.Height/4.1
+        Items: |+
+            =
+            Switch(
+                Gallery4_1.Selected.Value,"Assigned to me",SortByColumns(
+                    Search(
+                        Filter(
+                            AddColumns(
+                                'Tasks Management',
+                                "SearchbyOwner",
+                                'Created By'.DisplayName,"SearchbyTitle",Title
+                            ),               
+                            User().Email in To.Email && Status="Not completed"
+                        ),
+                        txt_Title_2.Text,
+                        "SearchbyOwner","SearchbyTitle"
+                    ),
+                    "Created",
+                   If(VarShortNotCompleted,Descending,Ascending)
+                ),
+                "Assigned by me",SortByColumns(
+                    Search(
+                        Filter(
+                            AddColumns(
+                                'Tasks Management',
+                                "SearchbyOwner",
+                                'Created By'.DisplayName,"SearchbyTitle",Title
+                            ),               
+                           'Created By'.DisplayName = User().FullName && Status="Not completed"
+                        ),
+                        txt_Title_2.Text,
+                        "SearchbyOwner","SearchbyTitle"
+                    ),
+                    "Created",
+                    If(VarShortNotCompleted,Descending,Ascending)
+                )
+            )
+            
+        Layout: =Layout.Vertical
+        TemplatePadding: =0
+        TemplateSize: =Max(Gallery11.Height,Label10.Height)
+        Visible: =CountRows(gal_NotCompleted.AllItems)<>0
+        Width: =Rectangle5.Width
+        X: =Rectangle5.X
+        Y: =Rectangle5.Y+Rectangle5.Height
+        ZIndex: =10
+
+        Label10 As label:
+            AutoHeight: =true
+            Height: |-
+                =//gal_NotCompleted.TemplateHeight
+                40
+            OnSelect: =Select(Parent)
+            Text: =ThisItem.Title
+            Width: =Button11_18.Width+100
+            X: |
+                =Checkbox1_2.X+Checkbox1_2.Width+15
+            Y: =3
+            ZIndex: =1
+
+        Checkbox1_2 As checkbox:
+            BorderColor: =
+            BorderStyle: =BorderStyle.None
+            CheckboxBorderColor: =_primaryColor
+            CheckmarkFill: =_primaryColor
+            Default: =If(ThisItem.Status="Completed",true,false)
+            Height: =Label15.Height
+            OnCheck: |-
+                =Patch('Tasks Management',LookUp('Tasks Management',gal_NotCompleted.Selected.ID=ID),({Status:"Completed"}));Notify("Your Task is Completed");
+            OnSelect: =Select(Parent)
+            OnUncheck: |-
+                =Patch('Tasks Management',LookUp('Tasks Management',TaskInfo.ID=ID),({Status:"Not completed"}));Notify("Your Task is marked as incompleted");
+            Size: =10
+            Text: =""
+            Tooltip: =If(Checkbox1_2.Value=false,"Mark as Complete","Mark as Incomplete")
+            Width: =56
+            X: =6
+            Y: =3
+            ZIndex: =2
+
+        Label15 As label:
+            Height: =Label10.Height
+            OnSelect: =Select(Parent)
+            PaddingLeft: =20
+            PaddingRight: =20
+            Text: |-
+                =CountRows(
+                 Filter(CollTasksComments,'Ref Task Id'.Id=ThisItem.ID
+                )
+                )
+            Width: =gal_NotCompleted.Width/8
+            X: =Label14.Width+Label14.X
+            Y: =3
+            ZIndex: =3
+
+        Label14 As label:
+            Height: =Label10.Height
+            OnSelect: =Select(Parent)
+            Text: =Text(ThisItem.'Due date',"mmm d, yyyy")
+            Width: =gal_NotCompleted.Width/8
+            X: =Gallery11.X+Gallery11.Width
+            Y: =3
+            ZIndex: =5
+
+        Gallery11 As gallery.variableTemplateHeightGallery:
+            Height: |
+                =CountRows(Self.AllItems) * (Self.TemplateHeight + Self.TemplatePadding) + Self.TemplatePadding
+            Items: =ThisItem.To
+            Layout: =Layout.Vertical
+            ShowScrollbar: =false
+            TemplateSize: =37
+            Width: =gal_NotCompleted.Width/8
+            X: |+
+                =Parent.Width/1.6-10
+                
+            ZIndex: =6
+
+            Label7 As label:
+                Height: =37
+                OnSelect: =Select(Parent)
+                Text: =ThisItem.DisplayName
+                ZIndex: =1
+
+        Rectangle1_7 As rectangle:
+            Fill: =RGBA(204, 204, 204, 1)
+            Height: =1
+            Width: =gal_NotCompleted.Width
+            Y: =Max(Gallery11.Height+Gallery11.Y,Checkbox1_2.Height+Checkbox1_2.Y)
+            ZIndex: =7
+
+        NextArrow1_2 As icon.ChevronRight:
+            AccessibleLabel: =Self.Tooltip
+            Color: =RGBA(116, 116, 116, 1)
+            Height: =47
+            Icon: =Icon.Hamburger
+            OnSelect: |-
+                =Set(VarEditDelete,false);
+                
+                
+                Set(TaskInfo,ThisItem);
+                ClearCollect(CollTaskUsers,LookUp('Tasks Management', ID=ThisItem.ID,To));
+                Set(
+                    VarNewtask,
+                    false
+                );
+                Navigate(EditTaskScreen);
+            PaddingBottom: =10
+            PaddingLeft: =10
+            PaddingRight: =10
+            PaddingTop: =10
+            TabIndex: =0
+            Tooltip: ="View item details"
+            Width: =55
+            X: =gal_Goals.Width- Self.Width-10
+            ZIndex: =8
+
+    Label17 As label:
+        FontWeight: =FontWeight.Bold
+        Height: =If(Self.Visible,37,0)
+        Text: ="Not Completed " & "(" & CountRows(gal_NotCompleted.AllItems) & ")" 
+        Visible: =CountRows(gal_NotCompleted.AllItems)<>0
+        Width: =186
+        X: =drp_SelectDate_2.X
+        Y: =222
+        ZIndex: =11
+
+    Label18 As label:
+        FontWeight: =FontWeight.Bold
+        Height: =30
+        Text: ="Include completed"
+        Width: =171
+        X: =Parent.Width-Self.Width-20
+        Y: =drp_SelectDate_2.Y
+        ZIndex: =12
+
+    Checkbox3 As checkbox:
+        BorderColor: =_primaryColor
+        BorderStyle: =BorderStyle.None
+        CheckboxBackgroundFill: =If(Checkbox3.Value=true,_primaryColor,White)
+        CheckboxBorderColor: =If(Checkbox3.Value=true, ColorFade(_primaryColor,-20%),_primaryColor)
+        CheckboxSize: =35
+        CheckmarkFill: =White
+        Color: =_primaryColor
+        Fill: = RGBA(0, 0, 0, 0)
+        Height: =Label18.Height
+        HoverColor: =_primaryColor
+        PressedBorderColor: =
+        PressedColor: =_primaryColor
+        Text: =""
+        Width: =40
+        X: =Label18.X-Self.Width
+        Y: =drp_SelectDate_2.Y
+        ZIndex: =13
+
+    Label17_1 As label:
+        FontWeight: =FontWeight.Bold
+        Height: =37
+        Text: =" Completed " & "(" & CountRows(Gallery8_3.AllItems) & ")" 
+        Visible: =Checkbox3.Value=true &&CountRows(Gallery8_3.AllItems)>0
+        Width: =186
+        X: =drp_SelectDate_2.X
+        Y: =If( CountRows(gal_NotCompleted.AllItems)=0,drp_SelectDate_2.Y+drp_SelectDate_2.Height+10, gal_NotCompleted.Y+gal_NotCompleted.Height+30)
+        ZIndex: =14
+
+    Rectangle5 As rectangle:
+        BorderColor: =RGBA(0, 0, 0, 1)
+        BorderThickness: =2
+        Fill: =RGBA(116, 116, 116, 1)
+        Height: =If(Self.Visible, 50,0)
+        Visible: =CountRows(gal_NotCompleted.AllItems)<>0
+        Width: =Gallery4_1.Width-30
+        X: =Gallery4_1.X+15
+        Y: =Label17.Y+Label17.Height
+        ZIndex: =15
+
+    Gallery2 As gallery.galleryHorizontal:
+        BorderColor: =RGBA(0, 0, 0, 1)
+        Height: =Rectangle5.Height
+        Items: |-
+            =Table({Id:1,Value:"Assigned by"},{Id:2,Value:"Due date"},{Id:3,Value:"Comments"})
+        TemplateSize: =If(Self.Visible, Gallery2.Width/3.5,0)
+        Visible: =CountRows(gal_NotCompleted.AllItems)<>0
+        Width: =Rectangle5.Width/2.5
+        X: =Rectangle5.X+Rectangle5.Width-Self.Width
+        Y: =Rectangle5.Y
+        ZIndex: =16
+
+        Button11_16 As button:
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =Gallery2.TemplateHeight
+            HoverFill: =
+            OnSelect: |-
+                =UpdateContext({VarShortNotCompleted:!VarShortNotCompleted})
+            PressedFill: =
+            Text: =Switch(ThisItem.Id,1, Switch(Gallery4_1.Selected.Id,2,"Assigned to","Assigned by"),2,"Due date",3,"Comment")
+            Width: =Gallery2.TemplateWidth
+            ZIndex: =1
+
+    Rectangle5_1 As rectangle:
+        BorderColor: =RGBA(0, 0, 0, 1)
+        BorderThickness: =2
+        Fill: =RGBA(116, 116, 116, 1)
+        Height: =50
+        Visible: =Checkbox3.Value=true &&CountRows(Gallery8_3.AllItems)>0
+        Width: =Gallery4_1.Width-30
+        X: =Gallery4_1.X+15
+        Y: =Label17_1.Y+Label17_1.Height
+        ZIndex: =17
+
+    Button11_18 As button:
+        Align: =Align.Left
+        Fill: =RGBA(0, 0, 0, 0)
+        Height: =Gallery2.TemplateHeight
+        HoverFill: =
+        OnSelect: |-
+            =UpdateContext({VarShortNotCompleted:!VarShortNotCompleted})
+        PressedFill: =
+        Text: ="Task title"
+        Visible: =CountRows(gal_NotCompleted.AllItems)<>0
+        Width: |-
+            =//Gallery2.TemplateWidth
+            Rectangle5.Width-Gallery2.Width-Self.X-20
+        X: =Rectangle5.X+80
+        Y: =Rectangle5.Y+2
+        ZIndex: =18
+
+    Gallery2_2 As gallery.galleryHorizontal:
+        BorderColor: =RGBA(0, 0, 0, 1)
+        Height: =50
+        Items: |-
+            =Table({Id:1,Value:"Assigned by"},{Id:2,Value:"Due date"},{Id:3,Value:"Comments"})
+        TemplateSize: =Gallery2_2.Width/3.5
+        Visible: =Checkbox3.Value=true &&CountRows(Gallery8_3.AllItems)>0
+        Width: =Rectangle5.Width/2.5
+        X: =Rectangle5.X+Rectangle5.Width-Self.Width
+        Y: =Rectangle5_1.Y
+        ZIndex: =19
+
+        Button11_17 As button:
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =Gallery2_2.TemplateHeight
+            HoverFill: =
+            OnSelect: |-
+                =UpdateContext({VarShortCompleted:!VarShortCompleted})
+            PressedFill: =
+            Text: =Switch(ThisItem.Id,1, Switch(Gallery4_1.Selected.Id,2,"Assigned to","Assigned by"),2,"Due date",3,"Comment")
+            Width: =Gallery2_2.TemplateWidth
+            ZIndex: =1
+
+    Button11_19 As button:
+        Align: =Align.Left
+        Fill: =RGBA(0, 0, 0, 0)
+        Height: =Gallery2_2.TemplateHeight
+        HoverFill: =
+        OnSelect: |-
+            =UpdateContext({VarShortCompleted:!VarShortCompleted})
+        PressedFill: =
+        Text: ="Task title"
+        Visible: =Checkbox3.Value=true &&CountRows(Gallery8_3.AllItems)>0
+        Width: |-
+            =//Gallery2.TemplateWidth
+            Rectangle5.Width-Gallery2_2.Width-Self.X-20
+        X: =Rectangle5.X+80
+        Y: =Rectangle5_1.Y+2
+        ZIndex: =20
+
+    Label1 As label:
+        Color: =RGBA(246, 88, 16, 1)
+        Font: =Font.Arial
+        Size: =18
+        Text: |-
+            =
+            /*If(CountRows(Gallery8_3.AllItems)=0&&CountRows(gal_NotCompleted.AllItems)=0,"No tasks found !",Checkbox3.Value=true &&CountRows(Gallery8_3.AllItems)=0,"Completed tasks not found !",Checkbox3.Value=true&&CountRows(gal_NotCompleted.AllItems)=0,"Incompleted tasks not found !")*/
+        Visible: =Checkbox3.Value=true &&(CountRows(Gallery8_3.AllItems)=0||CountRows(gal_NotCompleted.AllItems)=0)
+        Width: =500
+        X: =Label17.X
+        Y: =Gallery8_3.Y+Gallery8_3.Height+10
+        ZIndex: =21
+
+    drp_SelectDate_2 As dropdown:
+        BorderColor: =_txtColorFill
+        ChevronBackground: =Self.Fill
+        ChevronFill: =Black
+        ChevronHoverBackground: =Self.Fill
+        ChevronHoverFill: =RGBA(0, 0, 0, 1)
+        Default: =If(_editGoalRequest,editGoalRecord.'Goal Date',"")
+        Fill: =ColorFade(_txtColorFill,60%)
+        FocusedBorderColor: =_primaryColor
+        Height: =ContainerNewGoal.Height/20
+        HoverFill: =ColorFade(Self.Fill,40%)
+        Items: |-
+            =
+            Table({Id:1, Value:"Custom dates"},{Id:2, Value:"Q4 Oct-Dec-2022"},{Id:3, Value:"Q1 Jan-Mar-2023"},{Id:4, Value:"Q2 Apr-Jun-2023"},{Id:5, Value:"H2 Jul-Dec-2023"},{Id:6, Value:"H1 Jan-Jun-2023"},{Id:7, Value:"FY Jan-Dec-2023"})
+        OnChange: |-
+            =Switch(
+                Self.Selected.Value,
+                "Q4 Oct-Dec-2022",
+                UpdateContext(
+                    {
+                        _startDate: Date(
+                            2022,
+                            10,
+                            1
+                        ),
+                        _endDate: Date(
+                            2022,
+                            12,
+                            31
+                        )
+                    }
+                ),
+                "Q1 Jan-Mar-2023",
+                UpdateContext(
+                    {
+                        _startDate: Date(
+                            2023,
+                            1,
+                            1
+                        ),
+                        _endDate: Date(
+                            2023,
+                            3,
+                            31
+                        )
+                    }
+                ),
+                "Q2 Apr-Jun-2023",
+                UpdateContext(
+                    {
+                        _startDate: Date(
+                            2023,
+                            4,
+                            1
+                        ),
+                        _endDate: Date(
+                            2023,
+                            6,
+                            30
+                        )
+                    }
+                ),
+                "H2 Jul-Dec-2023",
+                UpdateContext(
+                    {
+                        _startDate: Date(
+                            2023,
+                            7,
+                            1
+                        ),
+                        _endDate: Date(
+                            2023,
+                            12,
+                            31
+                        )
+                    }
+                ),
+                "H1 Jan-Jun-2023",
+                UpdateContext(
+                    {
+                        _startDate: Date(
+                            2023,
+                            1,
+                            1
+                        ),
+                        _endDate: Date(
+                            2023,
+                            6,
+                            30
+                        )
+                    }
+                ),
+                "FY Jan-Dec-2023",
+                UpdateContext(
+                    {
+                        _startDate: Date(
+                            2023,
+                            1,
+                            1
+                        ),
+                        _endDate: Date(
+                            2023,
+                            12,
+                            31
+                        )
+                    }
+                ),
+                Today()
+            )
+        PressedFill: =Self.Fill
+        Reset: =ResetControl
+        SelectionColor: =_primaryColor
+        SelectionFill: =Self.Fill
+        Size: =10
+        Width: =Gallery4_1.Width/7
+        X: =Gallery4_1.X+25
+        Y: =Gallery4_1.Y+Gallery4_1.Height+20
+        ZIndex: =22
+
+    DatePicker_End_2 As datepicker:
+        BorderColor: =RGBA(166, 166, 166, 1)
+        CalendarHeaderFill: =ColorFade(RGBA(202, 80, 16, 1), -30%)
+        Color: =RGBA(51, 51, 51, 1)
+        DefaultDate: |-
+            =
+            _endDate
+        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+        DisplayMode: |-
+            =If(
+                drp_SelectDate_2.SelectedText.Value <> "Custom date",
+                DisplayMode.Disabled,
+                DisplayMode.Edit
+            )
+        Font: =Font.'Segoe UI'
+        Height: =ContainerNewGoal.Height/20
+        HoverDateFill: =RGBA(200, 200, 200, 1)
+        IconBackground: =RGBA(202, 80, 16, 1)
+        OnChange: =If(Self.SelectedDate<Today()&&drp_SelectDate_2.Selected.Value="Custom date",Notify("You cannot choose date less than Today",NotificationType.Error,1000);Reset(DatePicker_End_2));
+        PaddingTop: =5
+        Reset: =ResetControl
+        SelectedDateFill: =RGBA(202, 80, 16, 1)
+        Size: =13
+        Width: =Gallery4_1.Width/7
+        X: =DatePicker_Start_2.X+DatePicker_Start_2.Width+20
+        Y: =Gallery4_1.Y+Gallery4_1.Height+20
+        ZIndex: =23
+
+    DatePicker_Start_2 As datepicker:
+        BorderColor: =RGBA(166, 166, 166, 1)
+        CalendarHeaderFill: =ColorFade(RGBA(202, 80, 16, 1), -30%)
+        Color: =RGBA(51, 51, 51, 1)
+        DefaultDate: |-
+            =
+            _startDate
+        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+        DisplayMode: |-
+            =If(
+                drp_SelectDate_2.SelectedText.Value <> "Custom date",
+              DisplayMode.Disabled,
+                DisplayMode.Edit
+            )
+        Font: =Font.'Segoe UI'
+        Height: =ContainerNewGoal.Height/20
+        HoverDateFill: =RGBA(200, 200, 200, 1)
+        IconBackground: =RGBA(202, 80, 16, 1)
+        OnChange: =If(Self.SelectedDate<Today()&&drp_SelectDate_2.Selected.Value="Custom date",Notify("You cannot choose date less than Today",NotificationType.Error,1000);Reset(DatePicker_Start_2));
+        OnSelect: =//If(Self.SelectedDate<Today(),Notify("You cannot choose date less than Today"));
+        PaddingTop: =5
+        Reset: =ResetControl
+        SelectedDateFill: =RGBA(202, 80, 16, 1)
+        Size: =13
+        Width: =Gallery4_1.Width/7
+        X: =drp_SelectDate_2.X+drp_SelectDate_2.Width+20
+        Y: =Gallery4_1.Y+Gallery4_1.Height+20
+        ZIndex: =24
+

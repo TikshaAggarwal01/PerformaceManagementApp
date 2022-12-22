@@ -1,0 +1,814 @@
+HomeScreen As screen:
+    BackgroundImage: =
+    Fill: =
+    OnVisible: |+
+        =ClearCollect(ColTempTask,'Tasks Management');
+             ClearCollect(
+            ColTaskProgress,
+            Filter(
+        ColTempTask,User().FullName in To.DisplayName));
+        ClearCollect(
+            ColGoalProgress,
+        Goals
+        );
+        Set(countInitialItems,CountRows( gal_MyActiveGoals.AllItems));
+        Set(countInitialItemsTask,CountRows( gal_MyTask.AllItems));
+        With({_InitialSumGoal:Sum(gal_MyActiveGoals.AllItems,Initial),TargetSumGoal:Sum(gal_MyActiveGoals.AllItems,Target)},If(_InitialSumGoal=0||TargetSumGoal=0||IsBlank(_InitialSumGoal)||IsBlank(TargetSumGoal),UpdateContext({_GoalProgress:0}), UpdateContext({_GoalProgress: _InitialSumGoal/TargetSumGoal})));
+        
+
+    backgroundComponent_HomeScreen As backgroundComponent:
+        Default: ="Home"
+        Items: =MenuItemsCollection
+        SetMenuWidth: =backgroundComponent_HomeScreen.MenuWidth
+
+    gal_Main As gallery.galleryHorizontal:
+        Height: =Parent.Height-180
+        Items: |-
+            =Table({Id:1, Value:"My active goals"},{Id:2,Value: "My tasks"})
+        TemplatePadding: =8
+        TemplateSize: =Self.Width/2- (Self.TemplatePadding+10)
+        Width: = If(backgroundComponent_HomeScreen.MenuWidth>80,(Parent.Width-180-100)/1.2,(Parent.Width-150)/1.2)
+        X: =backgroundComponent_HomeScreen.MenuWidth+20
+        Y: =105
+        ZIndex: =2
+
+        btn_Homegal_Background As button:
+            BorderColor: |-
+                =//ColorFade(Self.Fill, -15%)
+                _primaryColor
+            DisplayMode: =DisplayMode.View
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =gal_Main.TemplateHeight
+            OnSelect: =Select(Parent)
+            Size: =10
+            Text: =""
+            Width: =gal_Main.TemplateWidth
+            ZIndex: =1
+
+        lbl_MyActiveGoalTask As label:
+            Font: =Font.Lato
+            FontWeight: =FontWeight.Bold
+            OnSelect: =Select(Parent)
+            Size: =14.5
+            Text: =Switch(ThisItem.Id,1, "My active goals (" &CountRows(gal_MyActiveGoals.AllItems)& ")",2, "My tasks (" &CountRows(gal_MyTask.AllItems )&")")
+            Width: =200
+            X: =15
+            Y: =15
+            ZIndex: =2
+
+        lbl_NotActiveGoalTask As label:
+            Align: =Align.Center
+            AutoHeight: =true
+            Font: =Font.Lato
+            Height: =51
+            OnSelect: =Select(Parent)
+            Text: |-
+                =
+                If(CountRows(gal_MyActiveGoals.AllItems)=0 && ThisItem.Id=1,"You don't have any active goals.",If(CountRows(gal_MyTask.AllItems)=0 &&ThisItem.Id=2,"There are no incomplete tasks assigned to you.",""))
+            Visible: |-
+                =///If(CountRows( gal_MyActiveGoals.AllItems)=0,true,If(CountRows( gal_MyTask.AllItems)=0,true,false))
+                CountRows(gal_MyActiveGoals.AllItems)=0||CountRows(gal_MyTask.AllItems)=0
+            Width: =400
+            X: =(btn_Homegal_Background.Width/2)-(Self.Width/2)
+            Y: =img_NoactiveGoalTask.Y+img_NoactiveGoalTask.Height+10
+            ZIndex: =3
+
+        Btn_ViewAll As button:
+            Align: =Align.Left
+            BorderStyle: =BorderStyle.None
+            Color: =ColorFade(_primaryColor,-20%)
+            Fill: =RGBA(255, 255, 255, 1)
+            Font: =Font.Lato
+            FontWeight: =FontWeight.Bold
+            HoverColor: =_primaryColor
+            HoverFill: =
+            OnSelect: =Switch(ThisItem.Id,1,Navigate(GoalsgalleryScreen),2,Navigate(TasksgalleryScreen))
+            PaddingLeft: =20
+            PressedColor: |
+                =_primaryColor
+            PressedFill: =White
+            Text: ="View All ->"
+            VerticalAlign: =VerticalAlign.Bottom
+            X: =10
+            Y: =gal_Main.Height-Self.Height-25
+            ZIndex: =4
+
+        img_NoactiveGoalTask As image:
+            Height: =71
+            Image: |-
+                =//If(CountRows(gal_MyActiveGoals.AllItems)=0 && ThisItem.Id=1,target,CountRows(gal_MyTask.AllItems)=0 &&ThisItem.Id=2,done,Blank)
+                
+                If(CountRows(gal_MyActiveGoals.AllItems)=0 && ThisItem.Id=1,target,If(CountRows(gal_MyTask.AllItems)=0 &&ThisItem.Id=2,done))
+            OnSelect: =Select(Parent)
+            Visible: =CountRows( gal_MyActiveGoals.AllItems)=0||CountRows( gal_MyTask.AllItems)=0
+            Width: =74
+            X: =(btn_Homegal_Background.Width/2)-(Self.Width/2)
+            Y: =(btn_Homegal_Background.Height/2)-(Self.Height/2)
+            ZIndex: =5
+
+        btn_NewGoalTask As button:
+            BorderStyle: =BorderStyle.None
+            Color: =_primaryColor
+            Fill: =RGBA(255, 255, 255, 1)
+            Font: =Font.Lato
+            HoverColor: |
+                =ColorFade(_primaryColor,-10%)
+            HoverFill: =RGBA(0, 0, 0, 0)
+            OnSelect: |-
+                =Set(
+                    _editGoalRequest,
+                    false
+                );
+                Set(
+                    ResetControl,
+                    true
+                );
+                Reset(gal_Type);
+                Clear(CollGoalUser);
+                Set(
+                    ResetControl,
+                    false
+                );
+                    Set(VarId,Value(""));
+                Set(VarValue,Text(""));
+                Set(MeasureProgerssSubGaols,false);
+                Switch(
+                    ThisItem.Id,
+                    1,
+                    Set(
+                        VarEditDelete,
+                        false
+                    );
+                    Set(
+                        countInitialItems,
+                        CountRows(gal_MyActiveGoals.AllItems)
+                    );
+                    Navigate(
+                        NewGoalScreen,
+                        ScreenTransition.Cover,
+                        {
+                            _startDate: Today(),
+                            _endDate: Today(),
+                            _TypesGal: true
+                        }
+                    ),
+                    2,
+                    Set(
+                        VarNewtask,
+                        true
+                    );
+                    Set(
+                        VarTo,
+                        false
+                    );
+                    Clear(CollTaskUsers);
+                    Set(
+                        VarRelatedtask,
+                        false
+                    );
+                    Set(
+                        countInitialItemsTask,
+                        CountRows(gal_MyTask.AllItems)
+                    );
+                    Reset(ComBox_To);
+                    Navigate(
+                        NewTaskScreen,
+                        ScreenTransition.Fade
+                    )
+                )
+            PressedColor: =_primaryColor
+            PressedFill: =White
+            Size: =16
+            Text: =Switch(ThisItem.Id,1,"+ New Goal",2,"+ New Task")
+            X: =btn_Homegal_Background.Width-(Self.Width)-10
+            Y: =8
+            ZIndex: =6
+
+    gal_MyTask As gallery.variableTemplateHeightGallery:
+        Height: =gal_Main.TemplateHeight-lbl_MyActiveGoalTask.Height-Btn_ViewAll.Height-40
+        Items: =Filter(ColTaskProgress,User().FullName in To.DisplayName)
+        Layout: =Layout.Vertical
+        OnSelect: |-
+            =Set(
+                TaskInfo,
+                ThisItem
+            );Set(VarEditDelete,false);
+            
+            ClearCollect(
+                CollTaskUsers,
+                LookUp(
+                    'Tasks Management',
+                    TaskInfo.ID = ID,
+                    To
+                )
+            );
+            Set(
+                VarNewtask,
+                false
+            );
+            If(
+                checkItem,
+                Navigate(HomeScreen);
+                Set(
+                    checkItem,
+                    false
+                ),
+                Navigate(
+                    EditTaskScreen,
+                    ScreenTransition.Fade
+                )
+            );
+            Set(VarRelatedtask,false)
+        ShowScrollbar: =false
+        TemplatePadding: =7
+        TemplateSize: =60
+        Width: =gal_Main.TemplateWidth-10
+        X: |
+            =gal_MyActiveGoals.X+gal_MyActiveGoals.Width+15
+        Y: =gal_MyActiveGoals.Y
+        ZIndex: =3
+
+        lbl_MyTasktitle As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =gal_MyTask.TemplateHeight
+            OnSelect: =Select(Parent)
+            PaddingLeft: =10
+            Text: =ThisItem.Title
+            Width: =gal_MyTask.TemplateWidth-cir_Activegoal_Type.Width-cir_ActiveGoal.Width-lbl_Activegoals_Progress.Width-25
+            X: =chk_Mytask.X+chk_Mytask.Width
+            ZIndex: =2
+
+        lbl_MyTaskdate As label:
+            Font: =Font.'Open Sans Condensed'
+            FontWeight: =FontWeight.Semibold
+            Height: =gal_MyTask.TemplateHeight
+            OnSelect: =Select(Parent)
+            PaddingLeft: =10
+            Size: =13.5
+            Text: =Text(ThisItem.'Due date'," d mmm, yyyy")
+            Width: =120
+            X: |-
+                =//chk_Mytask.X+chk_Mytask.Width+lbl_MyTasktitle.Width-10
+                gal_MyTask.Width-Self.Width-20
+            ZIndex: =3
+
+        btn_Mytask As button:
+            BorderColor: =RGBA(204, 204, 204, 1)
+            Fill: =RGBA(0, 0, 0, 0)
+            FocusedBorderThickness: =2
+            Font: =Font.'Segoe UI'
+            Height: =60
+            HoverBorderColor: =ColorFade(_primaryColor, 20%)
+            HoverFill: =
+            OnSelect: =Select(Parent)
+            PressedBorderColor: =Self.BorderColor
+            PressedFill: =
+            RadiusBottomLeft: =5
+            RadiusBottomRight: =5
+            RadiusTopLeft: =5
+            RadiusTopRight: =5
+            Text: =""
+            Width: =gal_MyTask.TemplateWidth
+            ZIndex: =4
+
+        chk_Mytask As checkbox:
+            BorderColor: =_primaryColor
+            BorderStyle: =BorderStyle.None
+            CheckboxBorderColor: =_primaryColor
+            CheckmarkFill: =_primaryColor
+            Default: =If(ThisItem.Status="Completed",true,false)
+            Height: =gal_MyTask.TemplateHeight
+            OnCheck: |
+                =Patch('Tasks Management',LookUp('Tasks Management',ID=ThisItem.ID),({Status:"Completed"}));Notify("Your Task is Completed");
+                 ClearCollect(
+                    ColTaskProgress,
+                    'Tasks Management'
+                );
+                 ClearCollect(
+                    ColGoalProgress,
+                    Goals
+                )
+            OnSelect: =Set(checkItem,true);
+            OnUncheck: |-
+                =Patch('Tasks Management',LookUp('Tasks Management',ID=ThisItem.ID),({Status:"Not completed"}));Notify("Your Task is marked as incompleted");
+                 ClearCollect(
+                    ColTaskProgress,
+                    'Tasks Management'
+                );
+                 ClearCollect(
+                    ColGoalProgress,
+                    Goals
+                )
+            Size: =10
+            Text: =""
+            Tooltip: =If(chk_Mytask.Value=false,"Mark as Complete","Mark as Incomplete")
+            Width: =45
+            X: =15
+            ZIndex: =5
+
+    gal_Progress As gallery.galleryVertical:
+        Height: =gal_Main.Height
+        Items: |
+            =Table({Id:1, Value:"My active goals"},{Id:2,Value: "My tasks"})
+        Layout: =Layout.Vertical
+        ShowScrollbar: =false
+        TemplateSize: |-
+            =Self.Height/2- (Self.TemplatePadding)-5
+            //If(Self.Layout = Layout.Horizontal, Min(280, Self.Width/2), Min(280, Self.Height/2))
+        Width: |-
+            =//Parent.Width/6
+             If(backgroundComponent_HomeScreen.MenuWidth>80,Parent.Width/7,Parent.Width/6)
+        X: =gal_Main.Width+gal_Main.X
+        Y: =gal_Main.Y
+        ZIndex: =4
+
+        btn_Progressbackground As button:
+            DisplayMode: =DisplayMode.View
+            Fill: =RGBA(255, 255, 255, 1)
+            Font: =Font.'Segoe UI'
+            Height: =gal_Progress.TemplateHeight
+            OnSelect: =Select(Parent)
+            Size: =10
+            Text: =""
+            Width: =gal_Progress.TemplateWidth
+            ZIndex: =1
+
+        img_Progress As image:
+            Height: =gal_Progress.TemplateHeight/3
+            Image: |-
+                =Switch(lbl_Progress.Text,"Goals progress","data:image/svg+xml;utf8, "&EncodeUrl("<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' viewBox='0 0 40 40'> 
+                 
+                  <defs>
+                    <linearGradient id='gradient' x1='80%' y1='20%' x2='5%' y2='5%' spreadMethod='pad'>
+                      <stop offset='0%' stop-color='#FC466B'/>
+                      <stop offset='100%' stop-color='#3F5EFB'/>
+                      
+                      
+                    </linearGradient>
+                  </defs>
+                  
+                  <style>
+                    
+                    .rail {
+                     stroke:  rgba(245,246,250,1.0) 
+                     
+                    }
+                    
+                    .progress {
+                      stroke: rgb(255,105,5);
+                      stroke-linecap: round;
+                      animation: progressbar 5s;
+                      
+                    }
+                    
+                    .progress-text {
+                      font-size: 0.7em;
+                      font-family: Trebuchet MS, sans-serif;
+                      font-weight:bold;
+                      
+                    }
+                    
+                    .progress-name {
+                      font-size:0.3em;
+                      
+                    }
+                    
+                    @keyframes progressbar {
+                      from {
+                        stroke-dasharray: 0, 100;
+                        
+                    
+                      }
+                      to
+                      
+                      {
+                        stroke-dasharray: "&_GoalProgress*100&" "&100-_GoalProgress*100&";
+                      }
+                      
+                    }
+                    
+                  </style>
+                
+                  <circle class='rail' cx='20' cy='20' r='16' stroke-width='2' fill='transparent'> </circle>
+                   <circle class='progress' cx='20' cy='20' r='16' stroke-width='2' fill='transparent'  stroke-dasharray='"&_GoalProgress*100&" "&100-_GoalProgress*100&"' stroke-dashoffset='25'> </circle>
+                  
+                 <g class='progress-text'>
+                   <text y='50%' transform='translate(0,2)'>
+                     <tspan x='50%' y='55%' text-anchor='middle' class='progress-percent'> "&RoundUp(_GoalProgress*100,0)&"</tspan>
+                   </text>
+                      <text y='60%' transform='translate(0,2)'>
+                    
+                   </text>
+                
+                   
+                  </g>
+                
+                </svg>"),"Tasks progress","data:image/svg+xml;utf8, "&EncodeUrl("<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' viewBox='0 0 40 40'> 
+                 
+                  <defs>
+                    <linearGradient id='gradient' x1='80%' y1='20%' x2='5%' y2='5%' spreadMethod='pad'>
+                      <stop offset='0%' stop-color='#FC466B'/>
+                      <stop offset='100%' stop-color='#3F5EFB'/>
+                      
+                      
+                    </linearGradient>
+                  </defs>
+                  
+                  
+                  <style>
+                    
+                    .rail {
+                     stroke:  rgba(245,246,250,1.0) 
+                     
+                    }
+                    
+                    .progress {
+                      stroke: rgb(255,105,5);
+                      stroke-linecap: round;
+                      animation: progressbar 5s;
+                      
+                    }
+                    
+                    .progress-text {
+                      font-size: 0.7em;
+                      font-family: Trebuchet MS, sans-serif;
+                      font-weight:bold;
+                      
+                    }
+                    
+                    .progress-name {
+                      font-size:0.3em;
+                      
+                    }
+                    
+                    @keyframes progressbar {
+                      from {
+                        stroke-dasharray: 0, 100;
+                        
+                      }
+                      to
+                      
+                      {
+                        stroke-dasharray:"&(If(countInitialItemsTask=0,0,CountRows(Filter(ColTaskProgress,Status="Completed"))/CountRows(gal_MyTask.AllItems)))*100&" "&100-(If(countInitialItemsTask=0,0,CountRows(Filter(ColTaskProgress,Status="Completed"))/CountRows(gal_MyTask.AllItems)))*100&";
+                      }
+                      
+                    }
+                    
+                    
+                  </style>
+                
+                  <circle class='rail' cx='20' cy='20' r='16' stroke-width='2' fill='transparent'> </circle>
+                   <circle class='progress' cx='20' cy='20' r='16' stroke-width='2' fill='transparent'  stroke-dasharray='"&(If(countInitialItemsTask=0,0,CountRows(Filter(ColTaskProgress,Status="Completed"))/CountRows(gal_MyTask.AllItems)))*100&" "&100-(If(countInitialItemsTask=0,0,CountRows(Filter(ColTaskProgress,Status="Completed"))/CountRows(gal_MyTask.AllItems)))*100&"' stroke-dashoffset='25'> </circle>
+                  
+                 <g class='progress-text'>
+                   <text y='50%' transform='translate(0,2)'>
+                     <tspan x='50%' y='55%' text-anchor='middle' class='progress-percent'> "&RoundUp(If(countInitialItemsTask=0,0,(CountRows(Filter(ColTaskProgress,Status="Completed"))/CountRows(gal_MyTask.AllItems)))*100,0)&"</tspan>
+                   </text>
+                      <text y='60%' transform='translate(0,2)'>
+                   
+                   </text>
+                
+                   
+                  </g>
+                
+                </svg>"))
+            Width: =gal_Progress.TemplateHeight/3
+            X: =gal_Progress.Width/2-Self.Width/2-10
+            Y: =40
+            ZIndex: =2
+
+        lbl_Progress As label:
+            Font: =Font.Lato
+            FontWeight: =FontWeight.Bold
+            OnSelect: =Select(Parent)
+            PaddingLeft: =15
+            Text: =Switch(ThisItem.Id,1,"Goals progress", 2,"Tasks progress")
+            Width: =gal_Progress.TemplateWidth
+            Y: =10
+            ZIndex: =3
+
+        "gal_Overallprogress As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
+            Height: =gal_Progress.TemplateWidth/1.4
+            Items: |-
+                =Switch(lbl_Progress.Text,"Goals progress", 
+                ["Off track","No Status","On track","At risk","Closed"],"Tasks progress",  ["Completed","Not completed"])
+            Layout: =Layout.Vertical
+            TemplatePadding: =0
+            TemplateSize: =gal_Overallprogress.Height/6.5
+            Width: =btn_Progressbackground.Width
+            Y: =lbl_Overallprogress.Y+lbl_Overallprogress.Height+5
+            ZIndex: =4
+
+            Label7_2 As label:
+                AutoHeight: =true
+                Height: =21
+                OnSelect: =Select(Parent)
+                PaddingTop: =0
+                Size: =10
+                Text: =ThisItem.Value
+                Width: =gal_Overallprogress.Width-Label9_1.Width-cirGoalType_6.Width-40
+                X: =cirGoalType_6.X+cirGoalType_6.Width+10
+                Y: =2
+                ZIndex: =6
+
+            Label9_1 As label:
+                Height: =23
+                OnSelect: =Select(Parent)
+                Size: =12
+                Text: |-
+                    =Switch(lbl_Progress.Text,"Goals progress",
+                        Switch(
+                        ThisItem.Value,
+                        "On track",
+                      CountRows(
+                        Filter(
+                            ColGoalProgress,OwnerName.DisplayName=User().FullName&&
+                            Status.Value=ThisItem.Value
+                        )),
+                        "Off track",
+                        CountRows(
+                        Filter(
+                            ColGoalProgress,OwnerName.DisplayName=User().FullName&&
+                            Status.Value=ThisItem.Value
+                        )),
+                        "Closed",
+                        CountRows(
+                        Filter(
+                            ColGoalProgress,OwnerName.DisplayName=User().FullName&&
+                            Status.Value=ThisItem.Value
+                        )),
+                        "No Status",
+                        CountRows(
+                        Filter(
+                            ColGoalProgress,OwnerName.DisplayName=User().FullName&&
+                             Status.Value=ThisItem.Value
+                        )),
+                        "At risk",
+                       CountRows(
+                        Filter(
+                            ColGoalProgress,OwnerName.DisplayName=User().FullName&&
+                             Status.Value=ThisItem.Value
+                        ))
+                    ),
+                    "Tasks progress",
+                    Switch(
+                        ThisItem.Value,
+                        "Completed",
+                      CountRows(
+                        Filter(
+                            ColTaskProgress,User().FullName in To.DisplayName&&
+                            Status = ThisItem.Value
+                        )),
+                        "Not completed",
+                        CountRows(
+                        Filter(
+                           ColTaskProgress,User().FullName in To.DisplayName&&
+                            Status = ThisItem.Value
+                        ))
+                    )
+                    
+                    
+                    )
+                Width: =33
+                X: =gal_Overallprogress.TemplateWidth-Self.Width-cirGoalType_6.Width
+                ZIndex: =7
+
+            cirGoalType_6 As circle:
+                BorderColor: =Switch(lbl_Progress.Text,"Goals progress",Switch(ThisItem.Value,"No Status",Gray,"On track",LightGreen,"At risk",Yellow,"Off track",OrangeRed,DimGrey),"Tasks progress",Switch(ThisItem.Value,"Completed",LightGreen,"Not completed",DimGrey))
+                BorderThickness: =1
+                Fill: =Switch(lbl_Progress.Text,"Goals progress",Switch(ThisItem.Value,"No Status",Gray,"On track",LightGreen,"At risk",Yellow,"Off track",OrangeRed,White),"Tasks progress",Switch(ThisItem.Value,"Completed",LightGreen,"Not completed",White))
+                Height: =15
+                Width: =15
+                X: =gal_Overallprogress.Width/7
+                Y: =2
+                ZIndex: =8
+
+        lbl_Overallprogress As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =20
+            OnSelect: =Select(Parent)
+            PaddingBottom: =2
+            PaddingTop: =2
+            Size: =13.2
+            Text: ="Overall progress"
+            X: =gal_Progress.TemplateWidth/2-Self.Width/2
+            Y: =img_Progress.Y+img_Progress.Height
+            ZIndex: =5
+
+    gal_MyActiveGoals As gallery.variableTemplateHeightGallery:
+        Height: =gal_Main.TemplateHeight-lbl_MyActiveGoalTask.Height-Btn_ViewAll.Height-40
+        Items: =Filter(ColGoalProgress,OwnerName.DisplayName=User().FullName)
+        Layout: =Layout.Vertical
+        OnSelect: |-
+            =
+            Set(
+                editGoalRecord,
+                ThisItem
+            );
+            Set(
+                VarEditDelete,
+                false
+            );
+            Set(
+                _DeleteGoal,
+                false
+            );
+            ClearCollect(
+                CollGoalUser,
+                ThisItem.OwnerName
+            );
+            Set(
+                VarSubGoals,
+                false
+            );
+            Set(
+                VarId,
+                Value(gal_MyActiveGoals.Selected.ID)
+            );
+            Set(
+                VarValue,
+                Text(gal_MyActiveGoals.Selected.ID)
+            );
+            Set(
+                VarSubgalRequest,
+                false
+            );
+            Switch(
+                gal_MyActiveGoals.Selected.'Measure Progress'.Value,
+                "Subgoal progress",
+                Set(
+                    _GoalTarget,
+                    With(
+                        {
+                            _InitialSum: Sum(
+                                Filter(
+                                    ColGoalProgress,
+                                    SubGoalId.Id = Value(gal_MyActiveGoals.Selected.ID)
+                                ),
+                                Initial
+                            ),
+                            _TargetSum: Sum(
+                                Filter(
+                                    ColGoalProgress,
+                                    SubGoalId.Id = Value(gal_MyActiveGoals.Selected.ID)
+                                ),
+                                Target
+                            )
+                        },
+                        If(
+                            _InitialSum= 0 || _TargetSum = 0||IsBlank(_InitialSum)||IsBlank(_TargetSum),0,
+                            _InitialSum / _TargetSum * ContainerEditGoalScreen.Width / 1.8
+                            
+                        )
+                    )
+                );
+                Set(
+                    _Percentage,
+                    With(
+                        {
+                            _InitialPercent: Sum(
+                                Filter(
+                                    ColGoalProgress,
+                                    SubGoalId.Id = Value(gal_MyActiveGoals.Selected.ID)
+                                ),
+                                Initial
+                            ),
+                            _TargetPercent: Sum(
+                                Filter(
+                                    ColGoalProgress,
+                                    SubGoalId.Id = Value(gal_MyActiveGoals.Selected.ID)
+                                ),
+                                Target
+                            )
+                        },
+                        If(
+                            _InitialPercent = 0 || _TargetPercent = 0||IsBlank(_InitialPercent)||IsBlank(_InitialPercent),0,
+                            Round(
+                                _InitialPercent / _TargetPercent * 100,
+                                0
+                            )
+                        )
+                    )
+                );
+                ,
+                With(
+                    {
+                        _editInitial: editGoalRecord.Initial,
+                        _editTarget: editGoalRecord.Target
+                    },
+                    Set(
+                        _GoalTarget,
+                        If(
+                            _editInitial <> 0 || _editTarget <> 0,
+                            _editInitial / _editTarget * ContainerEditGoalScreen.Width / 1.8,
+                            0
+                        )
+                    );
+                    Set(
+                        _Percentage,
+                        Round(
+                            Value(_editInitial / _editTarget * 100),
+                            0
+                        )
+                    )
+                )
+            );
+            Navigate(EditGoalScreen,ScreenTransition.Cover,{_ViaHomeGallery:ThisItem})
+        ShowScrollbar: =false
+        TemplateFill: =
+        TemplatePadding: =7
+        TemplateSize: =60
+        Width: =gal_Main.TemplateWidth-10
+        X: =gal_Main.X+20
+        Y: =gal_Main.Y+65
+        ZIndex: =5
+
+        cir_ActiveGoal As circle:
+            Fill: =Switch(ThisItem.Types,"Individual",LightYellow,"Self-development",LightGreen,"Company Goal",LightBlue)
+            Height: =45
+            Width: =45
+            X: =15
+            Y: =5
+            ZIndex: =1
+
+        img_ActiveGoal As image:
+            Height: =25
+            Image: =Switch(ThisItem.Types,"Individual",pedestrian,"Self-development",goal,"Company Goal",organization)
+            Width: =25
+            X: =25
+            Y: =14
+            ZIndex: =2
+
+        lbl_Activegoal_Title As label:
+            AutoHeight: =true
+            FontWeight: =FontWeight.Semibold
+            OnSelect: =Select(Parent)
+            PaddingBottom: =10
+            PaddingTop: =10
+            Text: =ThisItem.Title
+            Width: =gal_MyActiveGoals.TemplateWidth-cir_Activegoal_Type.Width-cir_ActiveGoal.Width-lbl_Activegoals_Progress.Width-25
+            X: =cir_ActiveGoal.X+cir_ActiveGoal.Width+10
+            Y: =7
+            ZIndex: =3
+
+        cir_Activegoal_Type As circle:
+            BorderColor: =Switch(ThisItem.Status.Value,"No Status",Gray,"On track",LightGreen,"At risk",Yellow,"Off track",OrangeRed,Gray)
+            BorderThickness: =1
+            Fill: =Switch(ThisItem.Status.Value,"No Status",Gray,"On track",LightGreen,"At risk",Yellow,"Off track",OrangeRed,White)
+            Height: =25
+            Width: =25
+            X: =gal_MyActiveGoals.Width-(lbl_Activegoals_Progress.Width+Self.Width+10)
+            Y: =14
+            ZIndex: =4
+
+        lbl_Activegoals_Progress As label:
+            Align: =Align.Center
+            Height: =41
+            OnSelect: =Select(Parent)
+            Text: |+
+                =If(countInitialItems=0,0, If(ThisItem.'Measure Progress'.Value="Subgoal progress",
+                With({_Initial: Sum(
+                                Filter(
+                                    ColGoalProgress,
+                                    SubGoalId.Id = Value(ThisItem.ID)
+                                ),
+                                Initial
+                            ),_Target: Sum(
+                                Filter(
+                                    ColGoalProgress,
+                                    SubGoalId.Id = Value(ThisItem.ID)
+                                ),
+                                Target
+                            ) },
+                            If(_Initial=0||_Target=0||IsBlank(_Initial)||IsBlank(_Target),0,
+                RoundUp(
+                            _Initial / _Target * 100,
+                            0
+                        ))),
+                        With({_Initial:ThisItem.Initial,_Target:ThisItem.Target},
+                         If(_Initial=0||_Target=0,0,
+                             RoundUp(_Initial/_Target*100,0) ))))&" %"
+                
+            Width: =70
+            X: =gal_MyActiveGoals.Width-Self.Width-20
+            Y: =6
+            ZIndex: =5
+
+        "'btn_ Activegoals_background' As button":
+            BorderColor: =RGBA(204, 204, 204, 1)
+            Fill: =RGBA(0, 0, 0, 0)
+            FocusedBorderThickness: =2
+            Height: =60
+            HoverBorderColor: =ColorFade(_primaryColor, 20%)
+            HoverFill: =
+            OnSelect: =Select(Parent)
+            PressedBorderColor: =Self.BorderColor
+            PressedFill: =
+            RadiusBottomLeft: =5
+            RadiusBottomRight: =5
+            RadiusTopLeft: =5
+            RadiusTopRight: =5
+            Text: =""
+            Width: =gal_MyActiveGoals.Width-20
+            ZIndex: =6
+

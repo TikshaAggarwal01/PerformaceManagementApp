@@ -1,0 +1,245 @@
+GeneralTargetScreen As screen:
+    OnVisible: |-
+        =ClearCollect(
+            GeneralQueCollection,
+            Table({Id: 1, Title:"Accountability", Que:"Accepts responsibility for actions, answerable to consequences"},
+            {Id: 2, Title:"Punctuality & Attendance", Que:"Is rarely absent, arrives punctually, works required hours"}),
+            {Id: 3, Title:"Cooperation", Que:"Has ability to get along with coworkers and management  "},
+            {Id: 4, Title:"Attitude/Respectfulness", Que:"Shows initiative, optimism, and politeness"},
+            {Id: 5, Title:"Accepts Criticism", Que:"Has ability to learn from suggestions and change behavior"},
+            {Id: 6, Title:"Flexibility", Que:"Has capacity to respond to changing situations and expectations"},
+            {Id: 7, Title:"Policy & Procedures", Que:"Follows organization's policies and procedures"},
+            {Id: 8, Title:"Completion of Assignments", Que:"Successfully completes tasks and meets all deadlines"},
+            {Id: 9, Title:"Patient Interaction", Que:"Ensures high-quality care, respects patients' dignity and confidentiality"},
+            {Id: 10, Title:"Quality of Work", Que:"Is thorough, accurate, and neat in work"},
+            {Id: 11, Title:"Willingness to Develop Skills", Que:"Desires to take on challenges and learn new techniques"},
+            {Id: 12, Title:"Communication Skills", Que:"Conveys information effectively and efficiently"},
+            {Id: 13, Title:"Organizational Skills", Que:"Has capacity to stay on track and use time effectively"},
+            {Id: 14, Title:"Confidentiality", Que:"Does not discuss internal events with coworkers"}
+            ,{Id: 15, Title:"Appearance/Dress Code", Que:"Demonstrates a professional and well-kept appearance"},
+            {Id: 16, Title:"Appearance of Work Area", Que:"Keeps work area neat and orderly"},
+            {Id: 17, Title:"Conflict Resolution", Que:"Seeks constructive approaches to resolving workplace issues"},
+            {Id: 18, Title:"Safety", Que:"Contributes to a safe and secure environment by following established procedures"},
+            {Id: 19, Title:"Job Knowledge", Que:"Demonstrates working knowledge of procedures and health"},
+            {Id: 20, Title:"OSHA & HIPPA Compliance", Que:"Understands regulations and performs tasks appropriately"},
+            {Id: 21, Title:"Expense Management", Que:"Operates and uses supplies to maximize cost efficiency"},
+            {Id: 22, Title:"Inventory", Que:"Has ability to keep a well-recorded stock of items used and needed"},
+            {Id: 23, Title:"Availability", Que:"Is available to work any shift as needed by the practice"}
+        );
+        ClearCollect(UsersListCollection, Office365Users.SearchUser({searchTerm:""}).Mail)
+
+    backgroundComponent_GeneralTargetScreen As backgroundComponent:
+        Default: ="General Target"
+        Items: =MenuItemsCollection
+        SetMenuWidth: =backgroundComponent_GeneralTargetScreen.MenuWidth
+
+    ContainerTargets As groupContainer.manualLayoutContainer:
+        Height: =Parent.Height/1.13
+        Width: =Parent.Width-backgroundComponent_GeneralTargetScreen.MenuWidth-20
+        X: =backgroundComponent_GeneralTargetScreen.MenuWidth+10
+        Y: =85
+        ZIndex: =2
+
+        recTopGeneral As rectangle:
+            Fill: =RGBA(0, 0, 0, 1)
+            Height: =ContainerTargets.Height/14
+            Width: =Parent.Width
+            ZIndex: =2
+
+        lblGeneral As label:
+            Color: =RGBA(255, 255, 255, 1)
+            Font: =Font.Lato
+            FontWeight: =FontWeight.Bold
+            Height: =ContainerTargets.Height/14
+            Size: =18
+            Text: ="GENERAL"
+            Width: =recTopGeneral.Width/1.6
+            X: =25
+            Y: =20
+            ZIndex: =3
+
+        galExceedsMeetNI As gallery.galleryHorizontal:
+            Fill: =RGBA(0, 0, 0, 1)
+            Height: =51
+            Items: =["Exceeds","Meet","N.I."]
+            TemplateSize: =109
+            Width: =364
+            X: =2*lblGeneral.X+lblGeneral.Width
+            Y: =20
+            ZIndex: =4
+
+            lblExceedsMeetNI As label:
+                Align: =Align.Center
+                Color: =RGBA(255, 255, 255, 1)
+                Font: =Font.Lato
+                Height: =33
+                Size: =18
+                Text: =ThisItem.Value
+                Width: =96
+                Y: =5
+                ZIndex: =1
+
+        icnSaveTargetScore As icon.Save:
+            Color: =White
+            Height: =lblGeneral.Height
+            Icon: =Icon.Save
+            OnSelect: |-
+                =
+                Patch('General Target List',Defaults('General Target List'),{
+                    Title:GUID(),
+                    Accountability:LookUp(galGeneralTarget.AllItems,Id=1,radioGeneralTarget.Selected.Id),
+                    'Punctuality & Attendance':LookUp(galGeneralTarget.AllItems,Id=2,radioGeneralTarget.Selected.Id),
+                    Cooperation:LookUp(galGeneralTarget.AllItems,Id=3,radioGeneralTarget.Selected.Id),
+                    'Attitude/Respectfulness':LookUp(galGeneralTarget.AllItems,Id=4,radioGeneralTarget.Selected.Id),
+                    'Accepts Criticism':LookUp(galGeneralTarget.AllItems,Id=5,radioGeneralTarget.Selected.Id),
+                    Flexibility:LookUp(galGeneralTarget.AllItems,Id=6,radioGeneralTarget.Selected.Id),
+                    'Policy & Procedures':LookUp(galGeneralTarget.AllItems,Id=7,radioGeneralTarget.Selected.Id),
+                    'Completion of Assignments':LookUp(galGeneralTarget.AllItems,Id=8,radioGeneralTarget.Selected.Id),
+                    'Patient Interaction':LookUp(galGeneralTarget.AllItems,Id=9,radioGeneralTarget.Selected.Id),
+                    'Quality of Work':LookUp(galGeneralTarget.AllItems,Id=10,radioGeneralTarget.Selected.Id),
+                    'Willingness to Develop Skills':LookUp(galGeneralTarget.AllItems,Id=11,radioGeneralTarget.Selected.Id),
+                    'Communication Skills':LookUp(galGeneralTarget.AllItems,Id=12,radioGeneralTarget.Selected.Id),
+                    'Organizational Skills':LookUp(galGeneralTarget.AllItems,Id=13,radioGeneralTarget.Selected.Id),
+                    Confidentiality:LookUp(galGeneralTarget.AllItems,Id=14,radioGeneralTarget.Selected.Id),
+                    'Appearance/Dress Code':LookUp(galGeneralTarget.AllItems,Id=15,radioGeneralTarget.Selected.Id),
+                    'Appearance of Work Area':LookUp(galGeneralTarget.AllItems,Id=16,radioGeneralTarget.Selected.Id),
+                    'Conflict Resolution':LookUp(galGeneralTarget.AllItems,Id=17,radioGeneralTarget.Selected.Id),
+                    Safety:LookUp(galGeneralTarget.AllItems,Id=18,radioGeneralTarget.Selected.Id),
+                    'Job Knowledge':LookUp(galGeneralTarget.AllItems,Id=19,radioGeneralTarget.Selected.Id),
+                    'OSHA & HIPPA':LookUp(galGeneralTarget.AllItems,Id=20,radioGeneralTarget.Selected.Id),
+                    'Expense Management':LookUp(galGeneralTarget.AllItems,Id=21,radioGeneralTarget.Selected.Id),
+                    Inventory:LookUp(galGeneralTarget.AllItems,Id=22,radioGeneralTarget.Selected.Id),
+                    Availability:LookUp(galGeneralTarget.AllItems,Id=23,radioGeneralTarget.Selected.Id)
+                });
+                Set(ResetControl,true);Set(ResetControl,false);
+                Notify("General Target submitted successfully",NotificationType.Success);
+                Navigate(HomeScreen);
+            PaddingBottom: =5
+            PaddingLeft: =5
+            PaddingRight: =5
+            PaddingTop: =5
+            Width: =49
+            X: =recTopGeneral.Width-icnSaveTargetScore.Width
+            Y: =20
+            ZIndex: =5
+
+        recBottom As rectangle:
+            Fill: =RGBA(204, 204, 204, 0.61)
+            Height: =recTopGeneral.Height
+            Width: =Parent.Width
+            Y: =galGeneralTarget.Y+galGeneralTarget.Height
+            ZIndex: =6
+
+        lblTotalScore As label:
+            Color: =RGBA(3, 94, 143, 1)
+            Font: =Font.Lato
+            FontWeight: =FontWeight.Bold
+            Height: =ContainerTargets.Height/14
+            Size: =17
+            Text: ="TOTAL SCORE GENERAL (MAXIMUM 69)"
+            Width: =recTopGeneral.Width/1.6
+            X: =25
+            Y: =galGeneralTarget.Y+galGeneralTarget.Height
+            ZIndex: =7
+
+        galGeneralTarget As gallery.variableTemplateHeightGallery:
+            Height: =ContainerTargets.Height-(2*recTopGeneral.Height)-recTopGeneral.X
+            Items: = GeneralQueCollection
+            Layout: =Layout.Vertical
+            ShowScrollbar: =false
+            TemplateFill: |-
+                =If(
+                    Mod(Value(ThisItem.Id),2)=0,  
+                    ColorValue("#fafafa"), 
+                    ColorFade(ColorValue("#fafafa "),-5%)
+                )
+            TemplatePadding: =2
+            TemplateSize: =galGeneralTarget.Height/23
+            Width: =Parent.Width
+            Y: =recTopGeneral.Y+recTopGeneral.Height
+            ZIndex: =8
+
+            htmGeneralQuestions As htmlViewer:
+                AutoHeight: =true
+                Font: =Font.Verdana
+                Height: =24.91304347826087
+                HtmlText: ="<b>" &ThisItem.Id&". &nbsp;"&ThisItem.Title&"</b> &nbsp;" & ThisItem.Que
+                OnSelect: =Select(Parent)
+                Size: =13
+                Width: =recTopGeneral.Width/1.5
+                X: =12
+                ZIndex: =1
+
+            radioGeneralTarget As radio:
+                BorderStyle: =BorderStyle.None
+                Color: =RGBA(0, 0, 0, 0)
+                Default: =""
+                Height: =24.91304347826087
+                HoverColor: =RGBA(0, 0, 0, 0)
+                Items: |-
+                    =Table({Id:3, Value:"Exceeds"},{Id:2, Value: "Meet"},{Id:1,Value:"NI"})
+                Layout: =Layout.Horizontal
+                OnSelect: =Select(Parent)
+                PaddingBottom: =0
+                PaddingTop: =0
+                RadioSelectionFill: =ColorFade(_primaryColor,-10%)
+                RadioSize: =28
+                Reset: =ResetControl
+                Width: =recTopGeneral.Width-lblGeneral.X-lblGeneral.Width
+                X: =2*lblGeneral.X+lblGeneral.Width
+                ZIndex: =2
+
+            lblNIValue1 As label:
+                Height: =24.91304347826087
+                OnSelect: =Select(Parent)
+                PaddingBottom: =0
+                PaddingTop: =0
+                Text: ="1"
+                Width: =27
+                X: =lblMeetValue2.X+lblMeetValue2.Height+80
+                ZIndex: =3
+
+            lblExceedsValue3 As label:
+                Height: =24.91304347826087
+                OnSelect: =Select(Parent)
+                PaddingBottom: =0
+                PaddingTop: =0
+                Text: ="3"
+                Width: =27
+                X: =radioGeneralTarget.X+50
+                ZIndex: =4
+
+            lblMeetValue2 As label:
+                Height: =24.91304347826087
+                OnSelect: =Select(Parent)
+                PaddingBottom: =0
+                PaddingTop: =0
+                Text: ="2"
+                Width: =27
+                X: =lblExceedsValue3.X+lblExceedsValue3.Width+90
+                ZIndex: =5
+
+        galTotalScoreValue As gallery.galleryHorizontal:
+            Height: =40
+            Items: |
+                =Table({Id:3, Value: Sum(Filter(galGeneralTarget.AllItems,radioGeneralTarget.SelectedText.'data-ADB4D7A662F548B49FAC2B986E348A1BId'=3),radioGeneralTarget.Selected.Id)},
+                {Id:2, Value: Sum(Filter(galGeneralTarget.AllItems,radioGeneralTarget.SelectedText.'data-ADB4D7A662F548B49FAC2B986E348A1BId'=2),radioGeneralTarget.Selected.Id)},
+                {Id:1, Value: Sum(Filter(galGeneralTarget.AllItems,radioGeneralTarget.SelectedText.'data-ADB4D7A662F548B49FAC2B986E348A1BId'=1),radioGeneralTarget.Selected.Id)})
+            TemplateSize: =112
+            Width: =365
+            X: =2*lblGeneral.X+lblGeneral.Width
+            Y: =recBottom.Y+5
+            ZIndex: =9
+
+            lblTotalScoreValue As label:
+                Align: =Align.Center
+                BorderThickness: =1
+                Color: =RGBA(0, 13, 75, 1)
+                Fill: =RGBA(255, 255, 255, 1)
+                Font: =Font.Lato
+                Height: =30
+                Size: =18
+                Text: =ThisItem.Value
+                Width: =112
+                ZIndex: =1
+

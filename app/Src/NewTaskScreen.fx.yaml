@@ -1,0 +1,515 @@
+NewTaskScreen As screen:
+    OnVisible: |
+        =Reset(ComBox_To);
+
+    backgroundComponent_2 As backgroundComponent:
+        Default: ="Tasks"
+        Items: =MenuItemsCollection
+        SetMenuWidth: =backgroundComponent_2.MenuWidth
+
+    ContainerNewTask As groupContainer.manualLayoutContainer:
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =Parent.Height-140
+        Width: =Parent.Width/2
+        X: =Parent.Width/2-Self.Width/2
+        Y: =70
+        ZIndex: =2
+
+        lbl_NewEditTask As label:
+            Align: =Align.Center
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Semibold
+            Height: =ContainerNewTask.Height/18
+            Size: =18
+            Text: =If(VarNewtask,"New Task","Edit Task")
+            X: =ContainerNewTask.Width/2-Self.Width/2
+            Y: =5
+            ZIndex: =1
+
+        lbl_To As label:
+            Color: =_labelColor
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Semibold
+            Height: = ContainerNewTask.Height/20
+            Size: =14
+            Text: ="To"
+            X: =45
+            Y: =59
+            ZIndex: =2
+
+        btn_AddTaskMyself As button:
+            BorderStyle: =BorderStyle.None
+            Color: =ColorFade(_primaryColor,-20%)
+            Fill: =RGBA(255, 255, 255, 1)
+            Font: =Font.'Open Sans Condensed'
+            Height: =ContainerNewTask.Height/19
+            HoverColor: =ColorFade(_primaryColor,-20%)
+            HoverFill: =Transparent
+            OnSelect: |-
+                =
+                Set(VarTo,true);
+                ClearCollect(CollTaskUsers,LookUp(Office365Users.SearchUser(),DisplayName=User().FullName));
+                Reset(ComBox_To);
+                //Set(_AddMyself,LookUp(Office365Users.SearchUser(), DisplayName=User().FullName));
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            PressedColor: =_primaryColor
+            PressedFill: =White
+            Size: =12.5
+            Text: ="Add Myself"
+            Width: =ContainerNewTask.Width-ComBox_To.Width-40
+            X: =ComBox_To.Width+ComBox_To.X+5
+            Y: =lbl_To.Y+lbl_To.Height
+            ZIndex: =3
+
+        lbl_TaskTitle As label:
+            Color: =_labelColor
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Semibold
+            Height: = ContainerNewTask.Height/20
+            Size: =14
+            Text: ="Task Title *"
+            X: =41
+            Y: =radioAssignTask.Y+radioAssignTask.Height+10
+            ZIndex: =4
+
+        txt_TaskTitle As text:
+            BorderColor: =_txtColorFill
+            Default: |-
+                =If(VarNewtask,"",TaskInfo.Title)
+                //If(VarNewtask,"",If(VarRelatedTask,RelatedTaskInfo.Title,TaskInfo.Title))
+            Fill: =ColorFade(_txtColorFill,50%)
+            FocusedBorderColor: =_primaryColor
+            FocusedBorderThickness: =2
+            Height: = ContainerNewTask.Height/20
+            HoverBorderColor: =ColorFade( Self.BorderColor,10%)
+            HoverColor: =Black
+            HoverFill: =ColorFade(Self.Fill,10%)
+            RadiusBottomLeft: =1
+            RadiusBottomRight: =1
+            RadiusTopLeft: =1
+            RadiusTopRight: =1
+            Reset: =ResetControl
+            Width: =ContainerNewTask.Width-80
+            X: =ComBox_To.X
+            Y: =lbl_TaskTitle.Y+lbl_TaskTitle.Height
+            ZIndex: =5
+
+        lbl_TaskDescription As label:
+            Color: =_labelColor
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Semibold
+            Height: = ContainerNewTask.Height/20
+            Size: =14
+            Text: ="Describe what this task is about (optional)"
+            Width: =txt_TaskTitle.Width
+            X: =lbl_To.X 
+            Y: =txt_TaskTitle.Y+txt_TaskTitle.Height+5
+            ZIndex: =6
+
+        txt_TaskDescription As text:
+            BorderColor: =_txtColorFill
+            Default: |-
+                =//If(VarNewtask=true,"",If(VarRelatedTask,RelatedTaskInfo.Description,TaskInfo.Description))
+                If(VarNewtask,"",TaskInfo.Description)
+            Fill: =ColorFade(_txtColorFill,50%)
+            FocusedBorderColor: =_primaryColor
+            FocusedBorderThickness: =2
+            Height: =ContainerNewTask.Height/6
+            HoverBorderColor: =ColorFade( Self.BorderColor,10%)
+            HoverColor: =Black
+            HoverFill: =ColorFade(Self.Fill,10%)
+            Mode: =TextMode.MultiLine
+            RadiusBottomLeft: =1
+            RadiusBottomRight: =1
+            RadiusTopLeft: =1
+            RadiusTopRight: =1
+            Reset: =ResetControl
+            Width: =txt_TaskTitle.Width
+            X: =ComBox_To.X
+            Y: =lbl_TaskDescription.Y+lbl_TaskDescription.Height
+            ZIndex: =7
+
+        lbl_RelatedGoals As label:
+            Color: =_labelColor
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Semibold
+            Height: = ContainerNewTask.Height/20
+            Size: =14
+            Text: ="Related goal (optional)"
+            Width: =400
+            X: =lbl_To.X 
+            Y: =DatPicker_DueDate.Y+DatPicker_DueDate.Height+10
+            ZIndex: =8
+
+        lbl_DueDate As label:
+            Color: =_labelColor
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Semibold
+            Height: = ContainerNewTask.Height/20
+            Size: =14
+            Text: ="Due Date *"
+            Width: =400
+            X: =lbl_To.X 
+            Y: =txt_TaskDescription.Y+txt_TaskDescription.Height+5
+            ZIndex: =9
+
+        DatPicker_DueDate As datepicker:
+            BorderColor: =RGBA(166, 166, 166, 1)
+            CalendarHeaderFill: =ColorFade(RGBA(202, 80, 16, 1), -30%)
+            Color: =RGBA(51, 51, 51, 1)
+            DefaultDate: |-
+                =//If(VarNewtask,"",If(VarRelatedTask,RelatedTaskInfo.'Due date',TaskInfo.'Due date'))
+                If(VarNewtask,Today(),TaskInfo.'Due date')
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            Font: =Font.'Segoe UI'
+            Height: = ContainerNewTask.Height/20
+            HoverDateFill: =RGBA(200, 200, 200, 1)
+            IconBackground: =RGBA(202, 80, 16, 1)
+            PaddingTop: =5
+            Reset: =ResetControl
+            SelectedDateFill: =RGBA(202, 80, 16, 1)
+            Size: =13
+            Width: =(txt_TaskTitle.Width)/2
+            X: =lbl_To.X+5
+            Y: =lbl_DueDate.Y+lbl_DueDate.Height+10
+            ZIndex: =10
+
+        btn_TaskSave As button:
+            Fill: =ColorFade(_primaryColor,-10%)
+            Height: =ContainerNewTask.Height/19
+            HoverFill: =ColorFade(_primaryColor, -20%)
+            OnSelect: |
+                =ClearCollect(
+                    CollTaskUsers,
+                    ComBox_To.SelectedItems
+                );
+                
+                
+                
+                If(
+                    IsBlank(txt_TaskTitle) || IsBlank(Drp_DueTime) || IsBlank(DatPicker_DueDate),
+                    Notify("Please fill all the Mandatory Fields"),
+                    If(
+                        radioAssignTask.Selected.Value = "Individual Task",
+                        ForAll(
+                            CollTaskUsers,
+                            Patch(
+                                'Tasks Management',
+                                If(
+                                    !VarNewtask
+                                        //TaskInfo.ID = Value(txtTaskId.Text)
+                ,
+                                If(VarNewtask, LookUp(
+                                        'Tasks Management',
+                                            //ID = Value(txtTaskId.Text)
+                                        ID = TaskInfo.ID),RemoveIf('Tasks Management',ID=TaskInfo.ID);Defaults('Tasks Management')
+                                    ),
+                                    Defaults('Tasks Management')
+                                ),
+                                {
+                                    To: Table(
+                                    {
+                                        '@odata.type': "#Microsoft.Azure.Connectors.SharePoint.SPListExpandedReference",
+                                        Claims: "i:0#.f|membership|" & DisplayName,
+                                        Department: "",
+                                        DisplayName: DisplayName,
+                                        Email: "",
+                                        JobTitle: "",
+                                        Picture: ""
+                                    }),
+                                   Title: txt_TaskTitle.Text,
+                                    Description: txt_TaskDescription.Text,
+                                    'Due Time': Drp_DueTime.Selected,
+                                    'Task Type': If(
+                                        CountRows(ComBox_To.SelectedItems) > 1,
+                                        radioAssignTask.Selected,
+                                        radioAssignTask.Selected
+                                    ),
+                                    'Related Goal': If(
+                                        VarRelatedtask,
+                                        {
+                                            Id: LookUp(
+                                                Goals,
+                                                TxtRelatedGoal.Text = Title,
+                                                ID
+                                            ),
+                                            Value: TxtRelatedGoal.Text
+                                        },
+                                        {
+                                            Id: If(!IsBlank(ComBox_RelatedGoals.Selected.Title),LookUp(
+                                            Goals,
+                                            ComBox_RelatedGoals.Selected.Title = Title,
+                                            ID
+                                        )
+                                        ),
+                                        Value:If(!IsBlank(ComBox_RelatedGoals.Selected.Title),LookUp(
+                                            Goals,
+                                            ComBox_RelatedGoals.Selected.Title = Title,
+                                            Title
+                                        )
+                                        )})
+                                        
+                                        // ComBox_RelatedGoals.Selected.Title
+                                  
+                               ,
+                                    'Due date': DatPicker_DueDate.SelectedDate,
+                                    Status: "Not completed"
+                                }
+                            )
+                        ),
+                        Patch(
+                            'Tasks Management',
+                            If(
+                                   // TaskInfo.ID = Value(txtTaskId.Text),
+                                !VarNewtask,
+                                LookUp(
+                                        'Tasks Management',
+                                            //ID = Value(txtTaskId.Text)
+                                        ID = TaskInfo.ID
+                                    ),
+                                Defaults('Tasks Management')
+                            ),
+                            {
+                                To: ForAll(
+                                    CollTaskUsers,
+                                    {
+                                        '@odata.type': "#Microsoft.Azure.Connectors.SharePoint.SPListExpandedReference",
+                                        Claims: "i:0#.f|membership|" & DisplayName,
+                                        Department: "",
+                                        DisplayName: DisplayName,
+                                        Email: "",
+                                        JobTitle: "",
+                                        Picture: ""
+                                    }
+                                ),
+                               Title: txt_TaskTitle.Text,
+                                Description: txt_TaskDescription.Text,
+                                'Due Time': Drp_DueTime.Selected,
+                                'Task Type': If(
+                                    CountRows(ComBox_To.SelectedItems) > 1,
+                                    radioAssignTask.Selected,
+                                    radioAssignTask.Selected
+                                ),
+                                'Related Goal': If(
+                                    VarRelatedtask,
+                                    {
+                                        Id: LookUp(
+                                            Goals,
+                                            TxtRelatedGoal.Text = Title,
+                                            ID
+                                        ),
+                                        Value: TxtRelatedGoal.Text
+                                    },
+                                    {
+                                        Id: LookUp(
+                                            Goals,
+                                            ComBox_RelatedGoals.Selected.Title = Title,
+                                            ID
+                                        ),
+                                        Value: ComBox_RelatedGoals.Selected.Title
+                                    }
+                                ),
+                                'Due date': DatPicker_DueDate.SelectedDate,
+                                Status: "Not completed"
+                            }
+                        )
+                    );
+                    Set(countInitialItemsTask,CountRows( gal_MyTask.AllItems));
+                    If(
+                        VarNewtask,
+                        Notify(
+                            "Your Task is submitted successfully",
+                            NotificationType.Success
+                        ),
+                        Notify(
+                            "Your Task is updated successfully",
+                            NotificationType.Success
+                        )
+                    );
+                    Set(
+                        ResetControl,
+                        true
+                    );
+                    Set(
+                        ResetControl,
+                        false
+                    );
+                    If(VarNewtask,  Navigate(HomeScreen),Back());
+                );
+                
+                Reset(ComBox_RelatedGoals);
+                Reset(radioAssignTask);
+                Reset(Drp_DueTime);
+                Reset(ComBox_To);
+                Reset(DatPicker_DueDate);
+                Reset(txt_TaskDescription);
+                Reset(txt_TaskTitle);
+            RadiusBottomLeft: =5
+            RadiusBottomRight: =5
+            RadiusTopLeft: =5
+            RadiusTopRight: =5
+            Text: =If(VarNewtask,"Create","Update")
+            X: =ContainerNewTask.Width-Self.Width-40
+            Y: =ContainerNewTask.Height-Self.Height-30
+            ZIndex: =11
+
+        ComBox_To As combobox:
+            BorderColor: =_txtColorFill
+            ChevronBackground: =ColorFade(_txtColorFill,50%)
+            ChevronFill: =ColorFade(_txtColorFill,50%)
+            ChevronHoverBackground: =Self.Fill
+            ChevronHoverFill: =RGBA(0, 13, 75, 1)
+            DefaultSelectedItems: =CollTaskUsers
+            DisplayFields: =["DisplayName","Mail"]
+            Fill: =ColorFade(_txtColorFill,50%)
+            Height: = ContainerNewTask.Height/20
+            HoverFill: =ColorFade(Self.Fill,40%)
+            InputTextPlaceholder: ="Search User"
+            Items: =Office365Users.SearchUser()
+            OnChange: =Set(ComboBox1Item,LookUp(Office365Users.SearchUser(), DisplayName=User().FullName))
+            PressedFill: =RGBA(255, 255, 255, 1)
+            Reset: =ResetControl
+            SearchFields: =["DisplayName"]
+            SearchItems: =Search(Office365Users.SearchUser(),ComBox_To.SearchText,"DisplayName")
+            SelectionColor: =_primaryColor
+            SelectionFill: =Self.Fill
+            Template: =ListItemTemplate.Person
+            Width: =ContainerNewTask.Width/1.35
+            X: =45
+            Y: =lbl_To.Y+lbl_To.Height
+            ZIndex: =12
+
+        Drp_DueTime As dropdown:
+            BorderColor: =_txtColorFill
+            ChevronBackground: =Self.Fill
+            ChevronFill: =Black
+            ChevronHoverBackground: =Self.Fill
+            ChevronHoverFill: =RGBA(0, 0, 0, 1)
+            Default: |-
+                =//If(VarNewtask,"",If(VarRelatedTask,RelatedTaskInfo.'Due Time'.Value,TaskInfo.'Due Time'.Value))
+                If(VarNewtask,"",TaskInfo.'Due Time'.Value)
+            Fill: =ColorFade(_txtColorFill,60%)
+            FocusedBorderColor: =_primaryColor
+            Height: = ContainerNewTask.Height/20
+            HoverFill: =ColorFade(Self.Fill,40%)
+            Items: |-
+                =
+                
+                Choices('Tasks Management'.'Due Time') 
+            PressedFill: =Self.Fill
+            Reset: =ResetControl
+            SelectionColor: =_primaryColor
+            SelectionFill: =Self.Fill
+            Size: =10
+            Width: =(txt_TaskTitle.Width)/2.1
+            X: =DatPicker_DueDate.X+DatPicker_DueDate.Width+20
+            Y: =lbl_DueDate.Y+lbl_DueDate.Height+10
+            ZIndex: =13
+
+        ComBox_RelatedGoals As combobox:
+            BorderColor: =_txtColorFill
+            ChevronBackground: =
+            ChevronFill: =Black
+            ChevronHoverBackground: =Self.Fill
+            ChevronHoverFill: =RGBA(0, 0, 0, 1)
+            DefaultSelectedItems: =LookUp('Tasks Management',Value(txtTaskId.Text)=ID,'Related Goal') 
+            DisplayFields: =["Title"]
+            Fill: =ColorFade(_txtColorFill,60%)
+            Height: = ContainerNewTask.Height/20
+            HoverFill: =_txtColorFill
+            IsSearchable: =false
+            Items: =Goals.Title 
+            PressedFill: =_txtColorFill
+            Reset: =ResetControl
+            SearchFields: =["Title"]
+            SearchItems: =[]
+            SelectionColor: |
+                =_primaryColor
+            SelectionFill: =Self.Fill
+            SelectMultiple: =false
+            Visible: =If(VarRelatedtask,false,true)
+            Width: =txt_TaskTitle.Width
+            X: =ComBox_To.X
+            Y: =lbl_RelatedGoals.Y+lbl_RelatedGoals.Height
+            ZIndex: =14
+
+        lbl_TaskDueDate As label:
+            Color: =_labelColor
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Semibold
+            Height: = ContainerNewTask.Height/20
+            Size: =14
+            Text: ="Due Time *"
+            Width: =120
+            X: =Drp_DueTime.X
+            Y: =lbl_DueDate.Y
+            ZIndex: =15
+
+        radioAssignTask As radio:
+            BorderStyle: =BorderStyle.None
+            Color: =_labelColor
+            Default: =If(VarNewtask ||CountRows(ComBox_To.SelectedItems)=1,"Individual Task",TaskInfo.'Task Type'.Value)
+            Height: =If(Self.Visible,60,0)
+            HoverColor: =ColorFade(Self.Color,-30%)
+            Items: =Choices('Tasks Management'.'Task Type') 
+            OnSelect: =
+            PaddingBottom: =0
+            PaddingTop: =0
+            RadioSelectionFill: =ColorFade(_primaryColor,-10%)
+            RadioSize: =28
+            Reset: =ResetControl
+            Visible: =CountRows(ComBox_To.SelectedItems)>1
+            Width: =340
+            X: =46
+            Y: =ComBox_To.Y+ComBox_To.Height+10
+            ZIndex: =16
+
+        Icn_TaskBack As icon.Cancel:
+            Color: =_primaryColor
+            Height: =57
+            Icon: =Icon.Cancel
+            OnSelect: =Back()
+            PaddingBottom: =15
+            PaddingLeft: =15
+            PaddingRight: =15
+            PaddingTop: =15
+            Width: =54
+            X: =ContainerNewTask.Width-Self.Width
+            ZIndex: =17
+
+        txtTaskId As text:
+            BorderColor: =RGBA(131, 24, 75, 1)
+            Default: =If(VarNewtask,Last('Tasks Management').ID+1,TaskInfo.ID)
+            HoverBorderColor: =RGBA(131, 24, 75, 1)
+            HoverFill: =RGBA(255, 211, 205, 1)
+            Visible: =false
+            X: =46
+            Y: =548
+            ZIndex: =18
+
+        TxtRelatedGoal As text:
+            BorderColor: =RGBA(116, 116, 116, 1)
+            BorderThickness: =0
+            Color: =RGBA(0, 13, 75, 1)
+            Default: =editGoalRecord.Title
+            DisabledColor: =RGBA(0, 0, 0, 1)
+            DisabledFill: =Self.Fill
+            DisplayMode: =DisplayMode.Disabled
+            Fill: =ColorFade(_txtColorFill,50%)
+            Height: = ContainerNewTask.Height/20
+            HoverBorderColor: =RGBA(255, 102, 0, 1)
+            HoverFill: =RGBA(246, 144, 9, 1)
+            RadiusBottomLeft: =2
+            RadiusBottomRight: =2
+            RadiusTopLeft: =2
+            RadiusTopRight: =2
+            Size: =12.45
+            Visible: =If(VarRelatedtask,true,false)
+            Width: =txt_TaskTitle.Width
+            X: =45
+            Y: =lbl_RelatedGoals.Height+DatPicker_DueDate.Y+DatPicker_DueDate.Height+10
+            ZIndex: =19
+

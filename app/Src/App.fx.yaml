@@ -1,0 +1,76 @@
+App As appinfo:
+    BackEnabled: =false
+    OnStart: |+
+        =Set(
+            _primaryColor,
+            //ColorValue("#f16827")
+            ColorValue("#ff6601")
+        );
+        Set(
+            _labelColor,
+            ColorValue("#635e5e")
+        );
+        Set(
+            _txtColorFill,
+            ColorValue("#beb9b8")
+        );
+        Set(
+            _1212,
+            ColorFade(
+                ColorValue("#f16827"),
+                20%
+            )
+        );
+        Set(countInitialItems,CountRows( gal_MyActiveGoals.AllItems));
+        Set(
+            fontSize,
+            Switch(
+                ScreenSize,
+                ScreenSize.Small,
+                12,
+                ScreenSize.Medium,
+                13,
+                14
+            )
+        );
+        ClearCollect(
+        ActiveData,Goals
+        );
+         Set(countInitialItemsTask,CountRows( gal_MyTask.AllItems));
+        ClearCollect(MenuItemsCollection, Table(
+                {
+                    Id: 1,
+                    Title: "Home",
+                    Image: Icon.Home,
+                    Screen:HomeScreen
+                },
+                {
+                    Id: 2,
+                    Title: "Goals",
+                    Image: Icon.RadarActivityMonitor,
+                     Screen: GoalsgalleryScreen
+                },
+                {
+                    Id: 3,
+                    Title: "Tasks",
+                    Image: Icon.DocumentWithContent,
+                     Screen: TasksgalleryScreen
+                },
+                {
+                    Id: 4,
+                    Title: "Job Description",
+                    Image: Icon.AddLibrary,
+                     Screen: HomeScreen
+                },
+                {
+                    Id: 5,
+                    Title: "General Target",
+                    Image: Icon.Trending,
+                     Screen:GeneralTargetScreen
+                }
+            )
+        );
+        
+        
+    StartScreen: =HomeScreen
+

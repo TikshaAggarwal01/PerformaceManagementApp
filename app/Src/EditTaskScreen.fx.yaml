@@ -1,0 +1,763 @@
+EditTaskScreen As screen:
+    OnVisible: |
+        =UpdateContext({_deleteTask:false});
+        UpdateContext({_deleteTaskComment:false});
+
+    backgroundComponent_5 As backgroundComponent:
+        Default: ="Tasks"
+        Items: =MenuItemsCollection
+        SetMenuWidth: =backgroundComponent_5.MenuWidth
+
+    ContainerEditTaskScreen As groupContainer.manualLayoutContainer:
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =Parent.Height-150
+        Width: =Parent.Width/1.4
+        X: =Parent.Width/2-Self.Width/2+65
+        Y: =90
+        ZIndex: =2
+
+        Gallery9_1 As gallery.variableTemplateHeightGallery:
+            Height: =Parent.Height-(txt_Comments.Y+txt_Comments.Height)+120
+            Items: |-
+                =Filter(
+                    'Tasks Comments',
+                    'Ref Task Id'.Value= Text(TaskInfo.ID)
+                )
+            Layout: =Layout.Vertical
+            ShowScrollbar: =false
+            TemplateSize: =lbl_OwnerDeatilsScreen_5.Height+lbl_StartDate_13.Height
+            Width: =ContainerEditGoalScreen.Width/1.5-70
+            X: =txt_Comments.X-5
+            Y: =lbl_NoCommentsEditTaskScreen.Y
+            ZIndex: =1
+
+            lbl_OwnerDeatilsScreen_5 As label:
+                Color: =RGBA(116, 116, 116, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =27
+                Size: =11
+                Text: =ThisItem.'Created By'.DisplayName
+                Width: =btn_RelatedParentGoal.Width-img_ParentGoalUserImage.Width-5-img_ParentGoalType.Width
+                X: =10
+                ZIndex: =1
+
+            lbl_StartDate_13 As label:
+                AutoHeight: =true
+                Color: =RGBA(116, 116, 116, 1)
+                Height: =20
+                PaddingBottom: =0
+                PaddingTop: =0
+                Size: =11
+                Text: =ThisItem.' Task Comment'
+                Width: =Gallery9_1.Width-lbl_StartDate_14.Width
+                X: =10
+                Y: =30
+                ZIndex: =2
+
+            lbl_StartDate_14 As label:
+                Align: =Align.Right
+                Color: =RGBA(116, 116, 116, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =20
+                PaddingBottom: =0
+                PaddingRight: =10
+                PaddingTop: =0
+                Size: =11
+                Text: =Text(ThisItem.Created,"mmmm,d,yyyy")
+                X: =Gallery9_1.Width-Self.Width-20
+                ZIndex: =3
+
+            Icon1_5 As icon.Trash:
+                Color: =ColorFade(_primaryColor,-10%)
+                Height: =28
+                Icon: =Icon.Trash
+                OnSelect: |-
+                    =UpdateContext({_deleteTask:false});
+                    UpdateContext({_deleteTaskComment:true});
+                PaddingBottom: =3
+                PaddingTop: =3
+                Width: =42
+                X: =Gallery9_1.Width-Self.Width-20
+                Y: =Rectangle1_6.Y-Self.Height-5
+                ZIndex: =4
+
+            Rectangle1_6 As rectangle:
+                Fill: =RGBA(204, 204, 204, 1)
+                Height: =1
+                Width: =Gallery9_1.Width-20
+                X: =2
+                Y: =lbl_StartDate_13.Y+lbl_StartDate_13.Height
+                ZIndex: =5
+
+        Rectangle1_4 As rectangle:
+            Fill: =RGBA(204, 204, 204, 1)
+            Height: =ContainerEditTaskScreen.Height-40
+            Width: =1
+            X: =ContainerEditTaskScreen.Width/1.5
+            Y: =20
+            ZIndex: =2
+
+        lbl_Comments_1 As label:
+            Color: =RGBA(0, 0, 0, 0.77)
+            FontWeight: =FontWeight.Semibold
+            Size: =15
+            Text: ="Task activity & comments (" &CountRows(Gallery9_1.AllItems)&")"
+            Width: =300
+            X: =46
+            Y: =235
+            ZIndex: =3
+
+        txt_Comments_1 As text:
+            BorderColor: =_txtColorFill
+            Default: =""
+            Fill: =ColorFade(_txtColorFill,50%)
+            FocusedBorderColor: =_primaryColor
+            FocusedBorderThickness: =2
+            Height: =51
+            HintText: ="Type your comments here..."
+            HoverBorderColor: =ColorFade( Self.BorderColor,10%)
+            HoverColor: =Black
+            HoverFill: =ColorFade(Self.Fill,10%)
+            Mode: =TextMode.MultiLine
+            PaddingBottom: =10
+            PaddingTop: =10
+            RadiusBottomLeft: =1
+            RadiusBottomRight: =1
+            RadiusTopLeft: =1
+            RadiusTopRight: =1
+            Width: =ContainerEditGoalScreen.Width/1.8
+            X: =46
+            Y: =283
+            ZIndex: =4
+
+        lbl_Created_1 As label:
+            Color: =RGBA(0, 0, 0, 0.77)
+            FontWeight: =FontWeight.Semibold
+            Height: =32
+            Size: =10
+            Text: ="Created"
+            Width: =124
+            X: =Rectangle1_4.X+Rectangle1_4.Width+20
+            Y: =Rectangle1_4.Y
+            ZIndex: =5
+
+        imgUserImage_5 As image:
+            Height: =36
+            Image: =If(Office365Users.UserPhotoMetadata(User().Email).HasPhoto=false,User().Image)
+            RadiusBottomLeft: =786
+            RadiusBottomRight: =786
+            RadiusTopLeft: =786
+            RadiusTopRight: =786
+            Width: =36
+            X: =lbl_Created_1.X
+            Y: =lbl_Created_1.Y+lbl_Created_1.Height+5
+            ZIndex: =6
+
+        lbl_GoalDate_3 As label:
+            Color: =RGBA(116, 116, 116, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =39
+            Text: =Text(TaskInfo.'Due date'," mmmm d, yyyy ")
+            Width: =231
+            X: =imgUserImage_5.X+imgUserImage_5.Width+10
+            Y: =imgUserImage_5.Y
+            ZIndex: =7
+
+        lbl_TitleStartDate_1 As label:
+            Color: =RGBA(0, 0, 0, 0.77)
+            FontWeight: =FontWeight.Semibold
+            Height: =32
+            Size: =10
+            Text: ="Due date"
+            Width: =124
+            X: =lbl_Created_1.X
+            Y: =imgUserImage_5.Y+imgUserImage_5.Height+20
+            ZIndex: =8
+
+        lbl_TitleEndDate_1 As label:
+            Color: =RGBA(0, 0, 0, 0.77)
+            FontWeight: =FontWeight.Semibold
+            Height: =32
+            Size: =10
+            Text: ="Task type"
+            Width: =124
+            X: =lbl_Created_1.X
+            Y: =lbl_StartDate_1.Y+lbl_StartDate_1.Height+10
+            ZIndex: =9
+
+        lbl_StartDate_1 As label:
+            Color: =RGBA(116, 116, 116, 1)
+            FontWeight: =FontWeight.Semibold
+            Height: =32
+            PaddingTop: =0
+            Size: =12.5
+            Text: =Text(TaskInfo.'Due date'," mmmm d, yyyy ")
+            Width: =280
+            X: =lbl_Created_1.X
+            Y: =lbl_TitleStartDate_1.Y+lbl_TitleStartDate_1.Height
+            ZIndex: =10
+
+        lbl_EndDate_1 As label:
+            Color: =RGBA(116, 116, 116, 1)
+            FontWeight: =FontWeight.Semibold
+            Height: =32
+            PaddingTop: =0
+            Size: =12.5
+            Text: =Text(TaskInfo.'Task Type'.Value)
+            Width: =231
+            X: =lbl_Created_1.X
+            Y: =lbl_TitleEndDate_1.Y+lbl_TitleEndDate_1.Height
+            ZIndex: =11
+
+        Rectangle1_5 As rectangle:
+            Fill: =RGBA(204, 204, 204, 1)
+            Height: =1
+            Width: =ContainerEditTaskScreen.Width/3-50
+            X: =lbl_Created_1.X
+            Y: =lbl_EndDate_1.Y+lbl_EndDate_1.Height+20
+            ZIndex: =12
+
+        lbl_RelatedTasks_1 As label:
+            Color: =RGBA(0, 0, 0, 0.77)
+            FontWeight: =FontWeight.Semibold
+            Size: =15
+            Text: ="Related goal"
+            X: =lbl_Created_1.X
+            Y: =Rectangle1_5.Y+Rectangle1_5.Height+10
+            ZIndex: =13
+
+        lbl_NoTask_1 As label:
+            AutoHeight: =true
+            Color: =RGBA(0, 0, 0, 0.77)
+            FontWeight: =FontWeight.Semibold
+            Height: =32
+            Size: =10
+            Text: ="There are no goals related to this goal"
+            Visible: =IsBlank(LookUp(Goals,ID=TaskInfo.'Related Goal'.Id))
+            Width: =ContainerEditGoalScreen.X-ContainerEditGoalScreen.X/5
+            X: =lbl_Created_1.X
+            Y: =lbl_RelatedTasks_1.Y+lbl_RelatedTasks_1.Height
+            ZIndex: =14
+
+        btn_EditDeleteTaskScreen As button:
+            Fill: =ColorFade(_primaryColor,-10%)
+            FocusedBorderThickness: =2
+            Height: =33
+            HoverFill: =ColorFade(_primaryColor, -20%)
+            OnSelect: =Set(VarEditDelete,!VarEditDelete);
+            PaddingBottom: =20
+            PaddingTop: =10
+            RadiusBottomLeft: =5
+            RadiusBottomRight: =5
+            RadiusTopLeft: =5
+            RadiusTopRight: =5
+            Size: =10.5
+            Text: =".  .  ."
+            Width: =36
+            X: =ContainerEditGoalScreen.Width/1.5-Self.Width-20
+            Y: =33
+            ZIndex: =15
+
+        btn_AddRelatedTasksEditTaskScreen As button:
+            Fill: =ColorFade(_primaryColor,-10%)
+            Height: =32
+            HoverFill: =ColorFade(_primaryColor, -20%)
+            OnSelect: |-
+                =Set(VarEditDelete,false);
+                Set(VarNewtask, false );Navigate(NewTaskScreen)
+            RadiusBottomLeft: =5
+            RadiusBottomRight: =5
+            RadiusTopLeft: =5
+            RadiusTopRight: =5
+            Size: =10.5
+            Text: ="+ Add"
+            Visible: =IsBlank(LookUp(Goals,ID=TaskInfo.'Related Goal'.Id))
+            Width: =100
+            X: |-
+                =//lbl_RelatedTasks_1.X+lbl_RelatedTasks_1.Width+Self.Width/2
+                ContainerEditTaskScreen.X*3.3
+            Y: =Rectangle1_5.Y+Self.Height/2
+            ZIndex: =16
+
+        btn_EditDeleteEditTaskScreen As button:
+            DisplayMode: =DisplayMode.View
+            Fill: =ColorFade(_txtColorFill,-20%)
+            FocusedBorderThickness: =2
+            Height: =35
+            HoverFill: =ColorFade(_primaryColor, -20%)
+            OnSelect: |-
+                =If(
+                    IsBlank(txt_Comments_1.Text),
+                    Notify("Please fill all the fields that are not optional"),Notify("Your Comment is Posted");
+                   Patch(
+                    'Tasks Comments',
+                    Defaults('Tasks Comments'),
+                    ({
+                        
+                      
+                        ' Task Comment':Substitute(txt_Comments_1.Text," ",""),
+                        Title: TaskInfo.Title,
+                        'Ref Task Id': {Id:TaskInfo.ID,Value:TaskInfo.ID}
+                  
+                
+                    })
+                ));
+                
+                
+                Reset(txt_Comments_1);
+            PaddingBottom: =20
+            PaddingTop: =10
+            RadiusBottomLeft: =5
+            RadiusBottomRight: =5
+            RadiusTopLeft: =5
+            RadiusTopRight: =5
+            Size: =10.5
+            Text: =""
+            Width: =35
+            X: =btn_EditDeleteTaskScreen.X
+            Y: =291
+            ZIndex: =17
+
+        icn_AddCommentEditTaskScreen As icon.Add:
+            Color: =RGBA(255, 255, 255, 1)
+            Height: =35
+            Icon: =Icon.Add
+            OnSelect: |-
+                =If(
+                    IsBlank(txt_Comments_1.Text),
+                    Notify("Please fill all the fields that are not optional"),Notify("Your Comment is Posted");
+                   Patch(
+                    'Tasks Comments',
+                    Defaults('Tasks Comments'),
+                    ({
+                        
+                      
+                        ' Task Comment':Substitute(txt_Comments_1.Text," ",""),
+                        Title: TaskInfo.Title,
+                        'Ref Task Id': {Id:TaskInfo.ID,Value:TaskInfo.ID}
+                  
+                
+                    })
+                ));
+                
+                
+                Reset(txt_Comments_1);
+            PaddingBottom: =5
+            PaddingLeft: =5
+            PaddingRight: =5
+            PaddingTop: =5
+            Width: =35
+            X: =btn_EditDeleteTaskScreen.X
+            Y: =291
+            ZIndex: =18
+
+        lblTitleDetailTaskScreen As label:
+            AutoHeight: =true
+            BorderColor: =RGBA(131, 24, 75, 1)
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Semibold
+            Height: =46
+            Size: =16
+            Text: =TaskInfo.Title
+            VerticalAlign: =VerticalAlign.Top
+            Width: =536
+            X: =46
+            Y: =33
+            ZIndex: =19
+
+        "gal_ToEditTaskScreen As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
+            BorderColor: =RGBA(131, 24, 75, 1)
+            Height: =131
+            Items: =CollTaskUsers
+            Layout: =Layout.Vertical
+            TemplatePadding: =0
+            TemplateSize: =34
+            Width: =500
+            X: =112
+            Y: =chk_EditTaskScreen.Y
+            ZIndex: =20
+
+            Title8 As label:
+                Color: =RGBA(116, 116, 116, 1)
+                Height: =34
+                OnSelect: =Select(Parent)
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =15
+                Text: =ThisItem.DisplayName
+                Width: =gal_ToEditTaskScreen.TemplateWidth-20-Image4.Width
+                X: =51
+                ZIndex: =2
+
+            Image4 As image:
+                Height: =30
+                Image: =ThisItem.Picture
+                OnSelect: =Select(Parent)
+                Width: =30
+                ZIndex: =3
+
+        imgUserImage_EditTaskScreren As image:
+            Height: =36
+            Image: =If(Office365Users.UserPhotoMetadata(User().Email).HasPhoto=false,User().Image)
+            RadiusBottomLeft: =786
+            RadiusBottomRight: =786
+            RadiusTopLeft: =786
+            RadiusTopRight: =786
+            Width: =36
+            X: =lbl_Created_1.X
+            Y: =lbl_Created_1.Y+lbl_Created_1.Height+5
+            ZIndex: =21
+
+        chk_EditTaskScreen As checkbox:
+            BorderColor: =
+            BorderStyle: =BorderStyle.None
+            Default: =If(TaskInfo.Status="Completed",true,false)
+            Height: =35
+            OnCheck: |-
+                =Patch('Tasks Management',LookUp('Tasks Management',TaskInfo.ID=ID),({Status:"Completed"}));Notify("Your Task is Completed");
+            OnSelect: =
+            Size: =10
+            Text: =""
+            Tooltip: =If(chk_EditTaskScreen.Value=false,"Mark as Complete","Mark as Incomplete")
+            Width: =40
+            X: =46
+            Y: =lblTitleDetailTaskScreen.Y+lblTitleDetailTaskScreen.Height+20
+            ZIndex: =22
+
+        lbl_NoCommentsEditTaskScreen As label:
+            BorderColor: =RGBA(131, 24, 75, 1)
+            Color: =RGBA(116, 116, 116, 1)
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Semibold
+            Size: =12
+            Text: ="There are no Comments associated to this Task"
+            VerticalAlign: =VerticalAlign.Top
+            Visible: =If(CountRows(Gallery9_1.AllItems)=0,true,false)
+            Width: =557
+            X: =txt_Comments_1.X
+            Y: =txt_Comments_1.Y+txt_Comments_1.Height+10
+            ZIndex: =23
+
+        gal_EditDeleteEditTaskScreen As gallery.galleryVertical:
+            BorderColor: =_primaryColor
+            BorderThickness: =1
+            Height: =92
+            Items: =["Edit", "Delete"]
+            Layout: =Layout.Vertical
+            OnSelect: =Set(VarEditDelete,!VarEditDelete)
+            TemplatePadding: =0
+            TemplateSize: =45
+            Visible: =VarEditDelete
+            Width: =125
+            X: =btn_EditDeleteTaskScreen.X+5
+            Y: =btn_EditDeleteTaskScreen.Y+btn_EditDeleteTaskScreen.Height+2
+            ZIndex: =24
+
+            btn_EditTaskScreen As button:
+                Align: =Align.Left
+                BorderThickness: =0
+                Color: =_primaryColor
+                Fill: =RGBA(255, 255, 255, 1)
+                Height: =45
+                HoverFill: =ColorFade(_txtColorFill, -20%)
+                OnSelect: |
+                    =Set(VarEditDelete,!VarEditDelete);Switch(ThisItem.Value,"Edit",Reset(ComBox_To);Set(VarNewtask, false );Set(VarRelatedtask,false);Navigate(NewTaskScreen),"Delete",UpdateContext({_deleteTask: true }));
+                PaddingLeft: =20
+                PaddingRight: =20
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Size: =10
+                Text: =ThisItem.Value
+                Width: =125
+                ZIndex: =1
+
+        ContainerRelatedGoal As groupContainer.manualLayoutContainer:
+            Height: =btn_AddRelatedTasks_3.Height+2
+            Visible: =!IsBlank(LookUp(Goals,ID=TaskInfo.'Related Goal'.Id))
+            Width: =btn_AddRelatedTasks_3.Width+2
+            X: =shpseparator_EditGoalScreen2.X+shpseparator_EditGoalScreen2.Width+20
+            Y: =lbl_RelatedTasks_1.Y+lbl_RelatedTasks_1.Height
+            ZIndex: =25
+
+            imgUserImage_8 As image:
+                Height: =36
+                Image: =If(Office365Users.UserPhotoMetadata(User().Email).HasPhoto=false,user)
+                Width: =45
+                X: =10
+                Y: =10
+                ZIndex: =1
+
+            lbl_OwnerDeatilsScreen_2 As label:
+                Color: =RGBA(116, 116, 116, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =38
+                Size: =11
+                Text: |
+                    =LookUp(Goals,ID=TaskInfo.'Related Goal'.Id,OwnerName.DisplayName)
+                Width: =btn_AddRelatedTasks_3.Width-imgUserImage_8.Width-5-imgGoalType_4.Width
+                X: =imgUserImage_8.X+imgUserImage_8.Width
+                Y: =imgUserImage_8.Y
+                ZIndex: =2
+
+            imgGoalType_4 As image:
+                Fill: =Switch(LookUp(Goals,ID=TaskInfo.'Related Goal'.Id,Types),"Individual",LightYellow,"Self-development",LightGreen,"Company Goal",LightBlue,White)
+                Height: =40
+                Image: =Switch(LookUp(Goals,ID=TaskInfo.'Related Goal'.Id,Types),"Individual",pedestrian,"Self-development",goal,"Company Goal",organization)
+                PaddingBottom: =5
+                PaddingLeft: =5
+                PaddingRight: =5
+                PaddingTop: =5
+                Width: =40
+                X: =btn_AddRelatedTasks_3.Width-Self.Width-1
+                Y: =2
+                ZIndex: =3
+
+            btn_PercentageCurrentBar_3 As button:
+                Fill: =RGBA(204, 204, 204, 1)
+                Height: =15
+                HoverFill: =ColorFade(Self.Fill, -20%)
+                RadiusBottomLeft: =20
+                RadiusBottomRight: =20
+                RadiusTopLeft: =20
+                RadiusTopRight: =20
+                Text: =""
+                Visible: =!(Self.Width=0)
+                Width: |-
+                    =
+                    
+                    If(IsBlank(LookUp(Goals,ID=TaskInfo.'Related Goal'.Id,Initial)) || IsBlank(LookUp(Goals,ID=TaskInfo.'Related Goal'.Id,Target)),0/100*100,If(LookUp(Goals,ID=TaskInfo.'Related Goal'.Id,Initial)/LookUp(Goals,ID=TaskInfo.'Related Goal'.Id,Target)*ContainerRelatedGoal.Width/1.3>btn_MainPercentageBar_3.Width,btn_MainPercentageBar_3.Width,LookUp(Goals,ID=TaskInfo.'Related Goal'.Id,Initial)/LookUp(Goals,ID=TaskInfo.'Related Goal'.Id,Target)*ContainerRelatedGoal.Width/1.3))
+                    
+                    
+                    
+                    
+                     
+                    
+                     
+                X: =imgUserImage_8.X
+                Y: =imgUserImage_8.Y+imgUserImage_8.Height+20
+                ZIndex: =4
+
+            btn_MainPercentageBar_3 As button:
+                BorderColor: =RGBA(204, 204, 204, 1)
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =15
+                HoverFill: =ColorFade(Self.Fill, -20%)
+                RadiusBottomLeft: =20
+                RadiusBottomRight: =20
+                RadiusTopLeft: =20
+                RadiusTopRight: =20
+                Text: =""
+                Width: =ContainerRelatedGoal.Width/1.3
+                X: =imgUserImage_8.X
+                Y: =imgUserImage_8.Y+imgUserImage_8.Height+20
+                ZIndex: =5
+
+            Label2_16 As label:
+                Align: =Align.Right
+                Color: =RGBA(116, 116, 116, 1)
+                Font: =Font.'Segoe UI'
+                FontWeight: =FontWeight.Bold
+                Height: =28
+                PaddingLeft: =10
+                PaddingRight: =10
+                Size: =14
+                Text: = If(IsBlank(LookUp(Goals,ID=TaskInfo.'Related Goal'.Id,Initial)) || IsBlank(LookUp(Goals,ID=TaskInfo.'Related Goal'.Id,Target)),0/100*100,RoundUp(LookUp(Goals,ID=TaskInfo.'Related Goal'.Id,Initial)/LookUp(Goals,ID=TaskInfo.'Related Goal'.Id,Target)*100,0)) & "%"
+                Width: =80
+                X: =ContainerRelatedGoal.Width-Self.Width
+                Y: =btn_MainPercentageBar_3.Y-7
+                ZIndex: =6
+
+            cirGoalType_5 As circle:
+                BorderColor: |-
+                    =Switch(LookUp(Goals,ID=TaskInfo.'Related Goal'.Id,Status.Value)
+                    ,"No Status",Gray,"On track",LightGreen,"At risk",Yellow,"Off track",OrangeRed,White)
+                BorderThickness: =1
+                Fill: |-
+                    =Switch(LookUp(Goals,ID=TaskInfo.'Related Goal'.Id,Status.Value)
+                    ,"No Status",Gray,"On track",LightGreen,"At risk",Yellow,"Off track",OrangeRed,White)
+                Height: =15
+                Width: =15
+                X: =btn_MainPercentageBar_3.X
+                Y: =btn_MainPercentageBar_3.Y+btn_MainPercentageBar_3.Height+22
+                ZIndex: =7
+
+            lbl_StartDate_8 As label:
+                Align: =Align.Right
+                Color: =RGBA(116, 116, 116, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =20
+                PaddingBottom: =0
+                PaddingRight: =10
+                PaddingTop: =0
+                Size: =11
+                Text: |-
+                    =//Text(editGoalRecord.)
+                    LookUp(Goals,ID=TaskInfo.'Related Goal'.Id,Text('Goal Start',"mmmm,d,yyyy"))
+                X: =ContainerRelatedGoal.Width-Self.Width
+                Y: =lbl_StartDate_9.Y
+                ZIndex: =8
+
+            lbl_StartDate_9 As label:
+                Color: =RGBA(116, 116, 116, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =20
+                PaddingBottom: =0
+                PaddingTop: =0
+                Size: =11
+                Text: =LookUp(Goals,ID=TaskInfo.'Related Goal'.Id,Status.Value)
+                Width: =100
+                X: =cirGoalType_5.X+cirGoalType_5.Width+5
+                Y: =btn_MainPercentageBar_3.Y+btn_MainPercentageBar_3.Height+20
+                ZIndex: =9
+
+            btn_AddRelatedTasks_3 As button:
+                BorderColor: =ColorFade(_primaryColor,-10%)
+                Color: =RGBA(0, 0, 0, 1)
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =128
+                HoverFill: =Self.Fill
+                OnSelect: |-
+                    =//UpdateContext({relatedTaskCardVisible:true})
+                    Set
+                    (editGoalRecord,LookUp(Goals,ID=TaskInfo.'Related Goal'.Id));
+                    Set(_editGoalRequest,true);ClearCollect(CollGoalUser,LookUp(Goals,ID=TaskInfo.'Related Goal'.Id,OwnerName));
+                    //Set(_AddMyself,LookUp(Office365Users.SearchUser(), DisplayName=editGoalRecord.OwnerName.DisplayName));
+                    Navigate(EditGoalScreen);
+                PressedBorderColor: =_txtColorFill
+                PressedFill: =RGBA(0, 0, 0, 0.02)
+                RadiusBottomLeft: =5
+                RadiusBottomRight: =5
+                RadiusTopLeft: =5
+                RadiusTopRight: =5
+                Size: =10.5
+                Text: =""
+                Width: =ContainerEditGoalScreen.Width/3-50
+                X: =1
+                Y: =1
+                ZIndex: =10
+
+        icn_EditTaskScreenBack As icon.Cancel:
+            Color: =_primaryColor
+            Height: =57
+            Icon: =Icon.Cancel
+            OnSelect: =Back()
+            PaddingBottom: =15
+            PaddingLeft: =15
+            PaddingRight: =15
+            PaddingTop: =15
+            Width: =54
+            X: =ContainerEditTaskScreen.Width-Self.Width
+            ZIndex: =26
+
+        btn_TaskDetailBackground As button:
+            DisplayMode: =DisplayMode.View
+            Fill: =RGBA(0, 0, 0, 0.34)
+            Height: =ContainerEditTaskScreen.Height
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: =""
+            Visible: =_deleteTask|| _deleteTaskComment
+            Width: =ContainerEditTaskScreen.Width
+            ZIndex: =27
+
+        ContainerTaskCommentDelete As groupContainer.manualLayoutContainer:
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =230
+            Visible: =_deleteTask|| _deleteTaskComment
+            Width: =550
+            X: =Parent.Width/2-Self.Width/2
+            Y: =Parent.Height/2-Self.Height/2
+            ZIndex: =28
+
+            lbl_DeleteGoalsEditTaskScreen As label:
+                FontWeight: =FontWeight.Bold
+                Text: ="Delete Task"
+                X: =21
+                Y: =17
+                ZIndex: =29
+
+            lbl_DeleteEditTaskScreen As label:
+                Height: =32
+                Size: =12
+                Text: =If(_deleteTaskComment,"Do you really want to delete this comment ?","Are you sure you want to delete this Task?")
+                Width: =387
+                X: =21
+                Y: =57
+                ZIndex: =30
+
+            lbl_NoteEditTaskScreen As label:
+                Color: =RGBA(0, 0, 0, 0.77)
+                FontWeight: =FontWeight.Semibold
+                Height: =37
+                Size: =10
+                Text: |-
+                    ="Note: If this Task is associated with Goals,The Related Task is also deleted."
+                Visible: =!_deleteTaskComment
+                Width: =500
+                X: =21
+                Y: =89
+                ZIndex: =31
+
+            btn_DeleteConfirmEditTaskScreen As button:
+                Fill: =ColorFade(_primaryColor,-10%)
+                Height: =45
+                HoverFill: =ColorFade(_primaryColor, -20%)
+                OnSelect: |-
+                    =If(
+                        _deleteTaskComment,Remove('Tasks Comments',Gallery9_1.Selected);
+                    
+                      UpdateContext({_deleteTaskComment:false});
+                        Notify("Comment is Removed");
+                        Set(countInitialItemsTask,CountRows( gal_MyTask.AllItems));
+                        Navigate(EditTaskScreen),
+                        If(_deleteTask,
+                        Remove(
+                            'Tasks Management',
+                            gal_MyTask.Selected
+                        );
+                        RemoveIf('Tasks Comments','Ref Task Id'.Id=TaskInfo.ID));
+                        Set(countInitialItems,CountRows( gal_MyActiveGoals.AllItems));
+                            Navigate(HomeScreen)
+                    );
+                    
+                     
+                RadiusBottomLeft: =5
+                RadiusBottomRight: =5
+                RadiusTopLeft: =5
+                RadiusTopRight: =5
+                Size: =10.5
+                Text: ="Confirm"
+                Width: =120
+                X: =374
+                Y: =145
+                ZIndex: =33
+
+            btn_CancelEditTaskScreen As button:
+                BorderColor: =ColorFade(Self.Color, -15%)
+                BorderThickness: =1
+                Color: =_primaryColor
+                Fill: =RGBA(255, 255, 255, 1)
+                Height: =45
+                HoverFill: =ColorFade(_txtColorFill, -10%)
+                OnSelect: |
+                    =UpdateContext({_deleteTask:false});
+                    UpdateContext({_deleteTaskComment:false});
+                PaddingLeft: =20
+                PaddingRight: =20
+                RadiusBottomLeft: =5
+                RadiusBottomRight: =5
+                RadiusTopLeft: =5
+                RadiusTopRight: =5
+                Size: =10
+                Text: ="Cancel"
+                Width: =125
+                X: =237
+                Y: =145
+                ZIndex: =34
+

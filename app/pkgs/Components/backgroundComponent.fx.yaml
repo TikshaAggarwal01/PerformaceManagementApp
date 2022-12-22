@@ -1,0 +1,198 @@
+backgroundComponent As CanvasComponent:
+    Default: =
+    ExpandMenu: =false
+    Fill: =RGBA(230, 230, 230, 1)
+    Height: =Max(App.Height, App.DesignHeight)
+    Items: |-
+        =Table(
+                {
+                    Id: 1,
+                    Title: "Home",
+                    Image: Icon.Home,
+                    Screen:App.ActiveScreen
+                },
+                {
+                    Id: 2,
+                    Title: "Goals",
+                    Image: Icon.RadarActivityMonitor,
+                     Screen: App.ActiveScreen
+                },
+                {
+                    Id: 3,
+                    Title: "Tasks",
+                    Image: Icon.DocumentWithContent,
+                     Screen: App.ActiveScreen
+                },
+                {
+                    Id: 4,
+                    Title: "Job Description",
+                    Image: Icon.AddLibrary,
+                     Screen: App.ActiveScreen
+                },
+                {
+                    Id: 5,
+                    Title: "General Target",
+                    Image: Icon.Trending,
+                     Screen:App.ActiveScreen
+                }
+            )
+    MenuWidth: =If(ShowMenu,rec_Nav.Width+icn_Nav.Width+txt_NavTitle.Width+10,70)
+    OnReset: =Set(_editGoalRequest,false);Set(ResetControl, true);Set(ResetControl, false);Set(ShowMenu,backgroundComponent.ExpandMenu)
+    Screen: =App.ActiveScreen
+    SetMenuWidth: =backgroundComponent.MenuWidth
+    UserVisible: =true
+    Width: =Max(App.Width, App.DesignWidth)
+    X: =0
+    Y: =0
+    ZIndex: =1
+
+    cir_user As circle:
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =65
+        Visible: =backgroundComponent.UserVisible
+        Width: =65
+        X: =(backgroundComponent.Width-Self.Width)-10
+        Y: =5
+        ZIndex: =1
+
+    img_user As image:
+        Height: =60
+        Image: =If(Office365Users.UserPhotoMetadata(User().Email).HasPhoto=false,user)
+        Visible: =backgroundComponent.UserVisible
+        Width: =60
+        X: =(backgroundComponent.Width-Self.Width)-13
+        Y: =7
+        ZIndex: =2
+
+    lbl_username As label:
+        Align: =Align.Right
+        Color: |-
+            =//ColorValue("#FF6600")
+            Black
+        FontWeight: =FontWeight.Bold
+        Height: =46
+        PaddingBottom: =10
+        PaddingRight: =20
+        PaddingTop: =10
+        Size: =If(ScreenSize=ScreenSize.Small,15,ScreenSize.Medium,18,ScreenSize.Large,23)
+        Text: ="Hello,"& User().FullName &" 👋"
+        Width: =391
+        X: =Parent.Width-Self.Width-cir_user.Width-10
+        ZIndex: =3
+
+    img_logo_name As image:
+        Height: =62
+        Image: ='DP_RGB_300dpi-removebg-preview'
+        Width: =203
+        X: =Parent.Width/2-Self.Width/2-img_logo.Width/2
+        ZIndex: =4
+
+    "gal_NavItems As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
+        BorderColor: =RGBA(131, 24, 75, 1)
+        DisplayMode: =
+        Fill: |-
+            = ColorFade(ColorValue("#ff6601"),10%)
+             
+        Height: =Parent.Height-rec_back_menu.Height
+        Items: =backgroundComponent.Items
+        Layout: =Layout.Vertical
+        OnSelect: |-
+            =Set(
+                _editGoalRequest,
+                false
+            );
+            Set(
+                ResetControl,
+                true
+            );
+            Set(
+                ResetControl,
+                false
+            );
+            Navigate(ThisItem.Screen)
+        TemplatePadding: =1
+        TemplateSize: =63
+        Width: |-
+            =//If(!ShowMenu,Icon4_3.Width+10,Rectangle4.Width+Icon4_2.Width+Title4_2.Width+20)
+            //Rectangle4.Width+Icon4_2.Width+Title4_2.Width+20
+            backgroundComponent.MenuWidth
+        Y: =rec_back_menu.Y+rec_back_menu.Height-1
+        ZIndex: =5
+
+        txt_NavTitle As label:
+            Color: =If(ThisItem.Title=backgroundComponent.Default,Black,White)
+            DisplayMode: |-
+                =DisplayMode.Edit
+                //If(ThisItem.Id=4||ThisItem.Id=5, DisplayMode.View,DisplayMode.Edit)
+            Height: =33
+            OnSelect: =Navigate(ThisItem.Screen)
+            PaddingLeft: =12
+            PaddingRight: =0
+            Size: =14
+            Text: =ThisItem.Title
+            VerticalAlign: =VerticalAlign.Top
+            Width: =160
+            X: =icn_Nav.X+icn_Nav.Width
+            Y: =18
+            ZIndex: =1
+
+        icn_Nav As icon.Add:
+            Color: =If(ThisItem.Title=backgroundComponent.Default,Black,White)
+            DisplayMode: |-
+                =DisplayMode.Edit
+                //If(ThisItem.Id=4||ThisItem.Id=5, DisplayMode.View,DisplayMode.Edit)
+            Height: =rec_Nav.Height
+            Icon: =ThisItem.Image
+            OnSelect: =Navigate(ThisItem.Screen)
+            PaddingBottom: =4
+            PaddingLeft: =2
+            PaddingRight: =2
+            PaddingTop: =4
+            Width: =45
+            X: =rec_Nav.X+rec_Nav.Width+5
+            Y: =rec_Nav.Y
+            ZIndex: =2
+
+        rec_Nav As rectangle:
+            Fill: |-
+                =//If(ThisItem.IsSelected,Black, ColorFade(ColorValue("#ff6601"),10%))
+                If(ThisItem.Title=backgroundComponent.Default,Black,ColorFade(ColorValue("#ff6601"),10%))
+            Height: =gal_NavItems.TemplateHeight
+            OnSelect: =Select(Parent)
+            Width: =10
+            ZIndex: =3
+
+    cir_logo As circle:
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =60
+        Width: =60
+        X: =img_logo_name.X-Self.Width-2
+        Y: =2
+        ZIndex: =7
+
+    img_logo As image:
+        Height: =65
+        Image: ='DP_Brandmark_RGB_LinkedIn (1)'
+        PaddingBottom: =5
+        PaddingTop: =5
+        Width: =65
+        X: =img_logo_name.X-Self.Width
+        ZIndex: =8
+
+    rec_back_menu As rectangle:
+        Fill: |-
+            = ColorFade(ColorValue("#ff6601"),10%)
+        Height: =cir_user.Height+10
+        Width: =gal_NavItems.Width
+        ZIndex: =9
+
+    icn_Menu As icon.Add:
+        Color: =RGBA(255, 255, 255, 1)
+        Height: =46
+        Icon: =Icon.Hamburger
+        OnSelect: =Set(ShowMenu,!ShowMenu);
+        PaddingBottom: =5
+        PaddingTop: =5
+        Width: =70
+        ZIndex: =10
+

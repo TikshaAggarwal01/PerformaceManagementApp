@@ -1,0 +1,66 @@
+{
+  "44a57b7c-789a-416d-8bf9-ff3ff6c0f673": {
+    "connectionParameters": {
+      "sku": "Enterprise"
+    },
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "Office 365 Users",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1611/1.0.1611.3104/office365users/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_office365users",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {},
+    "dataSources": [
+      "Office365Users"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "44a57b7c-789a-416d-8bf9-ff3ff6c0f673"
+  },
+  "b1ff40fb-fc8e-44f3-9cd8-50505508af47": {
+    "connectionParameters": {
+      "sku": "Enterprise"
+    },
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "SharePoint",
+      "iconUri": "https://connectoricons-prod.azureedge.net/u/juanq/gateway/greyhound/3000.150.11/1.0.1613.3116/sharepointonline/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_sharepointonline",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {
+      "https://astllp.sharepoint.com/sites/PerformanceManagement": {
+        "dataSources": {
+          "General Target List": {
+            "tableName": "2cb2d9f5-2e15-4b54-8ff4-7574bad305e4"
+          },
+          "Goal Comments": {
+            "tableName": "cdbcc3a1-7bf1-4052-bc08-89deda0f65cf"
+          },
+          "Goals": {
+            "tableName": "8f9d395a-5847-403a-baf2-178893a23317"
+          },
+          "Tasks Comments": {
+            "tableName": "740bc60f-738d-4cf3-9463-8b7c2fae9788"
+          },
+          "Tasks Management": {
+            "tableName": "d3873288-619a-4104-9900-2f67f2bf03c2"
+          }
+        }
+      }
+    },
+    "dataSources": [
+      "Goal Comments",
+      "Goals",
+      "Tasks Management",
+      "Tasks Comments",
+      "General Target List"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "b1ff40fb-fc8e-44f3-9cd8-50505508af47"
+  }
+}

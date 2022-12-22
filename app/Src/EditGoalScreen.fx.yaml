@@ -1,0 +1,1496 @@
+EditGoalScreen As screen:
+    OnVisible: |+
+        =UpdateContext({_DeleteGoal:false,
+        _deleteGoalComment:false,createSubGoal:false});
+        
+
+    backgroundComponent_4 As backgroundComponent:
+        Default: ="Goals"
+        Items: =MenuItemsCollection
+        SetMenuWidth: =backgroundComponent_4.MenuWidth
+
+    ContainerEditGoalScreen As groupContainer.manualLayoutContainer:
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =Parent.Height-150
+        Width: =Parent.Width/1.4
+        X: =Parent.Width/2-Self.Width/2+65
+        Y: =90
+        ZIndex: =2
+
+        gal_Subgoals As gallery.variableTemplateHeightGallery:
+            Height: |-
+                =//If(Self.Visible,Min(CountRows(Self.AllItems)*(Self.TemplateHeight+Self.TemplatePadding)+Self.TemplatePadding,ContainerEditGoalScreen.Height/5.5),0)
+                If(Self.Visible,(ContainerEditGoalScreen.Height-lbl_SubGoals.X)/4.5,0)
+            Items: =Filter(ColGoalProgress,SubGoalId.Id=Value(gal_MyActiveGoals.Selected.ID))
+            Layout: =Layout.Vertical
+            OnSelect: |+
+                =Set(
+                    editGoalRecord,
+                    ThisItem
+                );
+                Set(
+                    VarEditDelete,
+                    false
+                );
+                Set(
+                    _GoalTarget,//Container1.Width/1.9
+                    editGoalRecord.Initial / editGoalRecord.Target * ContainerEditGoalScreen.Width / 1.8
+                );
+                Set(
+                    _Percentage,
+                    Round(
+                        Value(editGoalRecord.Initial / editGoalRecord.Target * 100),
+                        0
+                    )
+                );
+                // UpdateContext({_DeleteGoal:true});
+                Set(
+                    _DeleteGoal,
+                    false
+                );
+                ClearCollect(
+                    CollGoalUser,
+                    ThisItem.OwnerName
+                );
+                
+                Set(
+                    VarSubGoals,
+                    false
+                );
+                Set(
+                    VarId,
+                    Value(gal_MyActiveGoals.Selected.ID)
+                );
+                Set(
+                    VarValue,
+                    Text(gal_MyActiveGoals.Selected.ID)
+                );
+                Set(
+                    VarSubgalRequest,
+                    false
+                );
+                
+            ShowScrollbar: =false
+            TemplateSize: =lbl_CommentDisplayName_1.Height+lbl_CommentTitle_1.Height+5
+            Visible: =CountRows(Self.AllItems)<>0
+            Width: =ContainerEditGoalScreen.Width/1.5-70
+            X: =lbl_NoGoalsRelated.X+10
+            Y: =btn_AddNew.Y+btn_AddNew.Height+10
+            ZIndex: =1
+
+            lbl_CommentDisplayName_1 As label:
+                Color: =RGBA(116, 116, 116, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =27
+                Size: =11
+                Text: =ThisItem.'Created By'.DisplayName
+                Width: =btn_RelatedParentGoal.Width-img_ParentGoalUserImage.Width-5-img_ParentGoalType.Width
+                X: =10
+                ZIndex: =1
+
+            lbl_CommentTitle_1 As label:
+                AutoHeight: =true
+                Color: =RGBA(116, 116, 116, 1)
+                Height: =20
+                PaddingBottom: =0
+                PaddingTop: =0
+                Size: =11
+                Text: =ThisItem.Title
+                Width: =gal_Subgoals.Width-lbl_CommentDate_1.Width-30
+                X: =10
+                Y: =31
+                ZIndex: =2
+
+            Button1 As button:
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =50
+                HoverFill: =
+                OnSelect: |+
+                    =Set(
+                        editGoalRecord,
+                        ThisItem
+                    );
+                    Set(
+                        VarEditDelete,
+                        false
+                    );
+                    Set(
+                        _GoalTarget,//Container1.Width/1.9
+                        editGoalRecord.Initial / editGoalRecord.Target * ContainerEditGoalScreen.Width / 1.8
+                    );
+                    Set(
+                        _Percentage,
+                        Round(
+                            Value(editGoalRecord.Initial / editGoalRecord.Target * 100),
+                            0
+                        )
+                    );
+                    // UpdateContext({_DeleteGoal:true});
+                    Set(
+                        _DeleteGoal,
+                        false
+                    );
+                    ClearCollect(
+                        CollGoalUser,
+                        ThisItem.OwnerName
+                    );
+                    
+                    Set(
+                        VarSubGoals,
+                        false
+                    );
+                    Set(
+                        VarId,
+                        Value(gal_MyActiveGoals.Selected.ID)
+                    );
+                    Set(
+                        VarValue,
+                        Text(gal_MyActiveGoals.Selected.ID)
+                    );
+                    Set(
+                        VarSubgalRequest,
+                        false
+                    );
+                    
+                Text: =""
+                Width: =568
+                X: =2
+                ZIndex: =3
+
+            lbl_CommentDate_1 As label:
+                Align: =Align.Right
+                Color: =RGBA(116, 116, 116, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =20
+                PaddingBottom: =0
+                PaddingRight: =10
+                PaddingTop: =0
+                Size: =11
+                Text: =Text(ThisItem.Created,"mmmm,d,yyyy")
+                X: =gal_Subgoals.Width-Self.Width-20
+                ZIndex: =4
+
+            shp_Separatorgal_GoalComments_1 As rectangle:
+                Fill: =RGBA(204, 204, 204, 1)
+                Height: =1
+                Width: =gal_Subgoals.Width-20
+                X: =2
+                Y: =lbl_CommentTitle_1.Y+lbl_CommentTitle_1.Height+2
+                ZIndex: =5
+
+        shpseparator_EditGoalScreen2 As rectangle:
+            Fill: =RGBA(204, 204, 204, 1)
+            Height: =ContainerEditGoalScreen.Height-40
+            Width: =1
+            X: =ContainerEditGoalScreen.Width/1.5
+            Y: =20
+            ZIndex: =2
+
+        btn_AddGoalComment As button:
+            DisplayMode: =DisplayMode.View
+            Fill: =ColorFade(_txtColorFill,-20%)
+            FocusedBorderThickness: =2
+            Height: =35
+            HoverFill: =ColorFade(_primaryColor, -20%)
+            OnSelect: =
+            PaddingBottom: =20
+            PaddingTop: =10
+            RadiusBottomLeft: =5
+            RadiusBottomRight: =5
+            RadiusTopLeft: =5
+            RadiusTopRight: =5
+            Size: =10.5
+            Text: =""
+            Width: =35
+            X: =btn_EditDelete.X
+            Y: =txt_Comments.Y
+            ZIndex: =3
+
+        Icn_AddComment As icon.Add:
+            Color: =RGBA(255, 255, 255, 1)
+            Height: =35
+            Icon: =Icon.Add
+            OnSelect: |-
+                =If(
+                    IsBlank(txt_Comments.Text),
+                    Notify("Please fill all the fields that are not optional"),Notify("Your Comment is Posted");
+                   Patch(
+                    'Goal Comments',
+                    Defaults('Goal Comments'),
+                    ({
+                        
+                      ' Goal Comment': txt_Comments.Text,
+                        'Ref Goal Id': {Id:editGoalRecord.ID,Value:editGoalRecord.ID},Title:editGoalRecord.Title
+                 
+                   
+                    })
+                ));
+                
+                
+                Reset(txt_Comments);
+            PaddingBottom: =5
+            PaddingLeft: =5
+            PaddingRight: =5
+            PaddingTop: =5
+            Width: =35
+            X: =btn_EditDelete.X
+            Y: =txt_Comments.Y
+            ZIndex: =4
+
+        gal_EditDelete_1 As gallery.galleryVertical:
+            BorderColor: =_primaryColor
+            BorderThickness: =1
+            Height: =92
+            Items: =["Create new subgoal", "Choose from existing"]
+            Layout: =Layout.Vertical
+            TemplatePadding: =0
+            TemplateSize: =45
+            Visible: =false
+            Width: =140
+            X: =btn_AddNew.X+Self.Width/2
+            Y: =btn_AddNew.Y+btn_AddNew.Height+2
+            ZIndex: =5
+
+            btn_Edit_1 As button:
+                Align: =Align.Left
+                BorderThickness: =0
+                Color: =_primaryColor
+                Fill: =RGBA(255, 255, 255, 1)
+                Height: =45
+                HoverFill: =ColorFade(_txtColorFill, -20%)
+                OnSelect: |-
+                    =
+                    Set(VarCreateSubGoal,!VarCreateSubGoal);
+                    Switch(ThisItem.Value,"Create new subgoal",Set(_editGoalRequest, false);Set(VarCreateSubGoal,false);If(CountRows(gal_Subgoals.AllItems)=0, UpdateContext({createSubGoal:true}));
+                    //Navigate(NewGoalScreen,ScreenTransition.Fade,{createSubGoal:true})
+                    ,
+                    "Choose from existing",UpdateContext({_DeleteGoal:true}));
+                PaddingLeft: =10
+                PaddingRight: =10
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Size: =8
+                Text: =ThisItem.Value
+                Width: =gal_EditDelete_1.TemplateWidth
+                ZIndex: =1
+
+        imgUserImageGoalEditScreen As image:
+            Height: =70
+            Image: =If(Office365Users.UserPhotoMetadata(User().Email).HasPhoto=false,user)
+            Width: =70
+            X: =32
+            Y: =32
+            ZIndex: =6
+
+        lbl_OwnerDeatilsScreen As label:
+            Color: =RGBA(116, 116, 116, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =38
+            Size: =15
+            Text: |
+                =editGoalRecord.OwnerName.DisplayName
+            Width: =269
+            X: =imgUserImageGoalEditScreen.X+imgUserImageGoalEditScreen.Width+20
+            Y: =47
+            ZIndex: =7
+
+        lbl_TitleGoalDetailScreen As label:
+            AutoHeight: =true
+            Color: =RGBA(0, 0, 0, 0.88)
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Semibold
+            Height: =ContainerNewGoal.Height/22
+            Size: =16
+            Text: =editGoalRecord.Title
+            Width: =500
+            X: =46
+            Y: =imgUserImageGoalEditScreen.Y+imgUserImageGoalEditScreen.Width+10
+            ZIndex: =8
+
+        btn_PercentageCurrentBar As button:
+            Fill: =RGBA(204, 204, 204, 1)
+            Height: =15
+            HoverFill: =ColorFade(Self.Fill, -20%)
+            RadiusBottomLeft: =20
+            RadiusBottomRight: =20
+            RadiusTopLeft: =20
+            RadiusTopRight: =20
+            Text: =""
+            Visible: =!(Self.Width=0)
+            Width: |-
+                =//If( _GoalTarget>gal_MyActiveGoals.Selected.Target,
+                //Button4_1.Width,_GoalTarget)
+                //editGoalRecord.Initial/editGoalRecord.Target*Container1.Width/1.8
+                If( _GoalTarget>btn_MainPercentageBar.Width,
+                btn_MainPercentageBar.Width,_GoalTarget)
+                
+                 
+            X: =lbl_TitleGoalDetailScreen.X
+            Y: =lbl_TitleGoalDetailScreen.Y+lbl_TitleGoalDetailScreen.Height+20
+            ZIndex: =9
+
+        lbl_ProgressEditGoalScreen As label:
+            Align: =Align.Center
+            Color: =RGBA(116, 116, 116, 1)
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Bold
+            Height: =28
+            PaddingLeft: =10
+            PaddingRight: =10
+            Size: =14
+            Text: |-
+                =//"0 %"
+                //If(editGoalRecord.'Measure Progress'.Value="0/1",If(editGoalRecord.Initial=1,100,0),
+                 Value(_Percentage) &"%"
+                //If(_Percentage=0,0,_Percentage) &"%"
+            Width: =80
+            X: =shpseparator_EditGoalScreen2.X-Self.Width
+            Y: =btn_MainPercentageBar.Y-8
+            ZIndex: =10
+
+        lbl_Start As label:
+            Color: =RGBA(0, 0, 0, 0.77)
+            FontWeight: =FontWeight.Semibold
+            Height: =32
+            Size: =10
+            Text: |-
+                =Switch(editGoalRecord.'Measure Progress'.Value,"Subgoal progress","Goal progress is calculated by subgoal progress","Task progress","Goal progress is calculated by related tasks", "Start: 0")
+            Width: =400
+            X: =btn_PercentageCurrentBar.X
+            Y: =btn_PercentageCurrentBar.Y+btn_PercentageCurrentBar.Height
+            ZIndex: =11
+
+        lbl_Goal As label:
+            Align: =Align.Right
+            Color: =RGBA(0, 0, 0, 0.77)
+            FontWeight: =FontWeight.Semibold
+            Height: =32
+            Size: =10
+            Text: |-
+                ="Goal: 100"
+            Width: =124
+            X: =(btn_MainPercentageBar.Width+btn_MainPercentageBar.X)-Self.Width
+            Y: =btn_PercentageCurrentBar.Y+btn_PercentageCurrentBar.Height
+            ZIndex: =12
+
+        lbl_CurrentValue As label:
+            Color: =RGBA(0, 0, 0, 0.77)
+            FontWeight: =FontWeight.Semibold
+            Height: =If(Self.Visible,32,0)
+            Size: =12
+            Text: |-
+                ="Current Value:"
+            Visible: =!(editGoalRecord.'Measure Progress'.Value="Subgoal progress"&&IsBlank(editGoalRecord.SubGoalId))
+            Width: =130
+            X: =btn_PercentageCurrentBar.X
+            Y: =lbl_Start.Y+lbl_Start.Height+5
+            ZIndex: =13
+
+        btn_UpdateProgress As button:
+            Fill: =ColorFade(_primaryColor,-10%)
+            Height: =If(Self.Visible,32,0)
+            HoverFill: =ColorFade(_primaryColor, -20%)
+            OnSelect: |
+                =Set(VarEditDelete,false);
+                If(Value(txt_InitialValue.Text)>Value(txt_TargetValue.Text),Notify("Please enter valid value",NotificationType.Error,500), 
+                    Patch(
+                        Goals,
+                        LookUp(
+                            Goals,
+                            ID = editGoalRecord.ID
+                        ),
+                        {Initial: If(
+                    editGoalRecord.'Measure Progress'.Value = "0/1",Value(rad_ProgressMeasureEditGoalScreen.Selected.Value),Value(txt_InitialValue.Text))
+                    }
+                        
+                    );
+                    Set(
+                        _GoalTarget,//Container1.Width/1.9
+                        If(
+                    editGoalRecord.'Measure Progress'.Value = "0/1",
+                        (Value(rad_ProgressMeasureEditGoalScreen.Selected.Value) * btn_MainPercentageBar.Width / editGoalRecord.Target)*100,(Value(txt_InitialValue.Text)*btn_MainPercentageBar.Width/editGoalRecord.Target))
+                    );
+                    Set(
+                        _Percentage,
+                        If(
+                    editGoalRecord.'Measure Progress'.Value = "0/1",Value(rad_ProgressMeasureEditGoalScreen.Selected.Value)*100,
+                        Round(
+                            Value(Value(txt_InitialValue.Text) / editGoalRecord.Target * 100),
+                            0
+                        )
+                        )
+                    );
+                    Set(
+                        _InitialValue,
+                        Value(txt_InitialValue.Text)
+                    );
+                    Set(countInitialItems,CountRows( gal_MyActiveGoals.AllItems))
+                );
+                
+                 
+                    
+            RadiusBottomLeft: =5
+            RadiusBottomRight: =5
+            RadiusTopLeft: =5
+            RadiusTopRight: =5
+            Size: =10.5
+            Text: ="Update Progress"
+            Visible: =!(editGoalRecord.'Measure Progress'.Value="Subgoal progress"&&IsBlank(editGoalRecord.SubGoalId))
+            X: = If(rad_ProgressMeasureEditGoalScreen.Visible,rad_ProgressMeasureEditGoalScreen.Width+rad_ProgressMeasureEditGoalScreen.X, txt_TargetValue.X+txt_TargetValue.Width+20)
+            Y: =lbl_CurrentValue.Y
+            ZIndex: =14
+
+        lbl_Status As label:
+            Color: =RGBA(0, 0, 0, 0.77)
+            FontWeight: =FontWeight.Semibold
+            Size: =12
+            Text: |-
+                ="Status:"
+            Width: =90
+            X: =btn_PercentageCurrentBar.X
+            Y: =lbl_CurrentValue.Y+lbl_CurrentValue.Height+10
+            ZIndex: =15
+
+        gal_BtnStatus As gallery.galleryHorizontal:
+            Default: |-
+                ={Value:editGoalRecord.Status.Value}
+            Height: =41
+            Items: =["No Status","On track","At risk","Off track"]
+            TemplateSize: =37
+            Width: =190
+            X: =lbl_Status.X+lbl_Status.Width
+            Y: =lbl_Status.Y
+            ZIndex: =16
+
+            Button6 As button:
+                BorderColor: =Switch(ThisItem.Value,"No Status",Gray,"On track",LightGreen,"At risk",Yellow,"Off track",OrangeRed,Gray)
+                Color: =If(ThisItem.IsSelected&&ThisItem.Value= "No Status",Gray,ThisItem.IsSelected&&ThisItem.Value="On track",LightGreen,ThisItem.IsSelected&&ThisItem.Value="At risk",Yellow,ThisItem.IsSelected&&ThisItem.Value="Off track",OrangeRed, White)
+                Fill: =If(ThisItem.IsSelected&&ThisItem.Value= "No Status",Gray,ThisItem.IsSelected&&ThisItem.Value="On track",LightGreen,ThisItem.IsSelected&&ThisItem.Value="At risk",Yellow,ThisItem.IsSelected&&ThisItem.Value="Off track",OrangeRed, White)
+                Height: =25
+                HoverFill: =Transparent
+                OnSelect: |-
+                    =If(ThisItem.IsSelected,Gray,LightGreen);
+                    //Switch(ThisItem.Status,"No Status",Gray,"On track",LightGreen,"At risk",Yellow,"Off track",OrangeRed,White)
+                    Patch(Goals,LookUp(Goals,ID=editGoalRecord.ID),{
+                        Status:{Value:ThisItem.Value}
+                    });
+                     ClearCollect(
+                        ColTaskProgress,
+                        'Tasks Management'
+                    );
+                     ClearCollect(
+                        ColGoalProgress,
+                        Goals
+                    )
+                PressedFill: =Switch(ThisItem.Value,"No Status",Gray,"On track",LightGreen,"At risk",Yellow,"Off track",OrangeRed,White)
+                RadiusBottomLeft: =20
+                RadiusBottomRight: =20
+                RadiusTopLeft: =20
+                RadiusTopRight: =20
+                Text: =""
+                Width: =25
+                Y: =1
+                ZIndex: =1
+
+        btn_Close As button:
+            Color: =RGBA(0, 0, 0, 0.61)
+            Fill: =White
+            Height: =32
+            HoverFill: =ColorFade(_txtColorFill, -20%)
+            RadiusBottomLeft: =5
+            RadiusBottomRight: =5
+            RadiusTopLeft: =5
+            RadiusTopRight: =5
+            Size: =10.5
+            Text: ="Close"
+            Width: =100
+            X: =gal_BtnStatus.X+gal_BtnStatus.Width+10
+            Y: =lbl_Status.Y
+            ZIndex: =17
+
+        lbl_SubGoals As label:
+            Color: =RGBA(0, 0, 0, 0.77)
+            FontWeight: =FontWeight.Semibold
+            Size: =15
+            Text: ="Subgoals"
+            Width: =100
+            X: =btn_PercentageCurrentBar.X
+            Y: =lbl_Status.Y+lbl_Status.Height+5
+            ZIndex: =18
+
+        lbl_NoGoalsRelated As label:
+            Color: =RGBA(0, 0, 0, 0.77)
+            FontWeight: =FontWeight.Semibold
+            Height: =32
+            Size: =10
+            Text: ="There are no subgoals related to this goal"
+            Visible: =CountRows(gal_Subgoals.AllItems)=0
+            Width: =400
+            X: =btn_PercentageCurrentBar.X
+            Y: =lbl_SubGoals.Y+lbl_SubGoals.Height
+            ZIndex: =19
+
+        btn_AddNew As button:
+            Fill: =ColorFade(_primaryColor,-10%)
+            Height: =32
+            HoverFill: =ColorFade(_primaryColor, -20%)
+            OnSelect: |
+                =//Set(VarEditDelete,false);
+                //Set(VarCreateSubGoal,!VarCreateSubGoal);
+                Set(
+                    CurrentMeasureProgress,
+                    LookUp(
+                        Goals,
+                        ID = gal_MyActiveGoals.Selected.ID,
+                        'Measure Progress'
+                    )
+                );
+                ClearCollect(
+                    CollGoalUser,
+                    editGoalRecord.OwnerName
+                );
+                Set(
+                    _editGoalRequest,
+                    false
+                );
+                Set(
+                    ResetControl,
+                    true
+                );
+                Clear(CollGoalUser);
+                Set(
+                    ResetControl,
+                    false
+                );
+                Set(
+                    countInitialItems,
+                    CountRows(gal_MyActiveGoals.AllItems)
+                );
+                Set(
+                    VarEditDelete,
+                    false
+                );
+                Patch(
+                    Goals,
+                    LookUp(
+                        Goals,
+                        ID = editGoalRecord.ID
+                    ),
+                    {'Measure Progress': {Value: "Subgoal progress"}}
+                );
+                Set(
+                    MeasureProgerssSubGaols,
+                    true
+                );
+                Navigate(NewGoalScreen);
+            RadiusBottomLeft: =5
+            RadiusBottomRight: =5
+            RadiusTopLeft: =5
+            RadiusTopRight: =5
+            Size: =10.5
+            Text: ="+ Add New"
+            Width: =120
+            X: =(ContainerEditGoalScreen.Width)/1.6-(Self.Width-20)
+            Y: =lbl_SubGoals.Y
+            ZIndex: =20
+
+        lbl_Comments As label:
+            Color: =RGBA(0, 0, 0, 0.77)
+            FontWeight: =FontWeight.Semibold
+            Height: =30
+            Size: =15
+            Text: ="Comments ("& CountRows(gal_GoalComments.AllItems)&")"
+            Width: =200
+            X: =lbl_TitleGoalDetailScreen.X
+            Y: =If(gal_Subgoals.Visible,gal_Subgoals.Y+gal_Subgoals.Height+5,lbl_NoGoalsRelated.Y+lbl_NoGoalsRelated.Height)
+            ZIndex: =21
+
+        txt_Comments As text:
+            BorderColor: =_txtColorFill
+            Default: =""
+            Fill: =ColorFade(_txtColorFill,50%)
+            FocusedBorderColor: =_primaryColor
+            FocusedBorderThickness: =2
+            Height: =50
+            HintText: ="Type your comments here..."
+            HoverBorderColor: =ColorFade( Self.BorderColor,10%)
+            HoverColor: =Black
+            HoverFill: =ColorFade(Self.Fill,10%)
+            Mode: =TextMode.MultiLine
+            PaddingBottom: =10
+            PaddingTop: =10
+            RadiusBottomLeft: =1
+            RadiusBottomRight: =1
+            RadiusTopLeft: =1
+            RadiusTopRight: =1
+            Width: =btn_MainPercentageBar.Width
+            X: =lbl_TitleGoalDetailScreen.X+10
+            Y: =lbl_Comments.Y+lbl_Comments.Height+5
+            ZIndex: =22
+
+        lbl_Created As label:
+            Color: =RGBA(0, 0, 0, 0.77)
+            FontWeight: =FontWeight.Semibold
+            Height: =32
+            Size: =10
+            Text: ="Created"
+            Width: =124
+            X: =shpseparator_EditGoalScreen2.X+shpseparator_EditGoalScreen2.Width+20
+            Y: =shpseparator_EditGoalScreen2.Y
+            ZIndex: =23
+
+        imgUserImageEditGoalScreen As image:
+            Height: =36
+            Image: =If(Office365Users.UserPhotoMetadata(User().Email).HasPhoto=false,user)
+            Width: =45
+            X: =lbl_Created.X
+            Y: =lbl_Created.Y+lbl_Created.Height+5
+            ZIndex: =24
+
+        lbl_GoalDate As label:
+            Color: =RGBA(116, 116, 116, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =39
+            Text: =Text(editGoalRecord.'Goal Start',"mmmm d, yyyy")
+            Width: =231
+            X: =imgUserImageEditGoalScreen.X+imgUserImageEditGoalScreen.Width+10
+            Y: =imgUserImageEditGoalScreen.Y
+            ZIndex: =25
+
+        lbl_TitleStartDate As label:
+            Color: =RGBA(0, 0, 0, 0.77)
+            FontWeight: =FontWeight.Semibold
+            Height: =32
+            Size: =10
+            Text: ="Start date"
+            Width: =124
+            X: =lbl_Created.X
+            Y: =imgUserImageEditGoalScreen.Y+imgUserImageEditGoalScreen.Height+20
+            ZIndex: =26
+
+        lbl_TitleEndDate As label:
+            Color: =RGBA(0, 0, 0, 0.77)
+            FontWeight: =FontWeight.Semibold
+            Height: =32
+            Size: =10
+            Text: ="End date"
+            Width: =124
+            X: =lbl_Created.X
+            Y: =lbl_StartDate.Y+lbl_StartDate.Height+5
+            ZIndex: =27
+
+        lbl_StartDate As label:
+            Color: =RGBA(116, 116, 116, 1)
+            FontWeight: =FontWeight.Semibold
+            Height: =32
+            PaddingTop: =0
+            Size: =12.5
+            Text: =Text(editGoalRecord.'Goal Start',"mmmm d,yyyy")
+            Width: =280
+            X: =lbl_Created.X
+            Y: =lbl_TitleStartDate.Y+lbl_TitleStartDate.Height
+            ZIndex: =28
+
+        lbl_EndDate As label:
+            Color: =RGBA(116, 116, 116, 1)
+            FontWeight: =FontWeight.Semibold
+            Height: =32
+            PaddingTop: =0
+            Size: =12.5
+            Text: =Text(editGoalRecord.'Goal End',"mmmm d,yyyy")
+            Width: =231
+            X: =lbl_Created.X
+            Y: =lbl_TitleEndDate.Y+lbl_TitleEndDate.Height
+            ZIndex: =29
+
+        shpseparator_EditGoalScreen1 As rectangle:
+            Fill: =RGBA(204, 204, 204, 1)
+            Height: =1
+            Width: =ContainerEditGoalScreen.Width/3-50
+            X: =lbl_Created.X
+            Y: =lbl_EndDate.Y+lbl_EndDate.Height+10
+            ZIndex: =30
+
+        lbl_ParentsGoals As label:
+            Color: =RGBA(0, 0, 0, 0.77)
+            FontWeight: =FontWeight.Semibold
+            Size: =15
+            Text: ="Parent goal"
+            X: =lbl_Created.X
+            Y: =shpseparator_EditGoalScreen1.Y+shpseparator_EditGoalScreen1.Height+10
+            ZIndex: =31
+
+        lbl_RelatedTasks As label:
+            Color: =RGBA(0, 0, 0, 0.77)
+            FontWeight: =FontWeight.Semibold
+            Size: =15
+            Text: ="Related tasks"
+            X: =lbl_Created.X
+            Y: =shpseparator_EditGoalScreen.Y+shpseparator_EditGoalScreen.Height+10
+            ZIndex: =32
+
+        lbl_NoTask As label:
+            AutoHeight: =true
+            Color: =RGBA(0, 0, 0, 0.77)
+            FontWeight: =FontWeight.Semibold
+            Height: =32
+            Size: =10
+            Text: ="There are no task related to this goal"
+            Visible: =CountRows(gal_GoalRelatedTask.AllItems)=0
+            Width: =ContainerEditGoalScreen.X-ContainerEditGoalScreen.X/5
+            X: =lbl_Created.X
+            Y: =lbl_RelatedTasks.Y+lbl_RelatedTasks.Height
+            ZIndex: =33
+
+        shpseparator_EditGoalScreen As rectangle:
+            Fill: =RGBA(204, 204, 204, 1)
+            Height: =1
+            Width: =ContainerEditGoalScreen.Width/3-50
+            X: =lbl_Created.X
+            Y: =ContainerParentGoal.Y+ContainerParentGoal.Height+20
+            ZIndex: =34
+
+        btn_AddRelatedTasks As button:
+            Fill: =ColorFade(_primaryColor,-10%)
+            Height: =32
+            HoverFill: =ColorFade(_primaryColor, -20%)
+            OnSelect: |-
+                =
+                Set(VarNewtask,true);Set(VarRelatedtask,true);Set(VarTo,false);
+                Clear(CollTaskUsers);
+                Navigate(NewTaskScreen);
+            RadiusBottomLeft: =5
+            RadiusBottomRight: =5
+            RadiusTopLeft: =5
+            RadiusTopRight: =5
+            Size: =10.5
+            Text: ="+ Add"
+            Width: =100
+            X: =ContainerEditGoalScreen.Width-Self.Width-25
+            Y: =lbl_RelatedTasks.Y
+            ZIndex: =35
+
+        btn_MainPercentageBar As button:
+            BorderColor: =RGBA(204, 204, 204, 1)
+            DisabledBorderColor: =Self.BorderColor
+            DisabledFill: =Self.Fill
+            DisplayMode: =DisplayMode.Disabled
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =15
+            HoverFill: =ColorFade(Self.Fill, -20%)
+            RadiusBottomLeft: =20
+            RadiusBottomRight: =20
+            RadiusTopLeft: =20
+            RadiusTopRight: =20
+            Text: =""
+            Width: =ContainerEditGoalScreen.Width/1.9
+            X: =lbl_TitleGoalDetailScreen.X
+            Y: =lbl_TitleGoalDetailScreen.Y+lbl_TitleGoalDetailScreen.Height+20
+            ZIndex: =36
+
+        gal_EditDelete As gallery.galleryVertical:
+            BorderColor: =_primaryColor
+            BorderThickness: =1
+            Height: =92
+            Items: =["Edit", "Delete"]
+            Layout: =Layout.Vertical
+            TemplatePadding: =0
+            TemplateSize: =45
+            Visible: =VarEditDelete
+            Width: =125
+            X: =btn_EditDelete.X+5
+            Y: =btn_EditDelete.Y+btn_EditDelete.Height+2
+            ZIndex: =37
+
+            btn_Edit As button:
+                Align: =Align.Left
+                BorderThickness: =0
+                Color: =_primaryColor
+                DisplayMode: =If(editGoalRecord.'Measure Progress'.Value="Subgoal progress"&& ThisItem.Value="Edit", DisplayMode.Disabled, DisplayMode.Edit)
+                Fill: =RGBA(255, 255, 255, 1)
+                Height: =45
+                HoverFill: =ColorFade(_txtColorFill, -20%)
+                OnSelect: |+
+                    =
+                    //If(ThisItem.Value,"Edit",Set(_editGoalRequest, true),Set(VarEditDelete,false); Navigate(NewGoalScreen));
+                    Set(VarEditDelete,!VarEditDelete);
+                    ClearCollect(CollGoalUser,editGoalRecord.OwnerName);
+                    
+                    Switch(ThisItem.Value,"Edit",Set(_editGoalRequest, true);Set(VarEditDelete,false); Navigate(NewGoalScreen,ScreenTransition.Cover,{_startDate:editGoalRecord.'Goal Start',ViaEditGoal:true}),"Delete",UpdateContext({_DeleteGoal:true}));
+                    
+                PaddingLeft: =20
+                PaddingRight: =20
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Size: =10
+                Text: =ThisItem.Value
+                Width: =125
+                ZIndex: =1
+
+        btn_EditDelete As button:
+            Fill: =ColorFade(_primaryColor,-10%)
+            FocusedBorderThickness: =2
+            Height: =33
+            HoverFill: =ColorFade(_primaryColor, -20%)
+            OnSelect: =Set(VarEditDelete,!VarEditDelete);
+            PaddingBottom: =20
+            PaddingTop: =10
+            RadiusBottomLeft: =5
+            RadiusBottomRight: =5
+            RadiusTopLeft: =5
+            RadiusTopRight: =5
+            Size: =10.5
+            Text: =".  .  ."
+            Width: =36
+            X: =cirGoalType.X+cirGoalType.Width+5
+            Y: =33
+            ZIndex: =38
+
+        txt_InitialValue As text:
+            Align: =Align.Center
+            BorderColor: =_txtColorFill
+            Default: =Value(editGoalRecord.Initial)       
+            Fill: =ColorFade(_txtColorFill,50%)
+            FocusedBorderColor: =_primaryColor
+            FocusedBorderThickness: =2
+            Format: =TextFormat.Number
+            Height: =If(Self.Visible,32,0)
+            HoverBorderColor: =ColorFade( Self.BorderColor,10%)
+            HoverColor: =Black
+            HoverFill: =ColorFade(Self.Fill,10%)
+            RadiusBottomLeft: =1
+            RadiusBottomRight: =1
+            RadiusTopLeft: =1
+            RadiusTopRight: =1
+            Visible: =!(editGoalRecord.'Measure Progress'.Value="Subgoal progress"&&IsBlank(editGoalRecord.SubGoalId))
+            Width: =60
+            X: =lbl_CurrentValue.X+lbl_CurrentValue.Width+10
+            Y: =lbl_CurrentValue.Y
+            ZIndex: =39
+
+        txt_TargetValue As text:
+            BorderColor: =_txtColorFill
+            Default: =editGoalRecord.Target
+            DisplayMode: =DisplayMode.Disabled
+            Fill: =ColorFade(_txtColorFill,50%)
+            FocusedBorderColor: =_primaryColor
+            FocusedBorderThickness: =2
+            Height: =If(Self.Visible,32,0)
+            HoverBorderColor: =ColorFade( Self.BorderColor,10%)
+            HoverColor: =Black
+            HoverFill: =ColorFade(Self.Fill,10%)
+            RadiusBottomLeft: =1
+            RadiusBottomRight: =1
+            RadiusTopLeft: =1
+            RadiusTopRight: =1
+            Visible: =!(editGoalRecord.'Measure Progress'.Value="Subgoal progress"&&IsBlank(editGoalRecord.SubGoalId))
+            Width: =60
+            X: ='lbl_/'.X+'lbl_/'.Width+5
+            Y: =lbl_CurrentValue.Y
+            ZIndex: =40
+
+        "'lbl_/' As label":
+            FontWeight: =FontWeight.Bold
+            Height: =If(Self.Visible,32,0)
+            Size: =18
+            Text: ="/"
+            Visible: =!(editGoalRecord.'Measure Progress'.Value="Subgoal progress"&&IsBlank(editGoalRecord.SubGoalId))
+            Width: =20
+            X: =txt_InitialValue.X+txt_InitialValue.Width+5
+            Y: =txt_InitialValue.Y
+            ZIndex: =41
+
+        grpGoalTypeIcon As group:
+            Height: =5
+            Width: =5
+            X: =40
+            Y: =40
+            ZIndex: =42
+
+            cirGoalType As circle:
+                Fill: =Switch(editGoalRecord.Types,"Individual",LightYellow,"Self-development",LightGreen,"Company Goal",LightBlue,White)
+                Height: =45
+                Width: =45
+                X: =ContainerEditGoalScreen.Width/1.6-Self.Width-15
+                Y: =26
+                ZIndex: =42
+
+            imgGoalType As image:
+                DisplayMode: =DisplayMode.View
+                Fill: =Switch(editGoalRecord.Types,"Individual",LightYellow,"Self-development",LightGreen,"Company Goal",LightBlue,White)
+                Height: =35
+                Image: =Switch(editGoalRecord.Types,"Individual",pedestrian,"Self-development",goal,"Company Goal",organization)
+                PaddingBottom: =5
+                PaddingTop: =5
+                Width: =35
+                X: =ContainerEditGoalScreen.Width/1.6-Self.Width-20
+                Y: =31
+                ZIndex: =43
+
+        rad_ProgressMeasureEditGoalScreen As radio:
+            BorderColor: =_primaryColor
+            BorderStyle: =BorderStyle.None
+            Default: ="0"
+            Height: =55
+            Items: =[0,1]
+            Layout: =Layout.Horizontal
+            RadioBorderColor: =RGBA(172, 62, 11, 1)
+            RadioSelectionFill: =_primaryColor
+            RadioSize: =30
+            Visible: =editGoalRecord.'Measure Progress'.Value="0/1"
+            X: =lbl_CurrentValue.X+lbl_CurrentValue.Width
+            Y: =209
+            ZIndex: =44
+
+        icn_EditGoalScreenBack As icon.Cancel:
+            Color: =_primaryColor
+            Height: =57
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =If(ViaParentGoal,Set(editGoalRecord,LookUp(Goals,ID=_ViaHomeGallery.ID));UpdateContext({ViaParentGoal: false });Navigate(EditGoalScreen),Back())
+            PaddingBottom: =15
+            PaddingLeft: =15
+            PaddingRight: =15
+            PaddingTop: =15
+            Width: =54
+            X: =ContainerEditGoalScreen.Width-Self.Width
+            ZIndex: =45
+
+        ContainerParentGoal As groupContainer.manualLayoutContainer:
+            BorderColor: =ColorFade(_primaryColor, 20%)
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =1
+            Height: =btn_RelatedParentGoal.Height+5
+            Visible: =!IsBlank(LookUp(Goals,ID=editGoalRecord.ParentGoals.Id))
+            Width: =btn_RelatedParentGoal.Width+2
+            X: =lbl_Created.X
+            Y: =lbl_ParentsGoals.Y+lbl_ParentsGoals.Height
+            ZIndex: =46
+
+            img_ParentGoalUserImage As image:
+                Height: =36
+                Image: =If(Office365Users.UserPhotoMetadata(User().Email).HasPhoto=false,user)
+                Width: =45
+                X: =10
+                Y: =10
+                ZIndex: =1
+
+            lbl_ParentGoalOwner As label:
+                Color: =RGBA(116, 116, 116, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =38
+                Size: =11
+                Text: =LookUp(Goals,ID=editGoalRecord.ParentGoals.Id,OwnerName.DisplayName)
+                Width: =btn_RelatedParentGoal.Width-img_ParentGoalUserImage.Width-5-img_ParentGoalType.Width
+                X: =img_ParentGoalUserImage.X+img_ParentGoalUserImage.Width
+                Y: =img_ParentGoalUserImage.Y
+                ZIndex: =2
+
+            btn_ParentGoalPercentageCurrentBar As button:
+                Fill: =RGBA(204, 204, 204, 1)
+                Height: =15
+                HoverFill: =ColorFade(Self.Fill, -20%)
+                RadiusBottomLeft: =20
+                RadiusBottomRight: =20
+                RadiusTopLeft: =20
+                RadiusTopRight: =20
+                Text: =""
+                Visible: =!(Self.Width=0)
+                Width: |
+                    =If(IsBlank(LookUp(Goals,ID=editGoalRecord.ParentGoals.Id,Initial)) || IsBlank(LookUp(Goals,ID=editGoalRecord.ParentGoals.Id,Target)),0/100*100,If(LookUp(Goals,ID=editGoalRecord.ParentGoals.Id,Initial)/LookUp(Goals,ID=editGoalRecord.ParentGoals.Id,Target)*ContainerParentGoal.Width/1.3>btn_ParentGoalMainPercentageBar.Width,btn_ParentGoalMainPercentageBar.Width,LookUp(Goals,ID=editGoalRecord.ParentGoals.Id,Initial)/LookUp(Goals,ID=editGoalRecord.ParentGoals.Id,Target)*ContainerParentGoal.Width/1.3))
+                X: =img_ParentGoalUserImage.X
+                Y: =img_ParentGoalUserImage.Y+img_ParentGoalUserImage.Height+20
+                ZIndex: =3
+
+            btn_ParentGoalMainPercentageBar As button:
+                BorderColor: =RGBA(204, 204, 204, 1)
+                DisabledColor: =Self.Color
+                DisabledFill: =Self.Fill
+                DisplayMode: =DisplayMode.Disabled
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =15
+                HoverFill: =ColorFade(Self.Fill, -20%)
+                RadiusBottomLeft: =20
+                RadiusBottomRight: =20
+                RadiusTopLeft: =20
+                RadiusTopRight: =20
+                Text: =""
+                Width: =ContainerParentGoal.Width/1.4
+                X: =img_ParentGoalUserImage.X
+                Y: =img_ParentGoalUserImage.Y+img_ParentGoalUserImage.Height+20
+                ZIndex: =4
+
+            lbl_ParentGoalProgress As label:
+                Align: =Align.Right
+                Color: =RGBA(116, 116, 116, 1)
+                Font: =Font.'Segoe UI'
+                FontWeight: =FontWeight.Bold
+                Height: =28
+                PaddingLeft: =0
+                PaddingRight: =10
+                Size: =14
+                Text: =If(IsBlank(LookUp(Goals,ID=editGoalRecord.ParentGoals.Id,Initial)) || IsBlank(LookUp(Goals,ID=editGoalRecord.ParentGoals.Id,Target)),0/100*100,RoundUp(LookUp(Goals,ID=editGoalRecord.ParentGoals.Id,Initial)/LookUp(Goals,ID=editGoalRecord.ParentGoals.Id,Target)*100,0)) & "%"
+                Width: =70
+                X: =ContainerParentGoal.Width-Self.Width-10
+                Y: =btn_ParentGoalMainPercentageBar.Y-7
+                ZIndex: =5
+
+            cir_ParentGoalType As circle:
+                BorderColor: =Switch(LookUp(Goals,ID=editGoalRecord.ParentGoals.Id,Status.Value),"No Status",Gray,"On track",LightGreen,"At risk",Yellow,"Off track",OrangeRed,Gray)
+                BorderThickness: =1
+                Fill: =Switch(LookUp(Goals,ID=editGoalRecord.ParentGoals.Id,Status.Value),"No Status",Gray,"On track",LightGreen,"At risk",Yellow,"Off track",OrangeRed,White)
+                Height: =15
+                Width: =15
+                X: =btn_ParentGoalMainPercentageBar.X
+                Y: =btn_ParentGoalMainPercentageBar.Y+btn_ParentGoalMainPercentageBar.Height+22
+                ZIndex: =6
+
+            lbl_ParentGoalStartDate As label:
+                Align: =Align.Right
+                Color: =RGBA(116, 116, 116, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =20
+                PaddingBottom: =0
+                PaddingRight: =10
+                PaddingTop: =0
+                Size: =11
+                Text: |-
+                    =//Text(editGoalRecord.'Goal Start',"mmmm,d,yyyy")
+                    LookUp(Goals,ID=editGoalRecord.ParentGoals.Id,Text('Goal Start',"mmmm d, yyyy"))
+                X: =ContainerParentGoal.Width-Self.Width-10
+                Y: =lbl_ParentGoalStatus.Y
+                ZIndex: =7
+
+            lbl_ParentGoalStatus As label:
+                Color: =RGBA(116, 116, 116, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =20
+                PaddingBottom: =0
+                PaddingTop: =0
+                Size: =11
+                Text: =LookUp(Goals,ID=editGoalRecord.ParentGoals.Id,Status.Value)
+                Width: =100
+                X: =cir_ParentGoalType.X+cir_ParentGoalType.Width+5
+                Y: =btn_ParentGoalMainPercentageBar.Y+btn_ParentGoalMainPercentageBar.Height+20
+                ZIndex: =8
+
+            btn_RelatedParentGoal As button:
+                BorderColor: =ColorFade(_primaryColor,-10%)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                DisabledFill: =RGBA(0, 0, 0, 0)
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =128
+                HoverColor: =RGBA(0, 0, 0, 0)
+                HoverFill: =
+                OnSelect: |
+                    =ClearCollect(
+                        CollGoalUser,
+                        LookUp(
+                            Goals,
+                            ID = editGoalRecord.ParentGoals.Id,
+                            OwnerName.DisplayName
+                        )
+                    );
+                    Set(
+                        editGoalRecord,
+                        LookUp(
+                            Goals,
+                            ID = editGoalRecord.ParentGoals.Id
+                        )
+                    );
+                    Set(
+                        _editGoalRequest,
+                        true
+                    );
+                    Navigate(EditGoalScreen,ScreenTransition.Fade,{ViaParentGoal:true,GoalRecordViaParent:LookUp(
+                            Goals,
+                            ID = _ViaHomeGallery.ID
+                        ),
+                        _ViaHomeGallery:editGoalRecord
+                        
+                        });
+                PressedBorderColor: =ColorFade(Self.BorderColor, 20%)
+                PressedColor: =
+                PressedFill: =RGBA(0, 0, 0, 0)
+                RadiusBottomLeft: =5
+                RadiusBottomRight: =5
+                RadiusTopLeft: =5
+                RadiusTopRight: =5
+                Size: =10.5
+                Text: =""
+                Width: =ContainerEditGoalScreen.Width/3-50
+                X: =1
+                Y: =2
+                ZIndex: =9
+
+            img_ParentGoalType As image:
+                DisplayMode: =DisplayMode.View
+                Fill: =Switch(LookUp(Goals,ID=editGoalRecord.ParentGoals.Id,Types),"Individual",LightYellow,"Self-development",LightGreen,"Company Goal",LightBlue,White)
+                Height: =40
+                Image: =Switch(LookUp(Goals,ID=editGoalRecord.ParentGoals.Id,Types),"Individual",pedestrian,"Self-development",goal,"Company Goal",organization)
+                PaddingBottom: =5
+                PaddingLeft: =5
+                PaddingRight: =5
+                PaddingTop: =5
+                Width: =40
+                X: =btn_RelatedParentGoal.Width-Self.Width-1
+                Y: =3
+                ZIndex: =10
+
+        gal_GoalRelatedTask As gallery.variableTemplateHeightGallery:
+            Height: =Parent.Height-(lbl_RelatedTasks.Y+lbl_RelatedTasks.Height)+2
+            Items: =Filter('Tasks Management','Related Goal'.Value=(editGoalRecord.Title))
+            Layout: =Layout.Vertical
+            OnSelect: |-
+                =
+                Set(VarNewtask,false);Set(VarRelatedtask,true);
+                Set(TaskInfo,LookUp('Tasks Management','Related Goal'.Value=editGoalRecord.Title));
+                Navigate(NewTaskScreen,ScreenTransition.Fade);
+            ShowScrollbar: =false
+            TemplateSize: =120
+            Visible: =CountRows(gal_GoalRelatedTask.AllItems)<>0
+            Width: =ContainerEditGoalScreen.Width/3-35
+            X: =lbl_NoTask.X
+            Y: =lbl_NoTask.Y-2
+            ZIndex: =47
+
+            chk_RealtedTask As checkbox:
+                CheckboxSize: =25
+                Height: =27
+                OnCheck: |
+                    =Patch('Tasks Management',LookUp('Tasks Management',ID=ThisItem.ID),({Status:"Completed"}));Notify("Your Task is Completed");
+                     ClearCollect(
+                        ColTaskProgress,
+                        'Tasks Management'
+                    );
+                     ClearCollect(
+                        ColGoalProgress,
+                        Goals
+                    )
+                OnSelect: =Select(Parent)
+                OnUncheck: |-
+                    =Patch('Tasks Management',LookUp('Tasks Management',ID=ThisItem.ID),({Status:"Not completed"}));Notify("Your Task is marked as incompleted");
+                     ClearCollect(
+                        ColTaskProgress,
+                        'Tasks Management'
+                    );
+                     ClearCollect(
+                        ColGoalProgress,
+                        Goals
+                    )
+                Size: =10
+                Text: =
+                Width: =25
+                X: =2
+                Y: =lbl_GoalRelatedTaskTo.Y+lbl_GoalRelatedTaskTo.Height+5
+                ZIndex: =1
+
+            gal_RelatedTaskGal As gallery.galleryHorizontal:
+                Height: =47
+                Items: =ThisItem.To
+                TemplateSize: =26
+                Width: =230
+                X: =chk_RealtedTask.X+chk_RealtedTask.Width
+                Y: =lbl_GoalRelatedTaskTo.Y+lbl_GoalRelatedTaskTo.Height-5
+                ZIndex: =2
+
+                imgUserImage_9 As image:
+                    Height: =37
+                    Image: |-
+                        =//If(Office365Users.UserPhotoMetadata(User().Email).HasPhoto=false,user)
+                        If(!IsBlank(ThisItem.Picture),ThisItem.Picture,user)
+                        //If(Office365Users.UserPhotoMetadata(User().Email).HasPhoto=false,user)
+                    Width: =40
+                    ZIndex: =1
+
+            lbl_GoalRelatedTaskTo As label:
+                AutoHeight: =true
+                Color: =RGBA(116, 116, 116, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =24
+                Size: =11
+                Text: =ThisItem.Title
+                Width: =btn_GoalRelatedTasks.Width-5
+                Y: =2
+                ZIndex: =3
+
+            lbl_GoalRelatedTaskStartDate As label:
+                Align: =Align.Right
+                Color: =RGBA(116, 116, 116, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =20
+                PaddingBottom: =0
+                PaddingRight: =10
+                PaddingTop: =0
+                Size: =11
+                Text: =Text(editGoalRecord.'Goal Start',"mmmm d, yyyy")
+                X: =gal_GoalRelatedTask.Width-Self.Width-20
+                Y: =gal_RelatedTaskGal.Y+gal_RelatedTaskGal.Height-10
+                ZIndex: =4
+
+            btn_GoalRelatedTasks As button:
+                BorderColor: =ColorFade(_primaryColor,-10%)
+                Color: =RGBA(0, 0, 0, 1)
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =105
+                HoverFill: =Self.Fill
+                OnSelect: |-
+                    =
+                    Set(VarNewtask,false);Set(VarRelatedtask,true);
+                    //Set(TaskInfo,LookUp('Tasks Management','Related Goal'.Value=editGoalRecord.Title));
+                    Set(TaskInfo,ThisItem);
+                    //Reset(ComBox_To);
+                    ClearCollect(CollTaskUsers,ThisItem.To);
+                    Navigate(EditTaskScreen,ScreenTransition.Fade);
+                PressedFill: =Self.Fill
+                RadiusBottomLeft: =5
+                RadiusBottomRight: =5
+                RadiusTopLeft: =5
+                RadiusTopRight: =5
+                Size: =10.5
+                Text: =""
+                Width: =ContainerEditGoalScreen.Width/3-50
+                ZIndex: =5
+
+        gal_GoalComments As gallery.variableTemplateHeightGallery:
+            Height: |-
+                =//Parent.Height-(txt_Comments.Y+txt_Comments.Height)-5
+                If(Self.Visible, Max(CountRows(Self.AllItems) * (Self.TemplateHeight + Self.TemplatePadding) + Self.TemplatePadding,ContainerEditGoalScreen.Height/2)
+                ,0)
+            Items: |-
+                =Filter(
+                    'Goal Comments',
+                
+                 'Ref Goal Id'.Value=Text(editGoalRecord.ID)
+                )
+            Layout: =Layout.Vertical
+            ShowScrollbar: =false
+            TemplateSize: =Max(lbl_CommentDisplayName.Height+lbl_CommentTitle.Height,100)
+            Width: =ContainerEditGoalScreen.Width/1.5-70
+            X: =txt_Comments.X-5
+            Y: =txt_Comments.Y+txt_Comments.Height+10
+            ZIndex: =48
+
+            lbl_CommentDisplayName As label:
+                AutoHeight: =true
+                Color: =RGBA(116, 116, 116, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =27
+                Size: =11
+                Text: =ThisItem.'Created By'.DisplayName
+                Width: =btn_RelatedParentGoal.Width-img_ParentGoalUserImage.Width-5-img_ParentGoalType.Width
+                X: =10
+                ZIndex: =1
+
+            lbl_CommentTitle As label:
+                AutoHeight: =true
+                Color: =RGBA(116, 116, 116, 1)
+                Height: =20
+                PaddingBottom: =0
+                PaddingTop: =0
+                Size: =11
+                Text: =ThisItem.' Goal Comment'
+                Width: =gal_GoalComments.Width-lbl_CommentDate.Width-30
+                X: =10
+                Y: =31
+                ZIndex: =2
+
+            lbl_CommentDate As label:
+                Align: =Align.Right
+                Color: =RGBA(116, 116, 116, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =20
+                PaddingBottom: =0
+                PaddingRight: =10
+                PaddingTop: =0
+                Size: =11
+                Text: =Text(ThisItem.Created,"mmmm,d,yyyy")
+                X: =gal_GoalComments.Width-Self.Width-20
+                ZIndex: =3
+
+            icn_Delete As icon.Trash:
+                Color: =ColorFade(_primaryColor,-10%)
+                Height: =28
+                Icon: =Icon.Trash
+                OnSelect: |-
+                    =UpdateContext({_DeleteGoal:false});
+                    UpdateContext({_deleteGoalComment:true});
+                PaddingBottom: =3
+                PaddingTop: =3
+                Width: =42
+                X: =gal_GoalComments.Width-Self.Width-20
+                Y: =shp_Separatorgal_GoalComments.Y-Self.Height-5
+                ZIndex: =4
+
+            shp_Separatorgal_GoalComments As rectangle:
+                Fill: =RGBA(204, 204, 204, 1)
+                Height: =1
+                Width: =gal_GoalComments.Width-20
+                X: =2
+                Y: =lbl_CommentTitle.Y+lbl_CommentTitle.Height+2
+                ZIndex: =5
+
+        btn_BackgroungImgDelete As button:
+            DisplayMode: =DisplayMode.View
+            Fill: =RGBA(0, 0, 0, 0.34)
+            Height: =ContainerEditGoalScreen.Height
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: =""
+            Visible: |-
+                =//relatedTaskCardVisible||
+                _DeleteGoal|| _deleteGoalComment||createSubGoal
+            Width: =ContainerEditGoalScreen.Width
+            ZIndex: =49
+
+        lbl_NoTask_2 As label:
+            AutoHeight: =true
+            Color: =RGBA(0, 0, 0, 0.77)
+            FontWeight: =FontWeight.Semibold
+            Height: =32
+            Size: =10
+            Text: ="There are no parent goal related to this goal"
+            Visible: =IsBlank(LookUp(Goals,ID=editGoalRecord.ParentGoals.Id))
+            Width: =ContainerEditGoalScreen.X-ContainerEditGoalScreen.X/5
+            X: =lbl_Created.X
+            Y: =shpseparator_EditGoalScreen1.Y+shpseparator_EditGoalScreen1.Height+10+lbl_ParentGoals.Height
+            ZIndex: =50
+
+        ContainerGoalCommentDelete As groupContainer.manualLayoutContainer:
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =230
+            Visible: =_DeleteGoal||_deleteGoalComment||createSubGoal
+            Width: =550
+            X: =Parent.Width/2-Self.Width/2
+            Y: =Parent.Height/2-Self.Height/2
+            ZIndex: =51
+
+            lbl_DeleteGoals As label:
+                FontWeight: =FontWeight.Bold
+                Text: =If(_deleteGoalComment ,"Delete comment","Delete goal")
+                Width: =200
+                X: =21
+                Y: =17
+                ZIndex: =29
+
+            lbl_DeleteEditGoalScreen As label:
+                AutoHeight: =true
+                Height: =32
+                Size: =12
+                Text: =If(_deleteGoalComment,"Do you really want to delete this comment ?",createSubGoal,"Do you want to measure the parent's progress based on this subgoal?", "Are you sure you want to delete this goal?")
+                Width: =500
+                X: =21
+                Y: =57
+                ZIndex: =30
+
+            lbl_Note As label:
+                Color: =RGBA(0, 0, 0, 0.77)
+                FontWeight: =FontWeight.Semibold
+                Height: =37
+                Size: =10
+                Text: |-
+                    ="Note: If this goal has subgoals, the subgoals will not be deleted."
+                Visible: =!_deleteGoalComment&&!createSubGoal
+                Width: =429
+                X: =21
+                Y: =lbl_DeleteEditGoalScreen.Y+lbl_DeleteEditGoalScreen.Height
+                ZIndex: =31
+
+            btn_DeleteConfirm As button:
+                Fill: =ColorFade(_primaryColor,-10%)
+                Height: =45
+                HoverFill: =ColorFade(_primaryColor, -20%)
+                OnSelect: |
+                    =If(
+                        _deleteGoalComment,
+                        Remove(
+                            'Goal Comments',
+                            gal_GoalComments.Selected
+                        );
+                        UpdateContext({_deleteGoalComment: false});
+                        Notify("Comment is Removed");
+                        Set(
+                            countInitialItems,
+                            CountRows(gal_MyActiveGoals.AllItems)
+                        );
+                        Navigate(EditGoalScreen),
+                        
+                            _DeleteGoal,
+                            Remove(
+                                Goals,
+                                editGoalRecord
+                            );
+                            RemoveIf(
+                                'Goal Comments',
+                                'Ref Goal Id'.Id = editGoalRecord.ID
+                            );
+                    
+                        Set(
+                            countInitialItems,
+                            CountRows(gal_MyActiveGoals.AllItems)
+                        );
+                        Navigate(HomeScreen),
+                        createSubGoal, UpdateContext({createSubGoal:false});
+                        Navigate(NewGoalScreen);
+                    
+                    );
+                RadiusBottomLeft: =5
+                RadiusBottomRight: =5
+                RadiusTopLeft: =5
+                RadiusTopRight: =5
+                Size: =10.5
+                Text: ="Confirm"
+                Width: =120
+                X: =374
+                Y: =145
+                ZIndex: =33
+
+            btn_Cancel As button:
+                BorderColor: =ColorFade(Self.Color, -15%)
+                BorderThickness: =1
+                Color: =_primaryColor
+                Fill: =RGBA(255, 255, 255, 1)
+                Height: =45
+                HoverFill: =ColorFade(_txtColorFill, -10%)
+                OnSelect: |-
+                    =UpdateContext({_DeleteGoal:false,_deleteGoalComment:false,createSubGoal:false});
+                PaddingLeft: =20
+                PaddingRight: =20
+                RadiusBottomLeft: =5
+                RadiusBottomRight: =5
+                RadiusTopLeft: =5
+                RadiusTopRight: =5
+                Size: =10
+                Text: ="Cancel"
+                Width: =125
+                X: =237
+                Y: =145
+                ZIndex: =34
+
+        lbl_NoCommentsEditTaskScreen_1 As label:
+            BorderColor: =RGBA(131, 24, 75, 1)
+            Color: =RGBA(0, 0, 0, 0.77)
+            FontWeight: =FontWeight.Semibold
+            Height: =32
+            Size: =10
+            Text: ="There are no Comments associated to this Task"
+            VerticalAlign: =VerticalAlign.Top
+            Visible: =If(CountRows(gal_GoalComments.AllItems)=0,true,false)
+            Width: =btn_MainPercentageBar.Width
+            X: =lbl_TitleGoalDetailScreen.X
+            Y: =lbl_Comments.Y+lbl_Comments.Height+10+txt_Comments.Height+10
+            ZIndex: =52
+
+    Label2 As label:
+        Text: =_ViaHomeGallery.ID
+        X: =89
+        Y: =50
+        ZIndex: =3
+

@@ -1,0 +1,33 @@
+JobDescriptionScreen As screen:
+    OnVisible: |-
+        =UpdateContext({_DescriptionText:"Enter your description here"})
+
+    backgroundComponent_3 As backgroundComponent:
+        Items: =MenuItemsCollection
+        SetMenuWidth: =backgroundComponent_3.MenuWidth
+
+    RichTextEditor1 As richTextEditor:
+        Default: =_DescriptionText
+        Height: =Parent.Height-200
+        OnChange: =
+        Size: =14
+        Width: =Parent.Width/1.4
+        X: =Parent.Width/2-Self.Width/2+65
+        Y: =100
+        ZIndex: =2
+
+    Icn_Edit As icon.Edit:
+        Color: =_primaryColor
+        Height: =45
+        Icon: =Icon.Edit
+        OnSelect: |-
+            =UpdateContext({_editDescription:true})
+        PaddingBottom: =5
+        PaddingLeft: =10
+        PaddingRight: =10
+        PaddingTop: =5
+        Width: =40
+        X: =RichTextEditor1.X+RichTextEditor1.Width
+        Y: =RichTextEditor1.Y
+        ZIndex: =3
+

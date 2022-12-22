@@ -1,0 +1,713 @@
+GoalsgalleryScreen As screen:
+    OnVisible: |-
+        = ClearCollect( 
+           CollCountGoals,
+            Goals
+        )
+
+    backgroundComponent_GoalsGallery As backgroundComponent:
+        Default: ="Goals"
+        Items: =MenuItemsCollection
+        SetMenuWidth: =backgroundComponent_GoalsGallery.MenuWidth
+
+    gal_GoalsGallery As gallery.galleryHorizontal:
+        Fill: =RGBA(0, 0, 0, 1)
+        Height: =55
+        Items: =["My goals","Created by me","Company goals"]
+        TemplatePadding: =0
+        TemplateSize: =159
+        Width: =Parent.Width-Self.X
+        X: =backgroundComponent_GoalsGallery.MenuWidth
+        Y: =85
+        ZIndex: =2
+
+        btn_GoalsGallery As button:
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =0
+            Color: |-
+                =If(ThisItem.IsSelected, ColorFade(ColorValue("#ff6601"),20%),White)
+            Fill: =RGBA(0, 0, 0, 0)
+            Font: =Font.'Segoe UI'
+            Height: =53
+            HoverColor: |-
+                =
+                If(ThisItem.IsSelected,White,ColorFade(_primaryColor,50%))
+            HoverFill: =
+            OnSelect: =Select(Parent)
+            PaddingTop: =0
+            PressedColor: =White
+            PressedFill: =ColorFade(Black,20%)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: =ThisItem.Value
+            ZIndex: =1
+
+        shp_SelectedType As rectangle:
+            Fill: |-
+                =If(ThisItem.IsSelected, ColorFade(ColorValue("#ff6601"),20%),Black)
+            Height: =4
+            OnSelect: =Select(Parent)
+            Width: =160
+            X: =1
+            Y: =51
+            ZIndex: =2
+
+    btn_CreateNewGoalGoalGallery As button:
+        Fill: =ColorFade(_primaryColor,-10%)
+        Height: =35
+        HoverFill: =ColorFade(_primaryColor, -20%)
+        OnSelect: |-
+            =      Set(countInitialItems,CountRows( gal_MyActiveGoals.AllItems));
+                  Set(_editGoalRequest,false);
+                  Set(ResetControl,true);Set(ResetControl,false);
+                  Clear(CollGoalUser);
+                  Navigate(NewGoalScreen)
+        RadiusBottomLeft: =5
+        RadiusBottomRight: =5
+        RadiusTopLeft: =5
+        RadiusTopRight: =5
+        Size: =12
+        Text: ="New goal"
+        Width: =140
+        X: =gal_GoalsGallery.Width+gal_GoalsGallery.X-Self.Width-20
+        Y: =gal_GoalsGallery.Y+10
+        ZIndex: =3
+
+    tct_SearchGoalGallery As text:
+        BorderColor: =_txtColorFill
+        Default: =
+        Fill: =RGBA(255, 255, 255, 0.93)
+        FocusedBorderColor: =_primaryColor
+        FocusedBorderThickness: =2
+        Height: =35
+        HintText: ="Search by owner or title"
+        HoverBorderColor: =ColorFade( Self.BorderColor,10%)
+        HoverColor: =Black
+        HoverFill: =ColorFade(Self.Fill,10%)
+        Reset: =ResetControl
+        Size: =12
+        Width: =300
+        X: =(gal_GoalsGallery.X+gal_GoalsGallery.Width)-btn_CreateNewGoalGoalGallery.Width-Self.Width-35
+        Y: =gal_GoalsGallery.Y+10
+        ZIndex: =4
+
+    icn_SearchGoalGallery As icon.Search:
+        Color: =RGBA(0, 0, 0, 1)
+        Height: =35
+        Icon: =Icon.Search
+        PaddingBottom: =5
+        PaddingTop: =5
+        Width: =42
+        X: =tct_SearchGoalGallery.Width+tct_SearchGoalGallery.X-Self.Width
+        Y: =gal_GoalsGallery.Y+10
+        ZIndex: =5
+
+    gal_CountTypeGoalGallery As gallery.galleryHorizontal:
+        Height: =127
+        Items: =Choices(Goals.Status) 
+        TemplateSize: =114
+        Width: =601
+        X: =Parent.Width-Self.Width-10
+        Y: =147
+        ZIndex: =6
+
+        btn_CountStatusType As button:
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =117
+            HoverBorderColor: =ColorFade(Black,40%)
+            HoverFill: =ColorFade(_txtColorFill, 40%)
+            OnSelect: =Select(Parent)
+            Text: =""
+            Width: =114
+            ZIndex: =1
+
+        lbl_CountGoalGallery As label:
+            Align: =Align.Center
+            Color: =_labelColor
+            FontWeight: =FontWeight.Semibold
+            Height: =56
+            OnSelect: =Select(Parent)
+            Size: =25
+            Text: |-
+                =If(gal_GoalsGallery.Selected.Value="My goals",
+                
+                
+                Switch(
+                    ThisItem.Value,
+                    "On track",
+                  CountRows(
+                    Filter(
+                        CollCountGoals,
+                        Status.Value=  ThisItem.Value &&  OwnerName.DisplayName = User().FullName
+                       
+                    )),
+                    "Off track",
+                    CountRows(
+                    Filter(
+                        CollCountGoals,
+                           Status.Value=  ThisItem.Value &&  OwnerName.DisplayName = User().FullName
+                    )),
+                    "Closed",
+                    CountRows(
+                    Filter(
+                        CollCountGoals,
+                          Status.Value=  ThisItem.Value &&  OwnerName.DisplayName = User().FullName
+                    )),
+                    "No Status",
+                    CountRows(
+                    Filter(
+                        CollCountGoals,
+                            Status.Value=  ThisItem.Value &&  OwnerName.DisplayName = User().FullName
+                    )),
+                    "At risk",
+                   CountRows(
+                    Filter(
+                        CollCountGoals,
+                           Status.Value=  ThisItem.Value &&  OwnerName.DisplayName = User().FullName
+                    ))
+                ),
+                gal_GoalsGallery.Selected.Value="Created by me",
+                
+                
+                Switch(
+                    ThisItem.Value,
+                    "On track",
+                  CountRows(
+                    Filter(
+                        CollCountGoals,
+                        Status.Value=  ThisItem.Value &&  'Created By'.DisplayName = User().FullName
+                     
+                    )),
+                    "Off track",
+                    CountRows(
+                    Filter(
+                        CollCountGoals,
+                          Status.Value=  ThisItem.Value &&  'Created By'.DisplayName = User().FullName
+                    )),
+                    "Closed",
+                    CountRows(
+                    Filter(
+                        CollCountGoals,
+                          Status.Value=  ThisItem.Value &&  'Created By'.DisplayName = User().FullName
+                    )),
+                    "No Status",
+                    CountRows(
+                    Filter(
+                        CollCountGoals,
+                         Status.Value=  ThisItem.Value &&  'Created By'.DisplayName = User().FullName
+                    )),
+                    "At risk",
+                   CountRows(
+                    Filter(
+                        CollCountGoals,
+                          Status.Value=  ThisItem.Value &&  'Created By'.DisplayName = User().FullName
+                    ))
+                ),gal_GoalsGallery.Selected.Value="Company goals",
+                Switch(
+                    ThisItem.Value,
+                    "On track",
+                  CountRows(
+                    Filter(
+                        CollCountGoals,
+                        Status.Value=  ThisItem.Value &&  'Created By'.DisplayName = User().FullName
+                     
+                    )),
+                    "Off track",
+                    CountRows(
+                    Filter(
+                        CollCountGoals,
+                          Status.Value=  ThisItem.Value &&  'Created By'.DisplayName = User().FullName
+                    )),
+                    "Closed",
+                    CountRows(
+                    Filter(
+                        CollCountGoals,
+                          Status.Value=  ThisItem.Value &&  'Created By'.DisplayName = User().FullName
+                    )),
+                    "No Status",
+                    CountRows(
+                    Filter(
+                        CollCountGoals,
+                         Status.Value=  ThisItem.Value &&  'Created By'.DisplayName = User().FullName
+                    )),
+                    "At risk",
+                   CountRows(
+                    Filter(
+                        CollCountGoals,
+                          Status.Value=  ThisItem.Value &&  'Created By'.DisplayName = User().FullName
+                    ))
+                )
+                
+                )
+            Width: =111
+            Y: =11
+            ZIndex: =2
+
+        btn_StatusTypeGoalGallery As button:
+            BorderColor: =Switch(ThisItem.Value,"No Status",Gray,"On track",LightGreen,"At risk",Yellow,"Off track",OrangeRed,Gray)
+            Color: =If(ThisItem.IsSelected&&ThisItem.Value= "No Status",Gray,ThisItem.IsSelected&&ThisItem.Value="On track",LightGreen,ThisItem.IsSelected&&ThisItem.Value="At risk",Yellow,ThisItem.IsSelected&&ThisItem.Value="Off track",OrangeRed, ThisItem.IsSelected&&ThisItem.Value="Closed",Purple,White)
+            Fill: =If(ThisItem.IsSelected&&ThisItem.Value= "No Status",Gray,ThisItem.IsSelected&&ThisItem.Value="On track",LightGreen,ThisItem.IsSelected&&ThisItem.Value="At risk",Yellow,ThisItem.IsSelected&&ThisItem.Value="Off track",OrangeRed, White)
+            Height: =15
+            HoverFill: =Transparent
+            OnSelect: |-
+                =If(ThisItem.IsSelected,Gray,LightGreen);
+                //Switch(ThisItem.Status,"No Status",Gray,"On track",LightGreen,"At risk",Yellow,"Off track",OrangeRed,White)
+                Patch(Goals,LookUp(Goals,ID=gal_MyActiveGoals.Selected.ID),{
+                    Status:{Value:ThisItem.Value}
+                })
+            PressedFill: =Switch(ThisItem.Value,"No Status",Gray,"On track",LightGreen,"At risk",Yellow,"Off track",OrangeRed,White)
+            RadiusBottomLeft: =20
+            RadiusBottomRight: =20
+            RadiusTopLeft: =20
+            RadiusTopRight: =20
+            Text: =""
+            Width: =15
+            X: =13
+            Y: =80
+            ZIndex: =3
+
+        lbl_StatusGoalGallery As label:
+            Align: =Align.Center
+            Color: =RGBA(0, 0, 0, 0.77)
+            FontWeight: =FontWeight.Semibold
+            Height: =28
+            PaddingLeft: =0
+            Size: =10
+            Text: |
+                =ThisItem.Value
+            Width: =81
+            X: =28
+            Y: =73
+            ZIndex: =4
+
+    gal_Goals As gallery.variableTemplateHeightGallery:
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =Parent.Height-gal_GoalsGallery.Height-gal_CountTypeGoalGallery.Height-115
+        Items: |-
+            =Switch( 
+                gal_GoalsGallery.Selected.Value,
+                "My goals",
+                SortByColumns(
+                    Search(
+                        Filter(
+                            AddColumns(
+                                Goals,
+                                "SearchbyOwner",
+                                OwnerName.DisplayName,"SearchbyTitle",Title
+                            ),
+                            OwnerName.DisplayName = User().FullName && Status.Value = gal_CountTypeGoalGallery.Selected.Value
+                        ),
+                        tct_SearchGoalGallery.Text,
+                        "SearchbyOwner","SearchbyTitle"
+                    ),
+                    "Created",
+                    Descending
+                ),
+                "Created by me",
+                  SortByColumns(
+                    Search(
+                        Filter(
+                            AddColumns(
+                                Goals,
+                                "SearchbyOwner",
+                                OwnerName.DisplayName,"SearchbyTitle",Title
+                            ),
+                             'Created By'.DisplayName = User().FullName && Status.Value = gal_CountTypeGoalGallery.Selected.Value
+                        ),
+                        tct_SearchGoalGallery.Text,
+                        "SearchbyOwner","SearchbyTitle"
+                    ),
+                    "Created",
+                    Descending
+                ),
+                "Company goals",
+                SortByColumns(
+                    Search(
+                        Filter(
+                            AddColumns(
+                                Goals,
+                                "SearchbyOwner",
+                                OwnerName.DisplayName,"SearchbyTitle",Title
+                            ),
+                            OwnerName.DisplayName = User().FullName && Types = "Company Goal"&&Status.Value = gal_CountTypeGoalGallery.Selected.Value
+                        ),
+                        tct_SearchGoalGallery.Text,
+                        "SearchbyOwner","SearchbyTitle"
+                    ),
+                    "Created",
+                    Descending
+                )
+                
+            )
+        Layout: =Layout.Vertical
+        TemplatePadding: =10
+        TemplateSize: =65
+        Width: =Parent.Width-Self.X-15
+        X: =gal_GoalsGallery.X+20
+        Y: =gal_CountTypeGoalGallery.Y+gal_CountTypeGoalGallery.Height+10
+        ZIndex: =10
+
+        NextArrowGoalsGallery As icon.ChevronRight:
+            AccessibleLabel: =Self.Tooltip
+            BorderStyle: =BorderStyle.None
+            Color: =RGBA(116, 116, 116, 1)
+            Height: =45
+            Icon: =Icon.Hamburger
+            OnSelect: |-
+                =Set(editGoalRecord,ThisItem);Set(VarEditDelete,false);Set(_GoalTarget,//Container1.Width/1.9
+                
+                editGoalRecord.Initial/editGoalRecord.Target*ContainerEditGoalScreen.Width/1.8
+                );Set(_Percentage, Round(
+                            Value(editGoalRecord.Initial / editGoalRecord.Target * 100),
+                            0
+                 ));
+                // UpdateContext({_DeleteGoal:true});
+                Set(_DeleteGoal,false);
+                 Navigate(EditGoalScreen)
+            PaddingBottom: =10
+            PaddingLeft: =10
+            PaddingRight: =10
+            PaddingTop: =10
+            TabIndex: =0
+            Tooltip: ="View item details"
+            Width: =55
+            X: =gal_Goals.Width- Self.Width-20
+            Y: =5
+            ZIndex: =1
+
+        cirGoalTypeGoalsGallery As circle:
+            Fill: =Switch(ThisItem.Types,"Individual",LightYellow,"Self-development",LightGreen,"Company Goal",LightBlue)
+            Height: =45
+            Width: =45
+            X: =20
+            Y: =5
+            ZIndex: =2
+
+        imgGoalTypeGoalsGallery As image:
+            Height: =25
+            Image: =Switch(ThisItem.Types,"Individual",pedestrian,"Self-development",goal,"Company Goal",organization)
+            Width: =25
+            X: =30
+            Y: =15
+            ZIndex: =3
+
+        cirUserBackgroundGoalsGallery As circle:
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =45
+            Width: =45
+            X: =93
+            Y: =7
+            ZIndex: =4
+
+        imgUserImageGoalsGallery As image:
+            BorderStyle: =BorderStyle.None
+            Height: =40
+            Image: =If(Office365Users.UserPhotoMetadata(User().Email).HasPhoto=false,user)
+            Width: =40
+            X: =95
+            Y: =7
+            ZIndex: =5
+
+        lbl_TaskTitleGoalsGallery As label:
+            AutoHeight: =true
+            Color: =_labelColor
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Semibold
+            Height: =ContainerNewGoal.Height/22
+            Size: =14
+            Text: =ThisItem.Title
+            Width: =gal_Goals.Width/5
+            X: =170
+            Y: =10
+            ZIndex: =6
+
+        lbl_GoalDateGoalsGallery As label:
+            Height: =45
+            Size: =11
+            Text: =Text(ThisItem.'Goal Start',"mmmm d, yyyy")
+            X: =gal_Goals.Width- Self.Width-NextArrowGoalsGallery.Width-30
+            Y: =5
+            ZIndex: =7
+
+        lbl_GoalStatusGoalsGallery As label:
+            Height: =45
+            Size: =11
+            Text: =ThisItem.Status.Value
+            X: =gal_Goals.Width- Self.Width-NextArrowGoalsGallery.Width-lbl_GoalDateGoalsGallery.Width-30
+            Y: =lbl_GoalDateGoalsGallery.Y
+            ZIndex: =8
+
+        btn_PercentageCurrentBarGoalsGallery As button:
+            Fill: =RGBA(204, 204, 204, 1)
+            Height: =15
+            HoverFill: =ColorFade(Self.Fill, -20%)
+            RadiusBottomLeft: =20
+            RadiusBottomRight: =20
+            RadiusTopLeft: =20
+            RadiusTopRight: =20
+            Text: =""
+            Visible: =!(Self.Width=0)
+            Width: |+
+                =
+                If( IsBlank(ThisItem.Initial) || IsBlank(ThisItem.Target),0,If(ThisItem.Initial/ThisItem.Target*gal_Goals.Width/4>btn_MainPercentageBarGoalsGallery.Width,
+                btn_MainPercentageBarGoalsGallery.Width,ThisItem.Initial/ThisItem.Target*gal_Goals.Width/4))
+                
+                
+            X: =btn_MainPercentageBarGoalsGallery.X
+            Y: =23
+            ZIndex: =9
+
+        btn_MainPercentageBarGoalsGallery As button:
+            BorderColor: =RGBA(204, 204, 204, 1)
+            DisabledBorderColor: =Self.BorderColor
+            DisabledFill: =Self.Fill
+            DisplayMode: =DisplayMode.Disabled
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =15
+            HoverFill: =ColorFade(Self.Fill, -20%)
+            RadiusBottomLeft: =20
+            RadiusBottomRight: =20
+            RadiusTopLeft: =20
+            RadiusTopRight: =20
+            Text: =""
+            Width: =gal_Goals.Width/4
+            X: =gal_Goals.Width- Self.Width-NextArrowGoalsGallery.Width-lbl_GoalDateGoalsGallery.Width-150-lbl_GoalStatusGoalsGallery.Width
+            Y: =23
+            ZIndex: =10
+
+        "'lb_%Completion' As label":
+            OnSelect: =Select(Parent)
+            Text: |+
+                =If(countInitialItems=0,0, If(ThisItem.'Measure Progress'.Value="Subgoal progress",
+                With({_Initial: Sum(
+                                Filter(
+                                    ColGoalProgress,
+                                    SubGoalId.Id = Value(ThisItem.ID)
+                                ),
+                                Initial
+                            ),_Target: Sum(
+                                Filter(
+                                    ColGoalProgress,
+                                    SubGoalId.Id = Value(ThisItem.ID)
+                                ),
+                                Target
+                            ) },
+                            If(_Initial=0||_Target=0||IsBlank(_Initial)||IsBlank(_Target),0,
+                RoundUp(
+                            _Initial / _Target * 100,
+                            0
+                        ))),
+                        With({_Initial:ThisItem.Initial,_Target:ThisItem.Target},
+                         If(_Initial=0||_Target=0,0,
+                             RoundUp(_Initial/_Target*100,0) ))))&" %"
+                
+            Width: =100
+            X: =lbl_GoalStatusGoalsGallery.X-Self.Width
+            Y: =lbl_GoalStatusGoalsGallery.Y
+            ZIndex: =11
+
+        Button2 As button:
+            BorderColor: =ColorFade(_txtColorFill, 10%)
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =60
+            HoverFill: =
+            OnSelect: |-
+                =Set(editGoalRecord,ThisItem);Set(VarEditDelete,false);Set(_GoalTarget,//Container1.Width/1.9
+                
+                editGoalRecord.Initial/editGoalRecord.Target*ContainerEditGoalScreen.Width/1.8
+                );Set(_Percentage, Round(
+                            Value(editGoalRecord.Initial / editGoalRecord.Target * 100),
+                            0
+                 ));
+                // UpdateContext({_DeleteGoal:true});
+                Set(_DeleteGoal,false);
+                 Navigate(EditGoalScreen)
+            PressedBorderColor: =
+            PressedFill: =
+            RadiusBottomLeft: =5
+            RadiusBottomRight: =5
+            RadiusTopLeft: =5
+            RadiusTopRight: =5
+            Text: =""
+            Width: =gal_Goals.TemplateWidth-10
+            X: =10
+            ZIndex: =12
+
+    drp_SelectDateGoalGallery As dropdown:
+        BorderColor: =_txtColorFill
+        ChevronBackground: =Self.Fill
+        ChevronFill: =Black
+        ChevronHoverBackground: =Self.Fill
+        ChevronHoverFill: =RGBA(0, 0, 0, 1)
+        Default: =If(_editGoalRequest,editGoalRecord.'Goal Date',"")
+        Fill: =ColorFade(_txtColorFill,60%)
+        FocusedBorderColor: =_primaryColor
+        Height: =ContainerNewGoal.Height/20
+        HoverFill: =ColorFade(Self.Fill,40%)
+        Items: |-
+            =
+            Table({Id:1, Value:"Custom date"},{Id:2, Value:"Q4 Oct-Dec-2022"},{Id:3, Value:"Q1 Jan-Mar-2023"},{Id:4, Value:"Q2 Apr-Jun-2023"},{Id:5, Value:"H2 Jul-Dec-2023"},{Id:6, Value:"H1 Jan-Jun-2023"},{Id:7, Value:"FY Jan-Dec-2023"})
+        OnChange: |-
+            =Switch(
+                Self.Selected.Value,
+                "Q4 Oct-Dec-2022",
+                UpdateContext(
+                    {
+                        _startDate: Date(
+                            2022,
+                            10,
+                            1
+                        ),
+                        _endDate: Date(
+                            2022,
+                            12,
+                            31
+                        )
+                    }
+                ),
+                "Q1 Jan-Mar-2023",
+                UpdateContext(
+                    {
+                        _startDate: Date(
+                            2023,
+                            1,
+                            1
+                        ),
+                        _endDate: Date(
+                            2023,
+                            3,
+                            31
+                        )
+                    }
+                ),
+                "Q2 Apr-Jun-2023",
+                UpdateContext(
+                    {
+                        _startDate: Date(
+                            2023,
+                            4,
+                            1
+                        ),
+                        _endDate: Date(
+                            2023,
+                            6,
+                            30
+                        )
+                    }
+                ),
+                "H2 Jul-Dec-2023",
+                UpdateContext(
+                    {
+                        _startDate: Date(
+                            2023,
+                            7,
+                            1
+                        ),
+                        _endDate: Date(
+                            2023,
+                            12,
+                            31
+                        )
+                    }
+                ),
+                "H1 Jan-Jun-2023",
+                UpdateContext(
+                    {
+                        _startDate: Date(
+                            2023,
+                            1,
+                            1
+                        ),
+                        _endDate: Date(
+                            2023,
+                            6,
+                            30
+                        )
+                    }
+                ),
+                "FY Jan-Dec-2023",
+                UpdateContext(
+                    {
+                        _startDate: Date(
+                            2023,
+                            1,
+                            1
+                        ),
+                        _endDate: Date(
+                            2023,
+                            12,
+                            31
+                        )
+                    }
+                ),
+                Today()
+            )
+        PressedFill: =Self.Fill
+        Reset: =ResetControl
+        SelectionColor: =_primaryColor
+        SelectionFill: =Self.Fill
+        Size: =10
+        Width: =Gallery4_1.Width/7
+        X: =gal_GoalsGallery.X+20
+        Y: =gal_GoalsGallery.Y+gal_GoalsGallery.Height+20
+        ZIndex: =11
+
+    DatePicker_EndGoalGallery_1 As datepicker:
+        BorderColor: =RGBA(166, 166, 166, 1)
+        CalendarHeaderFill: =ColorFade(RGBA(202, 80, 16, 1), -30%)
+        Color: =RGBA(51, 51, 51, 1)
+        DefaultDate: |-
+            =
+            _endDate
+        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+        DisplayMode: |-
+            =If(
+                drp_SelectDateGoalGallery.SelectedText.Value <> "Custom date",
+                DisplayMode.Disabled,
+                DisplayMode.Edit
+            )
+        Font: =Font.'Segoe UI'
+        Height: =ContainerNewGoal.Height/20
+        HoverDateFill: =RGBA(200, 200, 200, 1)
+        IconBackground: =RGBA(202, 80, 16, 1)
+        OnChange: =If(Self.SelectedDate<Today()&&drp_SelectDateGoalGallery.Selected.Value="Custom date",Notify("You cannot choose date less than Today",NotificationType.Error,1000);Reset(DatePicker_EndGoalGallery_1));
+        PaddingTop: =5
+        Reset: =ResetControl
+        SelectedDateFill: =RGBA(202, 80, 16, 1)
+        Size: =13
+        Width: =Gallery4_1.Width/7
+        X: =DatePicker_StartGoalGallery.X+DatePicker_StartGoalGallery.Width+20
+        Y: =gal_GoalsGallery.Y+gal_GoalsGallery.Height+20
+        ZIndex: =12
+
+    DatePicker_StartGoalGallery As datepicker:
+        BorderColor: =RGBA(166, 166, 166, 1)
+        CalendarHeaderFill: =ColorFade(RGBA(202, 80, 16, 1), -30%)
+        Color: =RGBA(51, 51, 51, 1)
+        DefaultDate: |-
+            =
+            _startDate
+        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+        DisplayMode: |-
+            =If(
+                drp_SelectDateGoalGallery.SelectedText.Value <> "Custom date",
+              DisplayMode.Disabled,
+                DisplayMode.Edit
+            )
+        Font: =Font.'Segoe UI'
+        Height: =ContainerNewGoal.Height/20
+        HoverDateFill: =RGBA(200, 200, 200, 1)
+        IconBackground: =RGBA(202, 80, 16, 1)
+        OnChange: =If(Self.SelectedDate<Today()&&drp_SelectDateGoalGallery.Selected.Value="Custom date",Notify("You cannot choose date less than Today",NotificationType.Error,1000);Reset(DatePicker_StartGoalGallery));
+        OnSelect: =//If(Self.SelectedDate<Today(),Notify("You cannot choose date less than Today"));
+        PaddingTop: =5
+        Reset: =ResetControl
+        SelectedDateFill: =RGBA(202, 80, 16, 1)
+        Size: =13
+        Width: =Gallery4_1.Width/7
+        X: =drp_SelectDateGoalGallery.X+drp_SelectDateGoalGallery.Width+20
+        Y: =gal_GoalsGallery.Y+gal_GoalsGallery.Height+20
+        ZIndex: =13
+

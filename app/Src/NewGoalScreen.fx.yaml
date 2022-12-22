@@ -1,0 +1,831 @@
+NewGoalScreen As screen:
+    OnVisible: =
+
+    backgroundComponent_1 As backgroundComponent:
+        Default: ="Goals"
+        Fill: =RGBA(230, 230, 230, 0.97)
+        Items: =MenuItemsCollection
+        SetMenuWidth: =backgroundComponent_1.MenuWidth
+
+    ContainerNewGoal As groupContainer.manualLayoutContainer:
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =Parent.Height-100
+        Width: |
+            =Parent.Width/2
+        X: =Parent.Width/2-Self.Width/2
+        Y: =70
+        ZIndex: =2
+
+        lbl_NewGoals As label:
+            Align: =Align.Center
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Semibold
+            Height: =ContainerNewGoal.Height/18
+            Size: =20
+            Text: =If(createSubGoal,"New subgoal",_editGoalRequest,"Edit Goal","New Goal")
+            Width: =200
+            X: =ContainerNewGoal.Width/2-Self.Width/2
+            Y: =5
+            ZIndex: =1
+
+        lbl_Owner As label:
+            Color: =_labelColor
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Semibold
+            Height: =ContainerNewGoal.Height/22
+            Size: =14
+            Text: ="Owner *"
+            X: =25
+            Y: =lbl_NewGoals.Y+lbl_NewGoals.Height
+            ZIndex: =2
+
+        lbl_Type As label:
+            Color: =_labelColor
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Semibold
+            Height: =ContainerNewGoal.Height/22
+            Size: =14
+            Text: ="Type *"
+            X: =lbl_Owner.X
+            Y: =ComBox_AddOwner.Y+ComBox_AddOwner.Height+5
+            ZIndex: =4
+
+        gal_Type As gallery.galleryHorizontal:
+            Default: |
+                =//If(_editGoalRequest,{Value:LookUp(gal_Type.AllItems,Value=editGoalRecord.Types,)})
+                If(_editGoalRequest,{Value:editGoalRecord.Types},{Value:"Individual"})
+            Fill: |
+                =RGBA(0, 0, 0, 0)
+            Height: =ContainerNewGoal.Height/19+35
+            Items: |-
+                =//Table({Id:1,Value:"Individual"},{Id:2,Value:"Company Goal"})
+                ["Individual","Company Goal"]
+            OnSelect: |-
+                =UpdateContext({varSel:true})
+            TemplateFill: =If(ThisItem.IsSelected&& varSel,_primaryColor,White)
+            TemplateSize: =Self.Width/2- (Self.TemplatePadding+5)
+            Width: =ContainerNewGoal.Width-50
+            X: =lbl_Owner.X
+            Y: =lbl_Type.Y+lbl_Type.Height
+            ZIndex: =5
+
+            Button1_1 As button:
+                BorderColor: =_txtColorFill
+                Color: =If(ThisItem.IsSelected,White,Black)
+                Fill: |-
+                    =If(ThisItem.IsSelected&&(ThisItem.Value="Individual"||ThisItem.Value="Company Goal") ,ColorFade(_primaryColor,10%),White)
+                    //gal_Type.Fill
+                FocusedBorderThickness: =2
+                Height: =gal_Type.TemplateHeight
+                HoverBorderColor: =ColorFade(_primaryColor,-20%)
+                HoverColor: |-
+                    =
+                    If(ThisItem.IsSelected,White,ColorFade(_primaryColor,-20%))
+                HoverFill: =
+                OnSelect: =Select(Parent)
+                PaddingLeft: =Button1_1.Width/3.9
+                PressedColor: =RGBA(255, 255, 255, 1)
+                PressedFill: |-
+                    =//ColorFade(_labelColor,90%)
+                    DimGrey
+                RadiusBottomLeft: =2
+                RadiusBottomRight: =2
+                RadiusTopLeft: =2
+                RadiusTopRight: =2
+                Size: =12
+                Text: =ThisItem.Value
+                Width: =gal_Type.TemplateWidth
+                ZIndex: =1
+
+            Image1_1 As image:
+                Height: =50
+                Image: =Switch(ThisItem.Value,"Individual",pedestrian,"Company Goal",organization)
+                ImagePosition: =ImagePosition.Fill
+                OnSelect: =Select(Parent)
+                PaddingBottom: =5
+                PaddingLeft: =5
+                PaddingRight: =5
+                PaddingTop: =5
+                Width: =50
+                X: =gal_Type.TemplateWidth-Self.Width-250
+                Y: =5
+                ZIndex: =2
+
+        btn_AddMySelf As button:
+            BorderStyle: =BorderStyle.None
+            Color: =ColorFade(_primaryColor,-20%)
+            Fill: =RGBA(255, 255, 255, 1)
+            Font: =Font.'Open Sans Condensed'
+            Height: =ContainerNewGoal.Height/20
+            HoverColor: =ColorFade(_primaryColor,-20%)
+            HoverFill: =Transparent
+            OnSelect: |-
+                =Reset(ComBox_AddOwner); Set(_editMyselfOwner,false);Set(ResetControl,false);
+                //Set(_AddMyself,LookUp(Office365Users.SearchUser(), DisplayName=User().FullName));
+                ClearCollect(CollGoalUser,LookUp(Office365Users.SearchUser(), DisplayName=User().FullName));
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            PressedColor: =_primaryColor
+            PressedFill: =White
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Size: =12.5
+            Text: ="Add Myself"
+            Width: =gal_Type.Width-ComBox_AddOwner.Width+10
+            X: =ComBox_AddOwner.Width+ComBox_AddOwner.X+5
+            Y: =lbl_Owner.Y+lbl_Owner.Height
+            ZIndex: =6
+
+        lbl_Title As label:
+            Color: =_labelColor
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Semibold
+            Height: =ContainerNewGoal.Height/22
+            Size: =14
+            Text: ="Title *"
+            X: =lbl_Owner.X
+            Y: =gal_Type.Y+gal_Type.Height+5
+            ZIndex: =7
+
+        txt_Title As text:
+            BorderColor: =_txtColorFill
+            Default: =If(_editGoalRequest,editGoalRecord.Title,"")
+            Fill: =ColorFade(_txtColorFill,50%)
+            FocusedBorderColor: =_primaryColor
+            FocusedBorderThickness: =2
+            Height: =ContainerNewGoal.Height/20
+            HoverBorderColor: =ColorFade( Self.BorderColor,10%)
+            HoverColor: =Black
+            HoverFill: =ColorFade(Self.Fill,10%)
+            PaddingLeft: =10
+            RadiusBottomLeft: =1
+            RadiusBottomRight: =1
+            RadiusTopLeft: =1
+            RadiusTopRight: =1
+            Reset: =ResetControl
+            Width: =gal_Type.Width-20
+            X: =lbl_Owner.X+5
+            Y: =lbl_Title.Y+lbl_Title.Height
+            ZIndex: =8
+
+        lbl_Description As label:
+            Color: =_labelColor
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Semibold
+            Height: =ContainerNewGoal.Height/22
+            Size: =14
+            Text: ="Description *"
+            Width: =300
+            X: =lbl_Owner.X
+            Y: =txt_Title.Y+txt_Title.Height+5
+            ZIndex: =9
+
+        txt_Description As text:
+            BorderColor: =_txtColorFill
+            Default: |-
+                =//If(_editGoalRequest,_editRelatedGoalRecord.Description, editRelatedGoal,editGoalRecord.Description,"")
+                If(_editGoalRequest,editGoalRecord.Description,"")
+            Fill: =ColorFade(_txtColorFill,50%)
+            FocusedBorderColor: =_primaryColor
+            FocusedBorderThickness: =2
+            Height: =ContainerNewGoal.Height/12
+            HoverBorderColor: =ColorFade( Self.BorderColor,10%)
+            HoverColor: =Black
+            HoverFill: =ColorFade(Self.Fill,10%)
+            Mode: =TextMode.MultiLine
+            PaddingLeft: =10
+            RadiusBottomLeft: =1
+            RadiusBottomRight: =1
+            RadiusTopLeft: =1
+            RadiusTopRight: =1
+            Reset: =ResetControl
+            Width: =gal_Type.Width-20
+            X: =lbl_Owner.X+5
+            Y: =lbl_Description.Y+lbl_Description.Height
+            ZIndex: =10
+
+        lbl_MeasureProgress As label:
+            Color: =_labelColor
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Semibold
+            Height: =ContainerNewGoal.Height/22
+            Size: =14
+            Text: ="How will you measure progress?"
+            Width: =400
+            X: =lbl_Owner.X
+            Y: =txt_Description.Y+txt_Description.Height+5
+            ZIndex: =11
+
+        drp_MeasureProgress As dropdown:
+            BorderColor: =_txtColorFill
+            ChevronBackground: =Self.Fill
+            ChevronFill: =Black
+            ChevronHoverBackground: =Self.Fill
+            ChevronHoverFill: =RGBA(0, 0, 0, 1)
+            Default: =If(_editGoalRequest, editGoalRecord.'Measure Progress'.Value,"")
+            Fill: =ColorFade(_txtColorFill,60%)
+            FocusedBorderColor: =_primaryColor
+            Height: =ContainerNewGoal.Height/20
+            HoverFill: =ColorFade(Self.Fill,40%)
+            Items: |-
+                =
+                Table({Id:1, Value:"% Percent"},{Id:2,Value:"# Value"},{Id:3, Value:"$ Currency"},{Id:4,Value:"0/1"},{Id:5,Value:"Subgoal progress"},{Id:6, Value:"Task progress"})
+            OnChange: =Reset(txt_Initial);Reset(txt_Target);
+            PressedFill: =Self.Fill
+            Reset: =ResetControl
+            SelectionColor: =_primaryColor
+            SelectionFill: =Self.Fill
+            Size: =10
+            Width: =If(Self.Selected.Id=5||Self.Selected.Id=6, txt_Title.Width/2.5, txt_Title.Width/4.5)
+            X: =lbl_Owner.X+5
+            Y: =lbl_MeasureProgress.Y+lbl_MeasureProgress.Height
+            ZIndex: =12
+
+        lbl_Initial As label:
+            Align: =Align.Right
+            Color: =_labelColor
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Semibold
+            Height: =ContainerNewGoal.Height/20
+            PaddingRight: =20
+            Size: =14
+            Text: ="Initial"
+            Visible: =drp_MeasureProgress.Selected.Id<>5&&drp_MeasureProgress.Selected.Id<>6
+            Width: =txt_Title.Width/6
+            X: =drp_MeasureProgress.X+drp_MeasureProgress.Width
+            Y: =lbl_MeasureProgress.Y+lbl_MeasureProgress.Height+2
+            ZIndex: =13
+
+        lbl_Target As label:
+            Align: =Align.Right
+            Color: =_labelColor
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Semibold
+            Height: =ContainerNewGoal.Height/20
+            PaddingRight: =20
+            Size: =14
+            Text: ="Target"
+            Visible: =drp_MeasureProgress.Selected.Id<>5&&drp_MeasureProgress.Selected.Id<>6
+            Width: =txt_Title.Width/6
+            X: =txt_Initial.X+txt_Initial.Width
+            Y: =lbl_MeasureProgress.Y+lbl_MeasureProgress.Height+2
+            ZIndex: =14
+
+        txt_Initial As text:
+            BorderColor: =_txtColorFill
+            Default: =If(_editGoalRequest,editGoalRecord.Initial,0)
+            DisplayMode: =Switch(drp_MeasureProgress.Selected.Id,4,DisplayMode.Disabled,DisplayMode.Edit)
+            Fill: =ColorFade(_txtColorFill,50%)
+            FocusedBorderColor: =_primaryColor
+            FocusedBorderThickness: =2
+            Format: =TextFormat.Number
+            Height: =ContainerNewGoal.Height/20
+            HoverBorderColor: =ColorFade( Self.BorderColor,10%)
+            HoverColor: =Black
+            HoverFill: =ColorFade(Self.Fill,10%)
+            OnChange: |-
+                =
+                With({InvalidVal:Value(Self.Text)},
+                If(InvalidVal<0,Notify("Invalid initial Value",NotificationType.Error,1000);UpdateContext({InvalidVal:true}),
+                InvalidVal>Value(txt_Target.Text),UpdateContext({InvalidVal:true}),
+                UpdateContext({InvalidVal:false})
+                )
+                
+                )
+            RadiusBottomLeft: =1
+            RadiusBottomRight: =1
+            RadiusTopLeft: =1
+            RadiusTopRight: =1
+            Reset: =ResetControl
+            Size: =10
+            Visible: =drp_MeasureProgress.Selected.Id<>5&&drp_MeasureProgress.Selected.Id<>6
+            Width: =txt_Title.Width/4.5
+            X: =lbl_Initial.Width+lbl_Initial.X
+            Y: =lbl_MeasureProgress.Y+lbl_MeasureProgress.Height+2
+            ZIndex: =15
+
+        txt_Target As text:
+            BorderColor: =_txtColorFill
+            Default: |-
+                =If(_editGoalRequest,editGoalRecord.Target,Switch(drp_MeasureProgress.Selected.Id,1,100,4,1))
+                //If(_editGoalRequest,If(editRelatedGoal,_editRelatedGoalRecord.Target,editGoalRecord.Target,Switch(drp_MeasureProgress.Selected.Id,1,100,4,1)))
+            DisplayMode: =Switch(drp_MeasureProgress.Selected.Id,4,DisplayMode.Disabled,DisplayMode.Edit)
+            Fill: =ColorFade(_txtColorFill,50%)
+            FocusedBorderColor: =_primaryColor
+            FocusedBorderThickness: =2
+            Font: =Font.'Segoe UI'
+            Format: =TextFormat.Number
+            Height: =ContainerNewGoal.Height/20
+            HoverBorderColor: =ColorFade( Self.BorderColor,10%)
+            HoverColor: =Black
+            HoverFill: =ColorFade(Self.Fill,10%)
+            OnChange: |-
+                =
+                With({InvalidVal:Value(Self.Text)},
+                If(InvalidVal<0,Notify("Invalid target value",NotificationType.Error,1000);UpdateContext({InvalidVal:true}),
+                InvalidVal<Value(txt_Initial.Text),Notify("Target value cannot be lesser than initial value",NotificationType.Error,1000);UpdateContext({InvalidVal:true}),
+                UpdateContext({InvalidVal:false})
+                )
+                
+                )
+            RadiusBottomLeft: =1
+            RadiusBottomRight: =1
+            RadiusTopLeft: =1
+            RadiusTopRight: =1
+            Reset: =ResetControl
+            Size: =10
+            Visible: =drp_MeasureProgress.Selected.Id<>5&&drp_MeasureProgress.Selected.Id<>6
+            Width: =txt_Title.Width/4.5
+            X: =lbl_Target.X+lbl_Target.Width
+            Y: =lbl_MeasureProgress.Y+lbl_MeasureProgress.Height+2
+            ZIndex: =16
+
+        drp_Goalcurrency As dropdown:
+            BorderColor: =_txtColorFill
+            ChevronBackground: =Self.Fill
+            ChevronFill: =Black
+            ChevronHoverBackground: =Self.Fill
+            ChevronHoverFill: =RGBA(0, 0, 0, 1)
+            Default: =""
+            Fill: =ColorFade(_txtColorFill,60%)
+            FocusedBorderColor: =_primaryColor
+            Height: =If(Self.Visible, ContainerNewGoal.Height/20,0)
+            HoverFill: =ColorFade(Self.Fill,40%)
+            Items: =["USD","EUR","KWD","INR"]
+            OnSelect: =
+            PressedFill: =Self.Fill
+            SelectionColor: =_primaryColor
+            SelectionFill: =Self.Fill
+            Size: =10
+            Visible: =drp_MeasureProgress.SelectedText.Value="$ Currency"
+            Width: =txt_Title.Width/4.5
+            X: =30
+            Y: =drp_MeasureProgress.Y+drp_MeasureProgress.Height+10
+            ZIndex: =17
+
+        lbl_ParentGoals As label:
+            Color: =_labelColor
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Semibold
+            Height: =ContainerNewGoal.Height/22
+            Size: =14
+            Text: ="Parent goal *"
+            Width: =400
+            X: =22
+            Y: =drp_Goalcurrency.Y+drp_Goalcurrency.Height
+            ZIndex: =18
+
+        drp_ParentGoals As dropdown:
+            BorderColor: =_txtColorFill
+            ChevronBackground: =Self.Fill
+            ChevronFill: =Black
+            ChevronHoverBackground: =Self.Fill
+            ChevronHoverFill: =RGBA(0, 0, 0, 1)
+            Default: ="Search by the owner or the name of a goal"
+            Fill: =ColorFade(_txtColorFill,60%)
+            FocusedBorderColor: =_primaryColor
+            Height: =ContainerNewGoal.Height/20
+            HoverFill: =ColorFade(Self.Fill,40%)
+            Items: |
+                =
+                Table({Id:1, Value:"% Percent"},{Id:2,Value:"# Value"},{Id:3, Value:"$ Currency"},{Id:4,Value:"0/1"},{Id:5,Value:"Subgoal progress"},{Id:6, Value:"Task progress"})
+            PressedFill: =Self.Fill
+            SelectionColor: =_primaryColor
+            SelectionFill: =Self.Fill
+            Size: =10
+            Width: =txt_Title.Width
+            X: =lbl_Owner.X+5
+            Y: =lbl_ParentGoals.Y+lbl_ParentGoals.Height
+            ZIndex: =19
+
+        lbl_Goalstartend As label:
+            Color: =_labelColor
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Semibold
+            Height: =ContainerNewGoal.Height/22
+            Size: =14
+            Text: ="When does this goal start and end?"
+            Width: =400
+            X: =25
+            Y: =drp_ParentGoals.Y+drp_ParentGoals.Height+5
+            ZIndex: =20
+
+        drp_SelectDate As dropdown:
+            BorderColor: =_txtColorFill
+            ChevronBackground: =Self.Fill
+            ChevronFill: =Black
+            ChevronHoverBackground: =Self.Fill
+            ChevronHoverFill: =RGBA(0, 0, 0, 1)
+            Default: =If(_editGoalRequest,editGoalRecord.'Goal Date',"")
+            Fill: =ColorFade(_txtColorFill,60%)
+            FocusedBorderColor: =_primaryColor
+            Height: =ContainerNewGoal.Height/20
+            HoverFill: =ColorFade(Self.Fill,40%)
+            Items: |-
+                =
+                Table({Id:1, Value:"Custom date"},{Id:2, Value:"Q4 Oct-Dec-2022"},{Id:3, Value:"Q1 Jan-Mar-2023"},{Id:4, Value:"Q2 Apr-Jun-2023"},{Id:5, Value:"H2 Jul-Dec-2023"},{Id:6, Value:"H1 Jan-Jun-2023"},{Id:7, Value:"FY Jan-Dec-2023"})
+            OnChange: |-
+                =Switch(
+                    Self.Selected.Value,
+                    "Q4 Oct-Dec-2022",
+                    UpdateContext(
+                        {
+                            _startDate: Date(
+                                2022,
+                                10,
+                                1
+                            ),
+                            _endDate: Date(
+                                2022,
+                                12,
+                                31
+                            )
+                        }
+                    ),
+                    "Q1 Jan-Mar-2023",
+                    UpdateContext(
+                        {
+                            _startDate: Date(
+                                2023,
+                                1,
+                                1
+                            ),
+                            _endDate: Date(
+                                2023,
+                                3,
+                                31
+                            )
+                        }
+                    ),
+                    "Q2 Apr-Jun-2023",
+                    UpdateContext(
+                        {
+                            _startDate: Date(
+                                2023,
+                                4,
+                                1
+                            ),
+                            _endDate: Date(
+                                2023,
+                                6,
+                                30
+                            )
+                        }
+                    ),
+                    "H2 Jul-Dec-2023",
+                    UpdateContext(
+                        {
+                            _startDate: Date(
+                                2023,
+                                7,
+                                1
+                            ),
+                            _endDate: Date(
+                                2023,
+                                12,
+                                31
+                            )
+                        }
+                    ),
+                    "H1 Jan-Jun-2023",
+                    UpdateContext(
+                        {
+                            _startDate: Date(
+                                2023,
+                                1,
+                                1
+                            ),
+                            _endDate: Date(
+                                2023,
+                                6,
+                                30
+                            )
+                        }
+                    ),
+                    "FY Jan-Dec-2023",
+                    UpdateContext(
+                        {
+                            _startDate: Date(
+                                2023,
+                                1,
+                                1
+                            ),
+                            _endDate: Date(
+                                2023,
+                                12,
+                                31
+                            )
+                        }
+                    ),
+                    Today()
+                )
+            PressedFill: =Self.Fill
+            Reset: =ResetControl
+            SelectionColor: =_primaryColor
+            SelectionFill: =Self.Fill
+            Size: =10
+            Width: =(txt_Title.Width-30)/3
+            X: =30
+            Y: =lbl_Goalstartend.Y+lbl_Goalstartend.Height
+            ZIndex: =21
+
+        DatePicker_End As datepicker:
+            BorderColor: =RGBA(166, 166, 166, 1)
+            CalendarHeaderFill: =ColorFade(RGBA(202, 80, 16, 1), -30%)
+            Color: =RGBA(51, 51, 51, 1)
+            DefaultDate: |-
+                =
+                _endDate
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            DisplayMode: |-
+                =If(
+                    drp_SelectDate.SelectedText.Value <> "Custom date",
+                    DisplayMode.Disabled,
+                    DisplayMode.Edit
+                )
+            Font: =Font.'Segoe UI'
+            Height: =ContainerNewGoal.Height/20
+            HoverDateFill: =RGBA(200, 200, 200, 1)
+            IconBackground: =RGBA(202, 80, 16, 1)
+            OnChange: =If(Self.SelectedDate<Today()&&drp_SelectDate.Selected.Value="Custom date",Notify("You cannot choose date less than Today",NotificationType.Error,1000);Reset(DatePicker_End));
+            PaddingTop: =5
+            Reset: =ResetControl
+            SelectedDateFill: =RGBA(202, 80, 16, 1)
+            Size: =13
+            Width: =(txt_Title.Width-30)/3
+            X: =DatePicker_Start.X+DatePicker_Start.Width+15
+            Y: =lbl_Goalstartend.Y+lbl_Goalstartend.Height
+            ZIndex: =22
+
+        DatePicker_Start As datepicker:
+            BorderColor: =RGBA(166, 166, 166, 1)
+            CalendarHeaderFill: =ColorFade(RGBA(202, 80, 16, 1), -30%)
+            Color: =RGBA(51, 51, 51, 1)
+            DefaultDate: |-
+                =
+                _startDate
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            DisplayMode: |-
+                =If(
+                    drp_SelectDate.SelectedText.Value <> "Custom date",
+                  DisplayMode.Disabled,
+                    DisplayMode.Edit
+                )
+            Font: =Font.'Segoe UI'
+            Height: =ContainerNewGoal.Height/20
+            HoverDateFill: =RGBA(200, 200, 200, 1)
+            IconBackground: =RGBA(202, 80, 16, 1)
+            OnChange: =If(Self.SelectedDate<Today()&&drp_SelectDate.Selected.Value="Custom date",Notify("You cannot choose date less than Today",NotificationType.Error,1000);Reset(DatePicker_Start));
+            OnSelect: =//If(Self.SelectedDate<Today(),Notify("You cannot choose date less than Today"));
+            PaddingTop: =5
+            Reset: =ResetControl
+            SelectedDateFill: =RGBA(202, 80, 16, 1)
+            Size: =13
+            Width: =(txt_Title.Width-30)/3
+            X: =drp_SelectDate.X+drp_SelectDate.Width+15
+            Y: =lbl_Goalstartend.Y+lbl_Goalstartend.Height
+            ZIndex: =23
+
+        btn_SaveGoal As button:
+            DisplayMode: |-
+                =//If(_FieldsBlank||InvalidVal,DisplayMode.Disabled,
+                 DisplayMode.Edit
+            Fill: =ColorFade(_primaryColor,-10%)
+            Height: =ContainerNewGoal.Height/20
+            HoverFill: =ColorFade(_primaryColor, -20%)
+            OnSelect: |
+                =ClearCollect(
+                    CollGoalUser,
+                    ComBox_AddOwner.SelectedItems
+                );
+                Switch(
+                    gal_Type.Selected.Value,
+                    "Individual",
+                    If(
+                        IsBlank(txt_Title.Text) || IsBlank(ComBox_AddOwner.SelectedItems) || IsBlank(ComboBoxParentGoals.SelectedItems) || IsBlank(txt_Description.Text),
+                        UpdateContext({_FieldsBlank: true}),
+                        UpdateContext({_FieldsBlank: false})
+                    ),
+                    "Company Goal",
+                    If(
+                        IsBlank(txt_Title.Text) || IsBlank(ComBox_AddOwner.SelectedItems) || IsBlank(txt_Description.Text),
+                        UpdateContext({_FieldsBlank: true}),
+                        UpdateContext({_FieldsBlank: false})
+                    )
+                );
+                If(
+                    _FieldsBlank || InvalidVal || IsBlank(gal_Type.AllItems),
+                    Notify("Please fill all the fields that are not optional"),
+                    Patch(
+                        Goals,
+                        If(
+                            _editGoalRequest,
+                            LookUp(
+                                Goals,
+                                ID = editGoalRecord.ID
+                            ),
+                            Defaults(Goals)
+                        ),
+                        {
+                            OwnerName: {
+                                '@odata.type': "#Microsoft.Azure.Connectors.SharePoint.SPListExpandedReference",
+                                Claims: "i:0#.f|membership|" & First(CollGoalUser).DisplayName,
+                                // _AddMyself.DisplayName,
+                                Department: "",
+                                DisplayName: First(CollGoalUser).DisplayName,
+                                Email: "",
+                                JobTitle: "",
+                                Picture: ""
+                            },
+                            Types: gal_Type.Selected.Value,
+                            Title: txt_Title.Text,
+                            Description: txt_Description.Text,
+                            'Measure Progress': {Value: drp_MeasureProgress.Selected.Value},
+                            Initial: If(
+                                drp_MeasureProgress.Selected.Value = "Subgoal progress",
+                                0,
+                                Value(txt_Initial.Text)
+                            ),
+                            Target: If(
+                                drp_MeasureProgress.Selected.Value = "Subgoal progress",
+                                100,
+                                Value(txt_Target.Text)
+                            ),
+                            // 'Parent goal':ComboBoxParentGolas.Selected.Title
+                            'Goal Date': drp_SelectDate.Selected.Value,
+                            'Goal Start': DatePicker_Start.SelectedDate,
+                            'Goal End': DatePicker_End.SelectedDate,
+                            SubGoalId: {
+                                Id: If(
+                                    !IsBlank(VarId),
+                                    VarId,
+                                    Value("")
+                                ),
+                                Value: If(
+                                    !IsBlank(VarValue),
+                                    VarValue,
+                                    Text("")
+                                )
+                            },
+                            ParentGoals: {
+                                Id: LookUp(
+                                    Goals,
+                                    ComboBoxParentGoals.Selected.Title = Title,
+                                    ID
+                                ),
+                                Value: ComboBoxParentGoals.Selected.Title
+                            },
+                            Status: If(
+                                !_editGoalRequest,
+                                {Value: "No Status"},
+                                {Value: gal_BtnStatus.Selected.Value}
+                            ),
+                            'Currency Value': If(
+                                drp_MeasureProgress.Selected.Value = "$ Currency",
+                                drp_Goalcurrency.Selected.Value
+                            )
+                        }
+                    );
+                    
+                   
+                    If(
+                        _editGoalRequest,
+                        Notify(
+                            "Goal Updated",
+                            NotificationType.Success
+                        ),
+                        Notify(
+                            "Goal created",
+                            NotificationType.Success
+                        )
+                    );
+                    Reset(gal_Type);
+                    Set(
+                        ResetControl,
+                        true
+                    );
+                    Set(
+                        RessetControl,
+                        false
+                    );
+                    Set(
+                        _editGoalRequest,
+                        false
+                    );
+                    Navigate(HomeScreen)
+                );
+                //Set(countInitialItemsTask,CountRows( gal_MyTask.AllItems));
+            RadiusBottomLeft: =5
+            RadiusBottomRight: =5
+            RadiusTopLeft: =5
+            RadiusTopRight: =5
+            Text: =If(_editGoalRequest,"Update","Create")
+            X: =ContainerNewGoal.Width-Self.Width-40
+            Y: =ContainerNewGoal.Height-Self.Height-30
+            ZIndex: =24
+
+        ComBox_AddOwner As combobox:
+            BorderColor: =_txtColorFill
+            ChevronBackground: =ColorFade(_txtColorFill,50%)
+            ChevronFill: =ColorFade(_txtColorFill,50%)
+            ChevronHoverBackground: =Self.Fill
+            ChevronHoverFill: =RGBA(0, 13, 75, 1)
+            DefaultSelectedItems: =First(CollGoalUser)
+            DisplayFields: =["DisplayName","Mail"]
+            Fill: =ColorFade(_txtColorFill,50%)
+            Height: =ContainerNewGoal.Height/20
+            HoverFill: =ColorFade(Self.Fill,40%)
+            InputTextPlaceholder: ="Add owner"
+            Items: =Office365Users.SearchUser()
+            OnChange: =Set(ComboBox1Item,LookUp(Office365Users.SearchUser(), DisplayName=User().FullName))
+            PaddingLeft: =10
+            PressedFill: =RGBA(255, 255, 255, 1)
+            Reset: =ResetControl
+            SearchFields: =["DisplayName"]
+            SearchItems: =Search(Office365Users.SearchUser(),ComBox_AddOwner.SearchText,"DisplayName")
+            SelectionColor: =_primaryColor
+            SelectionFill: =Self.Fill
+            SelectMultiple: =false
+            Template: =ListItemTemplate.Person
+            Width: =ContainerNewGoal.Width/1.35
+            X: =28
+            Y: =lbl_Owner.Y+lbl_Owner.Height
+            ZIndex: =25
+
+        Htm_GoalText As htmlViewer:
+            AutoHeight: =true
+            Height: =drp_MeasureProgress.Height
+            HtmlText: |-
+                =Switch(drp_MeasureProgress.Selected.Id,5,"<CENTER><b>Note: </b> You will be able to choose subgoals after you create this goal</CENTER>",6,"<CENTER><b>Note: </b>You will be able to relate tasks to this goal after you create this goal</CENTER>")
+            PaddingLeft: =10
+            PaddingRight: =10
+            Width: =txt_Title.Width- drp_MeasureProgress.Width
+            X: =drp_MeasureProgress.X+drp_MeasureProgress.Width+10
+            Y: =drp_MeasureProgress.Y
+            ZIndex: =26
+
+        ComboBoxParentGoals As combobox:
+            BorderColor: =_txtColorFill
+            ChevronBackground: =
+            ChevronFill: =Black
+            ChevronHoverBackground: =Self.Fill
+            ChevronHoverFill: =RGBA(0, 0, 0, 1)
+            DefaultSelectedItems: |-
+                =If(_editGoalRequest,LookUp(Goals,ID=Value(editGoalRecord.ParentGoals.Value)))
+                //LookUp(Goals,ID=Value(TextInput2.Text),Title)
+                
+                //If(_editGoalRequest,If(editRelatedGoal,_editRelatedGoalRecord.Title,LookUp(Goals,ID=gal_MyActiveGoals.Selected.ID),""))
+            DisplayFields: =["Title"]
+            Fill: =ColorFade(_txtColorFill,60%)
+            Height: =ContainerNewGoal.Height/20
+            HoverFill: =_txtColorFill
+            IsSearchable: =false
+            Items: =Goals.Title 
+            PaddingLeft: =10
+            PressedFill: =_txtColorFill
+            Reset: =ResetControl
+            SearchFields: =["Title"]
+            SearchItems: =[]
+            SelectionColor: |
+                =_primaryColor
+            SelectionFill: =Self.Fill
+            SelectMultiple: =false
+            Width: =txt_Title.Width
+            X: =lbl_Owner.X+5
+            Y: =lbl_ParentGoals.Y+lbl_ParentGoals.Height
+            ZIndex: =27
+
+        icn_GoalBack As icon.Cancel:
+            Color: =_primaryColor
+            Height: =57
+            Icon: =Icon.Cancel
+            OnSelect: |+
+                =Reset(ComBox_AddOwner);
+                If(ViaEditGoal,UpdateContext({ViaEditGoal:false});Back(),
+                Set(
+                    editGoalRecord,
+                    LookUp(
+                        Goals,
+                      ParentGoals.Value = Text(editGoalRecord.ID)
+                    )
+                );
+                UpdateContext({createSubGoal:false});
+                Patch(Goals,LookUp(Goals,ID=editGoalRecord.ID),{
+                
+                'Measure Progress':CurrentMeasureProgress
+                        
+                    })
+                );
+                
+            PaddingBottom: =15
+            PaddingLeft: =15
+            PaddingRight: =15
+            PaddingTop: =15
+            Width: =54
+            X: =ContainerNewGoal.Width-Self.Width
+            ZIndex: =28
+
