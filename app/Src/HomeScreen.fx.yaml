@@ -476,7 +476,7 @@ HomeScreen As screen:
                       to
                       
                       {
-                        stroke-dasharray:"&(If(countInitialItemsTask=0,0,CountRows(Filter(gal_MyTask.AllItems,Status="Completed"))/CountRows(gal_MyTask.AllItems)))*100&" "&100-(If(countInitialItemsTask=0,0,CountRows(Filter(ColTaskProgress,Status="Completed"))/CountRows(gal_MyTask.AllItems)))*100&";
+                        stroke-dasharray:"&(If(countInitialItemsTask=0,0,CountRows(Filter(gal_MyTask.AllItems,Status="Completed"))/CountRows(gal_MyTask.AllItems)))*100&" "&100-(If(countInitialItemsTask=0,0,CountRows(Filter(gal_MyTask.AllItems,Status="Completed"))/CountRows(gal_MyTask.AllItems)))*100&";
                       }
                       
                     }
@@ -485,7 +485,7 @@ HomeScreen As screen:
                   </style>
                 
                   <circle class='rail' cx='20' cy='20' r='16' stroke-width='2' fill='transparent'> </circle>
-                   <circle class='progress' cx='20' cy='20' r='16' stroke-width='2' fill='transparent'  stroke-dasharray='"&(If(countInitialItemsTask=0,0,CountRows(Filter(ColTaskProgress,Status="Completed"))/CountRows(gal_MyTask.AllItems)))*100&" "&100-(If(countInitialItemsTask=0,0,CountRows(Filter(gal_MyTask.AllItems,Status="Completed"))/CountRows(gal_MyTask.AllItems)))*100&"' stroke-dashoffset='25'> </circle>
+                   <circle class='progress' cx='20' cy='20' r='16' stroke-width='2' fill='transparent'  stroke-dasharray='"&(If(countInitialItemsTask=0,0,CountRows(Filter(gal_MyTask.AllItems,Status="Completed"))/CountRows(gal_MyTask.AllItems)))*100&" "&100-(If(countInitialItemsTask=0,0,CountRows(Filter(gal_MyTask.AllItems,Status="Completed"))/CountRows(gal_MyTask.AllItems)))*100&"' stroke-dashoffset='25'> </circle>
                   
                  <g class='progress-text'>
                    <text y='50%' transform='translate(0,2)'>
