@@ -1,20 +1,47 @@
 HomeScreen As screen:
     BackgroundImage: =
     Fill: =
-    OnVisible: |+
-        =ClearCollect(ColTempTask,'Tasks Management');
-             ClearCollect(
+    OnVisible: |
+        =ClearCollect(
+            ColTempTask,
+            'Tasks Management'
+        );
+        ClearCollect(
             ColTaskProgress,
             Filter(
-        ColTempTask,User().FullName in To.DisplayName));
+                ColTempTask,
+                User().FullName in To.DisplayName
+            )
+        );
         ClearCollect(
             ColGoalProgress,
-        Goals
+            Goals
         );
-        Set(countInitialItems,CountRows( gal_MyActiveGoals.AllItems));
-        Set(countInitialItemsTask,CountRows( gal_MyTask.AllItems));
-        With({_InitialSumGoal:Sum(gal_MyActiveGoals.AllItems,Initial),TargetSumGoal:Sum(gal_MyActiveGoals.AllItems,Target)},If(_InitialSumGoal=0||TargetSumGoal=0||IsBlank(_InitialSumGoal)||IsBlank(TargetSumGoal),UpdateContext({_GoalProgress:0}), UpdateContext({_GoalProgress: _InitialSumGoal/TargetSumGoal})));
-        
+        Set(
+            countInitialItems,
+            CountRows(gal_MyActiveGoals.AllItems)
+        );
+        Set(
+            countInitialItemsTask,
+            CountRows(gal_MyTask.AllItems)
+        );
+        With(
+            {
+                _InitialSumGoal: Sum(
+                    gal_MyActiveGoals.AllItems,
+                    Initial
+                ),
+                TargetSumGoal: Sum(
+                    gal_MyActiveGoals.AllItems,
+                    Target
+                )
+            },
+            If(
+                _InitialSumGoal = 0 || TargetSumGoal = 0 || IsBlank(_InitialSumGoal) || IsBlank(TargetSumGoal),
+                UpdateContext({_GoalProgress: 0}),
+                UpdateContext({_GoalProgress: _InitialSumGoal / TargetSumGoal})
+            )
+        );
 
     backgroundComponent_HomeScreen As backgroundComponent:
         Default: ="Home"
@@ -173,7 +200,7 @@ HomeScreen As screen:
                     Reset(ComBox_To);
                     Navigate(
                         NewTaskScreen,
-                        ScreenTransition.Fade
+                        ScreenTransition.Fade,{  _startDate: Today()}
                     )
                 )
             PressedColor: =_primaryColor
@@ -394,7 +421,7 @@ HomeScreen As screen:
                   
                  <g class='progress-text'>
                    <text y='50%' transform='translate(0,2)'>
-                     <tspan x='50%' y='55%' text-anchor='middle' class='progress-percent'> "&RoundUp(_GoalProgress*100,0)&"</tspan>
+                     <tspan x='50%' y='55%' text-anchor='middle' class='progress-percent'> "&If(_GoalProgress=0,0, RoundUp(_GoalProgress*100,0))&"</tspan>
                    </text>
                       <text y='60%' transform='translate(0,2)'>
                     

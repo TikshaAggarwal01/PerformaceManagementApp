@@ -83,13 +83,14 @@ GeneralTargetScreen As screen:
                 ZIndex: =1
 
         icnSaveTargetScore As icon.Save:
-            Color: =White
+            Color: =_primaryColor
+            Fill: =
             Height: =recTopGeneral.Height
             Icon: =Icon.Save
             OnSelect: |-
                 =
                 Patch('General Target List',Defaults('General Target List'),{
-                    Title:GUID(),
+                    Title:ComBox_AddOwner_1.Selected.Mail,
                     Accountability:LookUp(galGeneralTarget.AllItems,Id=1,radioGeneralTarget.Selected.Id),
                     'Punctuality & Attendance':LookUp(galGeneralTarget.AllItems,Id=2,radioGeneralTarget.Selected.Id),
                     Cooperation:LookUp(galGeneralTarget.AllItems,Id=3,radioGeneralTarget.Selected.Id),
@@ -241,7 +242,7 @@ GeneralTargetScreen As screen:
             lblTotalScoreValue As label:
                 Align: =Align.Center
                 BorderThickness: =1
-                Color: =RGBA(0, 13, 75, 1)
+                Color: =_primaryColor
                 Fill: =RGBA(255, 255, 255, 1)
                 Font: =Font.Lato
                 Height: =30
@@ -257,10 +258,11 @@ GeneralTargetScreen As screen:
             ChevronHoverBackground: =White
             ChevronHoverFill: =RGBA(0, 13, 75, 1)
             DefaultSelectedItems: =First(CollGoalUser)
+            DisabledFill: =RGBA(244, 244, 244, 0.78)
             DisplayFields: =["DisplayName","Mail"]
             Fill: =White
-            Height: =ContainerNewGoal.Height/20
-            HoverFill: =
+            Height: =35
+            HoverFill: =RGBA(230, 230, 230, 1)
             InputTextPlaceholder: ="Add owner"
             Items: =Office365Users.SearchUser()
             OnChange: =Set(ComboBox1Item,LookUp(Office365Users.SearchUser(), DisplayName=User().FullName))
@@ -273,8 +275,19 @@ GeneralTargetScreen As screen:
             SelectionFill: =Self.Fill
             SelectMultiple: =false
             Template: =ListItemTemplate.Person
-            Width: =ContainerNewGoal.Width/1.35
-            X: =40
+            Width: =300
+            X: =lbl_MyActiveGoalTask_1.X+lbl_MyActiveGoalTask_1.Width
             Y: =2
             ZIndex: =10
+
+        lbl_MyActiveGoalTask_1 As label:
+            Font: =Font.Lato
+            FontWeight: =FontWeight.Bold
+            Height: =37
+            OnSelect: =
+            Size: =14.5
+            Text: ="Select Employee"
+            Width: =180
+            X: =25
+            ZIndex: =11
 

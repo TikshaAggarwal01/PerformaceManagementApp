@@ -1432,10 +1432,7 @@ EditGoalScreen As screen:
                                 'Ref Goal Id'.Id = editGoalRecord.ID
                             );
                     
-                        Set(
-                            countInitialItems,
-                            CountRows(gal_MyActiveGoals.AllItems)
-                        );
+                        //Set(  countInitialItems,  CountRows(gal_MyActiveGoals.AllItems) );
                         Navigate(HomeScreen),
                         createSubGoal, UpdateContext({createSubGoal:false});
                         Navigate(NewGoalScreen);

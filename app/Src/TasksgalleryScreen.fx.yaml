@@ -191,7 +191,7 @@ TasksgalleryScreen As screen:
             Color: |-
                 =If(ThisItem.IsSelected, ColorFade(ColorValue("#ff6601"),20%),White)
             Fill: =RGBA(0, 0, 0, 0)
-            Font: =Font.'Segoe UI'
+            Font: =Font.Lato
             Height: =53
             HoverColor: |-
                 =

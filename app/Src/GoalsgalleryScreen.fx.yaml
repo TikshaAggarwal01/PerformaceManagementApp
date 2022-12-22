@@ -27,7 +27,7 @@ GoalsgalleryScreen As screen:
             Color: |-
                 =If(ThisItem.IsSelected, ColorFade(ColorValue("#ff6601"),20%),White)
             Fill: =RGBA(0, 0, 0, 0)
-            Font: =Font.'Segoe UI'
+            Font: =Font.Lato
             Height: =53
             HoverColor: |-
                 =
@@ -672,7 +672,7 @@ GoalsgalleryScreen As screen:
         Height: =ContainerNewGoal.Height/20
         HoverDateFill: =RGBA(200, 200, 200, 1)
         IconBackground: =RGBA(202, 80, 16, 1)
-        OnChange: =If(Self.SelectedDate<Today()&&drp_SelectDateGoalGallery.Selected.Value="Custom date",Notify("You cannot choose date less than Today",NotificationType.Error,1000);Reset(DatePicker_EndGoalGallery_1));
+        OnChange: =//If(Self.SelectedDate<Today()&&drp_SelectDateGoalGallery.Selected.Value="Custom date",Notify("You cannot choose date less than Today",NotificationType.Error,1000);Reset(DatePicker_EndGoalGallery_1));
         PaddingTop: =5
         Reset: =ResetControl
         SelectedDateFill: =RGBA(202, 80, 16, 1)
@@ -700,7 +700,7 @@ GoalsgalleryScreen As screen:
         Height: =ContainerNewGoal.Height/20
         HoverDateFill: =RGBA(200, 200, 200, 1)
         IconBackground: =RGBA(202, 80, 16, 1)
-        OnChange: =If(Self.SelectedDate<Today()&&drp_SelectDateGoalGallery.Selected.Value="Custom date",Notify("You cannot choose date less than Today",NotificationType.Error,1000);Reset(DatePicker_StartGoalGallery));
+        OnChange: =//If(Self.SelectedDate<Today()&&drp_SelectDateGoalGallery.Selected.Value="Custom date",Notify("You cannot choose date less than Today",NotificationType.Error,1000);Reset(DatePicker_StartGoalGallery));
         OnSelect: =//If(Self.SelectedDate<Today(),Notify("You cannot choose date less than Today"));
         PaddingTop: =5
         Reset: =ResetControl
