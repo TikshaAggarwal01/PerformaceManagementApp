@@ -34,16 +34,17 @@ GeneralTargetScreen As screen:
         SetMenuWidth: =backgroundComponent_GeneralTargetScreen.MenuWidth
 
     ContainerTargets As groupContainer.manualLayoutContainer:
-        Height: =Parent.Height/1.13
+        Height: =Parent.Height/1.1
         Width: =Parent.Width-backgroundComponent_GeneralTargetScreen.MenuWidth-20
         X: =backgroundComponent_GeneralTargetScreen.MenuWidth+10
-        Y: =85
+        Y: =70
         ZIndex: =2
 
         recTopGeneral As rectangle:
             Fill: =RGBA(0, 0, 0, 1)
             Height: =ContainerTargets.Height/14
             Width: =Parent.Width
+            Y: =45
             ZIndex: =2
 
         lblGeneral As label:
@@ -145,7 +146,7 @@ GeneralTargetScreen As screen:
             ZIndex: =7
 
         galGeneralTarget As gallery.variableTemplateHeightGallery:
-            Height: =ContainerTargets.Height-(2*recTopGeneral.Height)-recTopGeneral.X
+            Height: =ContainerTargets.Height-(2*recTopGeneral.Height)-recTopGeneral.X-40
             Items: = GeneralQueCollection
             Layout: =Layout.Vertical
             ShowScrollbar: =false
@@ -167,7 +168,6 @@ GeneralTargetScreen As screen:
                 Height: =24.91304347826087
                 HtmlText: ="<b>" &ThisItem.Id&". &nbsp;"&ThisItem.Title&"</b> &nbsp;" & ThisItem.Que
                 OnSelect: =Select(Parent)
-                Size: =13
                 Width: =recTopGeneral.Width/1.5
                 X: =12
                 ZIndex: =1
@@ -249,4 +249,32 @@ GeneralTargetScreen As screen:
                 Text: =ThisItem.Value
                 Width: =112
                 ZIndex: =1
+
+        ComBox_AddOwner_1 As combobox:
+            BorderColor: =_txtColorFill
+            ChevronBackground: =Black
+            ChevronFill: =ColorFade(_txtColorFill,50%)
+            ChevronHoverBackground: =White
+            ChevronHoverFill: =RGBA(0, 13, 75, 1)
+            DefaultSelectedItems: =First(CollGoalUser)
+            DisplayFields: =["DisplayName","Mail"]
+            Fill: =White
+            Height: =ContainerNewGoal.Height/20
+            HoverFill: =
+            InputTextPlaceholder: ="Add owner"
+            Items: =Office365Users.SearchUser()
+            OnChange: =Set(ComboBox1Item,LookUp(Office365Users.SearchUser(), DisplayName=User().FullName))
+            PaddingLeft: =10
+            PressedFill: =RGBA(255, 255, 255, 1)
+            Reset: =ResetControl
+            SearchFields: =["DisplayName"]
+            SearchItems: =Search(Office365Users.SearchUser(),ComBox_AddOwner_1.SearchText,"DisplayName")
+            SelectionColor: =_primaryColor
+            SelectionFill: =Self.Fill
+            SelectMultiple: =false
+            Template: =ListItemTemplate.Person
+            Width: =ContainerNewGoal.Width/1.35
+            X: =40
+            Y: =2
+            ZIndex: =10
 

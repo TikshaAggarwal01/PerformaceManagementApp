@@ -211,32 +211,32 @@ GoalsgalleryScreen As screen:
                   CountRows(
                     Filter(
                         CollCountGoals,
-                        Status.Value=  ThisItem.Value &&  'Created By'.DisplayName = User().FullName
+                        Status.Value=  ThisItem.Value &&   (OwnerName.DisplayName = User().FullName||'Created By'.DisplayName = User().FullName)
                      
                     )),
                     "Off track",
                     CountRows(
                     Filter(
                         CollCountGoals,
-                          Status.Value=  ThisItem.Value &&  'Created By'.DisplayName = User().FullName
+                          Status.Value=  ThisItem.Value &&   (OwnerName.DisplayName = User().FullName||'Created By'.DisplayName = User().FullName)
                     )),
                     "Closed",
                     CountRows(
                     Filter(
                         CollCountGoals,
-                          Status.Value=  ThisItem.Value &&  'Created By'.DisplayName = User().FullName
+                          Status.Value=  ThisItem.Value &&  (OwnerName.DisplayName = User().FullName||'Created By'.DisplayName = User().FullName)
                     )),
                     "No Status",
                     CountRows(
                     Filter(
                         CollCountGoals,
-                         Status.Value=  ThisItem.Value &&  'Created By'.DisplayName = User().FullName
+                         Status.Value=  ThisItem.Value &&   (OwnerName.DisplayName = User().FullName||'Created By'.DisplayName = User().FullName)
                     )),
                     "At risk",
                    CountRows(
                     Filter(
                         CollCountGoals,
-                          Status.Value=  ThisItem.Value &&  'Created By'.DisplayName = User().FullName
+                          Status.Value=  ThisItem.Value &&  (OwnerName.DisplayName = User().FullName||'Created By'.DisplayName = User().FullName)
                     ))
                 )
                 
@@ -331,7 +331,7 @@ GoalsgalleryScreen As screen:
                                 "SearchbyOwner",
                                 OwnerName.DisplayName,"SearchbyTitle",Title
                             ),
-                            OwnerName.DisplayName = User().FullName && Types = "Company Goal"&&Status.Value = gal_CountTypeGoalGallery.Selected.Value
+                           ( OwnerName.DisplayName = User().FullName||'Created By'.DisplayName = User().FullName) && Status.Value = gal_CountTypeGoalGallery.Selected.Value
                         ),
                         tct_SearchGoalGallery.Text,
                         "SearchbyOwner","SearchbyTitle"

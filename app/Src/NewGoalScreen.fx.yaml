@@ -805,7 +805,7 @@ NewGoalScreen As screen:
             Icon: =Icon.Cancel
             OnSelect: |+
                 =Reset(ComBox_AddOwner);
-                If(ViaEditGoal,UpdateContext({ViaEditGoal:false});Back(),
+                If(ViaEditGoal||!_editGoalRequest,UpdateContext({ViaEditGoal:false});Back(),
                 Set(
                     editGoalRecord,
                     LookUp(
@@ -820,6 +820,7 @@ NewGoalScreen As screen:
                         
                     })
                 );
+                
                 
             PaddingBottom: =15
             PaddingLeft: =15
