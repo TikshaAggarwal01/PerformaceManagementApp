@@ -22,17 +22,7 @@ App As appinfo:
             )
         );
         Set(countInitialItems,CountRows( gal_MyActiveGoals.AllItems));
-        Set(
-            fontSize,
-            Switch(
-                ScreenSize,
-                ScreenSize.Small,
-                12,
-                ScreenSize.Medium,
-                13,
-                14
-            )
-        );
+        
         ClearCollect(
         ActiveData,Goals
         );
@@ -69,6 +59,11 @@ App As appinfo:
                      Screen:GeneralTargetScreen
                 }
             )
+        );
+        ClearCollect(
+            myTeam,
+            Office365Users.DirectReportsV2(Office365Users.Manager(User().Email).DisplayName)
+           // Office365Users.DirectReportsV2(Office365Users.Manager(User().Email).value)
         );
         
         

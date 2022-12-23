@@ -1,6 +1,15 @@
 GeneralTargetScreen As screen:
     OnVisible: |-
-        =ClearCollect(
+        =UpdateContext({myFont:Switch(GeneralTargetScreen.Size, ScreenSize.Small,8, ScreenSize.Medium,9, ScreenSize.Large,10, ScreenSize.ExtraLarge,11)});
+        ClearCollect(myData,LookUp('General Target List',Title=ComBox_AddOwner_1.Selected.Email));
+        
+            If(IsBlankOrError(Office365Users.DirectReportsV2(Office365Users.Manager(User().Email).Mail).value),
+            ClearCollect(CurrentManager,Office365Users.MyProfile().Mail);
+            ,ClearCollect(CurrentManager,Office365Users.DirectReportsV2(Office365Users.Manager(User().Email).Mail).value)
+            );
+           // Office365Users.DirectReportsV2(Office365Users.Manager(User().Email).value)
+        
+        ClearCollect(
             GeneralQueCollection,
             Table({Id: 1, Title:"Accountability", Que:"Accepts responsibility for actions, answerable to consequences"},
             {Id: 2, Title:"Punctuality & Attendance", Que:"Is rarely absent, arrives punctually, works required hours"}),
@@ -63,6 +72,7 @@ GeneralTargetScreen As screen:
             Fill: =RGBA(0, 0, 0, 1)
             Height: =recTopGeneral.Height
             Items: =["Exceeds","Meet","N.I."]
+            TemplatePadding: =0
             TemplateSize: =109
             Width: =364
             X: |-
@@ -75,11 +85,10 @@ GeneralTargetScreen As screen:
                 Align: =Align.Center
                 Color: =RGBA(255, 255, 255, 1)
                 Font: =Font.Lato
-                Height: =33
+                Height: =recTopGeneral.Height
                 Size: =18
                 Text: =ThisItem.Value
-                Width: =96
-                Y: =5
+                Width: =109
                 ZIndex: =1
 
         icnSaveTargetScore As icon.Save:
@@ -89,31 +98,32 @@ GeneralTargetScreen As screen:
             Icon: =Icon.Save
             OnSelect: |-
                 =
-                Patch('General Target List',Defaults('General Target List'),{
-                    Title:ComBox_AddOwner_1.Selected.Mail,
-                    Accountability:LookUp(galGeneralTarget.AllItems,Id=1,radioGeneralTarget.Selected.Id),
-                    'Punctuality & Attendance':LookUp(galGeneralTarget.AllItems,Id=2,radioGeneralTarget.Selected.Id),
-                    Cooperation:LookUp(galGeneralTarget.AllItems,Id=3,radioGeneralTarget.Selected.Id),
-                    'Attitude/Respectfulness':LookUp(galGeneralTarget.AllItems,Id=4,radioGeneralTarget.Selected.Id),
-                    'Accepts Criticism':LookUp(galGeneralTarget.AllItems,Id=5,radioGeneralTarget.Selected.Id),
-                    Flexibility:LookUp(galGeneralTarget.AllItems,Id=6,radioGeneralTarget.Selected.Id),
-                    'Policy & Procedures':LookUp(galGeneralTarget.AllItems,Id=7,radioGeneralTarget.Selected.Id),
-                    'Completion of Assignments':LookUp(galGeneralTarget.AllItems,Id=8,radioGeneralTarget.Selected.Id),
-                    'Patient Interaction':LookUp(galGeneralTarget.AllItems,Id=9,radioGeneralTarget.Selected.Id),
-                    'Quality of Work':LookUp(galGeneralTarget.AllItems,Id=10,radioGeneralTarget.Selected.Id),
-                    'Willingness to Develop Skills':LookUp(galGeneralTarget.AllItems,Id=11,radioGeneralTarget.Selected.Id),
-                    'Communication Skills':LookUp(galGeneralTarget.AllItems,Id=12,radioGeneralTarget.Selected.Id),
-                    'Organizational Skills':LookUp(galGeneralTarget.AllItems,Id=13,radioGeneralTarget.Selected.Id),
-                    Confidentiality:LookUp(galGeneralTarget.AllItems,Id=14,radioGeneralTarget.Selected.Id),
-                    'Appearance/Dress Code':LookUp(galGeneralTarget.AllItems,Id=15,radioGeneralTarget.Selected.Id),
-                    'Appearance of Work Area':LookUp(galGeneralTarget.AllItems,Id=16,radioGeneralTarget.Selected.Id),
-                    'Conflict Resolution':LookUp(galGeneralTarget.AllItems,Id=17,radioGeneralTarget.Selected.Id),
-                    Safety:LookUp(galGeneralTarget.AllItems,Id=18,radioGeneralTarget.Selected.Id),
-                    'Job Knowledge':LookUp(galGeneralTarget.AllItems,Id=19,radioGeneralTarget.Selected.Id),
-                    'OSHA & HIPPA':LookUp(galGeneralTarget.AllItems,Id=20,radioGeneralTarget.Selected.Id),
-                    'Expense Management':LookUp(galGeneralTarget.AllItems,Id=21,radioGeneralTarget.Selected.Id),
-                    Inventory:LookUp(galGeneralTarget.AllItems,Id=22,radioGeneralTarget.Selected.Id),
-                    Availability:LookUp(galGeneralTarget.AllItems,Id=23,radioGeneralTarget.Selected.Id)
+                Patch('General Target List',
+                Defaults('General Target List'),{
+                    Title:ComBox_AddOwner_1.Selected.Email,
+                    Accountability:Value(LookUp(galGeneralTarget.AllItems,Id=1,radioGeneralTarget.Selected.Id)),
+                    'Punctuality & Attendance':Value(LookUp(galGeneralTarget.AllItems,Id=2,radioGeneralTarget.Selected.Id)),
+                    Cooperation:Value(LookUp(galGeneralTarget.AllItems,Id=3,radioGeneralTarget.Selected.Id)),
+                    'Attitude/Respectfulness':Value(LookUp(galGeneralTarget.AllItems,Id=4,radioGeneralTarget.Selected.Id)),
+                    'Accepts Criticism':Value(LookUp(galGeneralTarget.AllItems,Id=5,radioGeneralTarget.Selected.Id)),
+                    Flexibility:Value(LookUp(galGeneralTarget.AllItems,Id=6,radioGeneralTarget.Selected.Id)),
+                    'Policy & Procedures':Value(LookUp(galGeneralTarget.AllItems,Id=7,radioGeneralTarget.Selected.Id)),
+                    'Completion of Assignments':Value(LookUp(galGeneralTarget.AllItems,Id=8,radioGeneralTarget.Selected.Id)),
+                    'Patient Interaction':Value(LookUp(galGeneralTarget.AllItems,Id=9,radioGeneralTarget.Selected.Id)),
+                    'Quality of Work':Value(LookUp(galGeneralTarget.AllItems,Id=10,radioGeneralTarget.Selected.Id)),
+                    'Willingness to Develop Skills':Value(LookUp(galGeneralTarget.AllItems,Id=11,radioGeneralTarget.Selected.Id)),
+                    'Communication Skills':Value(LookUp(galGeneralTarget.AllItems,Id=12,radioGeneralTarget.Selected.Id)),
+                    'Organizational Skills':Value(LookUp(galGeneralTarget.AllItems,Id=13,radioGeneralTarget.Selected.Id)),
+                    Confidentiality:Value(LookUp(galGeneralTarget.AllItems,Id=14,radioGeneralTarget.Selected.Id)),
+                    'Appearance/Dress Code':Value(LookUp(galGeneralTarget.AllItems,Id=15,radioGeneralTarget.Selected.Id)),
+                    'Appearance of Work Area':Value(LookUp(galGeneralTarget.AllItems,Id=16,radioGeneralTarget.Selected.Id)),
+                    'Conflict Resolution':Value(LookUp(galGeneralTarget.AllItems,Id=17,radioGeneralTarget.Selected.Id)),
+                    Safety:Value(LookUp(galGeneralTarget.AllItems,Id=18,radioGeneralTarget.Selected.Id)),
+                    'Job Knowledge':Value(LookUp(galGeneralTarget.AllItems,Id=19,radioGeneralTarget.Selected.Id)),
+                    'OSHA & HIPPA':Value(LookUp(galGeneralTarget.AllItems,Id=20,radioGeneralTarget.Selected.Id)),
+                    'Expense Management':Value(LookUp(galGeneralTarget.AllItems,Id=21,radioGeneralTarget.Selected.Id)),
+                    Inventory:Value(LookUp(galGeneralTarget.AllItems,Id=22,radioGeneralTarget.Selected.Id)),
+                    Availability:Value(LookUp(galGeneralTarget.AllItems,Id=23,radioGeneralTarget.Selected.Id))
                 });
                 Set(ResetControl,true);Set(ResetControl,false);
                 Notify("General Target submitted successfully",NotificationType.Success);
@@ -160,7 +170,7 @@ GeneralTargetScreen As screen:
             TemplatePadding: =2
             TemplateSize: =galGeneralTarget.Height/23
             Width: =Parent.Width
-            Y: =recTopGeneral.Y+recTopGeneral.Height
+            Y: =94
             ZIndex: =8
 
             htmGeneralQuestions As htmlViewer:
@@ -169,6 +179,7 @@ GeneralTargetScreen As screen:
                 Height: =24.91304347826087
                 HtmlText: ="<b>" &ThisItem.Id&". &nbsp;"&ThisItem.Title&"</b> &nbsp;" & ThisItem.Que
                 OnSelect: =Select(Parent)
+                Size: =myFont
                 Width: =recTopGeneral.Width/1.5
                 X: =12
                 ZIndex: =1
@@ -176,11 +187,35 @@ GeneralTargetScreen As screen:
             radioGeneralTarget As radio:
                 BorderStyle: =BorderStyle.None
                 Color: =RGBA(0, 0, 0, 0)
-                Default: =""
-                Height: =24.91304347826087
+                Default: |-
+                    =Switch(ThisItem.Id,1,Switch(First(CollEmpGeneralData).Accountability,3,"Exceeds",2,"Meet",3,"N. I."),2
+                    ,Switch(First(CollEmpGeneralData).'Punctuality & Attendance',3,"Exceeds",2,"Meet",3,"N. I."),3,
+                    Switch(First(CollEmpGeneralData).Cooperation,3,"Exceeds",2,"Meet",3,"N. I."),4,
+                    Switch(First(CollEmpGeneralData).'Attitude/Respectfulness',3,"Exceeds",2,"Meet",3,"N. I."),5,
+                    Switch(First(CollEmpGeneralData).'Accepts Criticism',3,"Exceeds",2,"Meet",3,"N. I."),6,
+                    Switch(First(CollEmpGeneralData).Flexibility,3,"Exceeds",2,"Meet",3,"N. I."),7,
+                    Switch(First(CollEmpGeneralData).'Policy & Procedures',3,"Exceeds",2,"Meet",3,"N. I."),8,
+                    Switch(First(CollEmpGeneralData).'Completion of Assignments',3,"Exceeds",2,"Meet",3,"N. I."),9,
+                    Switch(First(CollEmpGeneralData).'Patient Interaction',3,"Exceeds",2,"Meet",3,"N. I."),10,
+                    Switch(First(CollEmpGeneralData).'Quality of Work',3,"Exceeds",2,"Meet",3,"N. I."),11,
+                    Switch(First(CollEmpGeneralData).'Willingness to Develop Skills',3,"Exceeds",2,"Meet",3,"N. I."),12,
+                    Switch(First(CollEmpGeneralData).'Communication Skills',3,"Exceeds",2,"Meet",3,"N. I."),13,
+                    Switch(First(CollEmpGeneralData).'Organizational Skills',3,"Exceeds",2,"Meet",3,"N. I."),14,
+                    Switch(First(CollEmpGeneralData).Confidentiality,3,"Exceeds",2,"Meet",3,"N. I."),15,
+                    Switch(First(CollEmpGeneralData).'Appearance/Dress Code',3,"Exceeds",2,"Meet",3,"N. I."),16,
+                    Switch(First(CollEmpGeneralData).'Appearance of Work Area',3,"Exceeds",2,"Meet",3,"N. I."),17,
+                    Switch(First(CollEmpGeneralData).'Conflict Resolution',3,"Exceeds",2,"Meet",3,"N. I."),18,
+                    Switch(First(CollEmpGeneralData).Safety,3,"Exceeds",2,"Meet",3,"N. I."),19,
+                    Switch(First(CollEmpGeneralData).'Job Knowledge',3,"Exceeds",2,"Meet",3,"N. I."),20,
+                    Switch(First(CollEmpGeneralData).'OSHA & HIPPA',3,"Exceeds",2,"Meet",3,"N. I."),21,
+                    Switch(First(CollEmpGeneralData).'Expense Management',3,"Exceeds",2,"Meet",3,"N. I."),22,
+                    Switch(First(CollEmpGeneralData).Inventory,3,"Exceeds",2,"Meet",3,"N. I."),23,
+                    Switch(First(CollEmpGeneralData).Availability,3,"Exceeds",2,"Meet",3,"N. I.")
+                    )
+                Height: =htmGeneralQuestions.Height
                 HoverColor: =RGBA(0, 0, 0, 0)
-                Items: |-
-                    =Table({Id:3, Value:"Exceeds"},{Id:2, Value: "Meet"},{Id:1,Value:"NI"})
+                Items: |
+                    =Table({Id:1,Value:"Exceeds"},{Id:2,Value:"Meet"},{Id:3,Value:"N. I."})
                 Layout: =Layout.Horizontal
                 OnSelect: =Select(Parent)
                 PaddingBottom: =0
@@ -189,10 +224,8 @@ GeneralTargetScreen As screen:
                 RadioSize: =28
                 Reset: =ResetControl
                 Width: |
-                    =recTopGeneral.Width-lblGeneral.X-lblGeneral.Width
-                X: |-
-                    =//2*lblGeneral.X+lblGeneral.Width
-                    galExceedsMeetNI.X
+                    =recTopGeneral.Width-lblGeneral.X-lblGeneral.Width-120
+                X: =862
                 ZIndex: =2
 
             lblNIValue1 As label:
@@ -257,6 +290,7 @@ GeneralTargetScreen As screen:
             ChevronFill: =ColorFade(_txtColorFill,50%)
             ChevronHoverBackground: =White
             ChevronHoverFill: =RGBA(0, 13, 75, 1)
+            Default: =First(CollGoalUser)
             DefaultSelectedItems: =First(CollGoalUser)
             DisabledFill: =RGBA(244, 244, 244, 0.78)
             DisplayFields: =["DisplayName","Mail"]
@@ -264,13 +298,18 @@ GeneralTargetScreen As screen:
             Height: =35
             HoverFill: =RGBA(230, 230, 230, 1)
             InputTextPlaceholder: ="Add owner"
-            Items: =Office365Users.SearchUser()
-            OnChange: =Set(ComboBox1Item,LookUp(Office365Users.SearchUser(), DisplayName=User().FullName))
+            IsSearchable: =false
+            Items: |-
+                =//Office365Users.SearchUser()
+                CollGoalUser
+            OnChange: |-
+                =//Set(ComboBox1Item,LookUp(Office365Users.SearchUser(), DisplayName=User().FullName))
+                ClearCollect(CollEmpGeneralData,LookUp('General Target List',Title=ComBox_AddOwner_1.Selected.Email));
             PaddingLeft: =10
             PressedFill: =RGBA(255, 255, 255, 1)
             Reset: =ResetControl
             SearchFields: =["DisplayName"]
-            SearchItems: =Search(Office365Users.SearchUser(),ComBox_AddOwner_1.SearchText,"DisplayName")
+            SearchItems: =[]
             SelectionColor: =_primaryColor
             SelectionFill: =Self.Fill
             SelectMultiple: =false
@@ -290,4 +329,10 @@ GeneralTargetScreen As screen:
             Width: =180
             X: =25
             ZIndex: =11
+
+    Label6 As label:
+        Text: =
+        X: =188
+        Y: =30
+        ZIndex: =3
 

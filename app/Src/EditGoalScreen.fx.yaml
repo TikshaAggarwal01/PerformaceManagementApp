@@ -21,7 +21,11 @@ EditGoalScreen As screen:
             Height: |-
                 =//If(Self.Visible,Min(CountRows(Self.AllItems)*(Self.TemplateHeight+Self.TemplatePadding)+Self.TemplatePadding,ContainerEditGoalScreen.Height/5.5),0)
                 If(Self.Visible,(ContainerEditGoalScreen.Height-lbl_SubGoals.X)/4.5,0)
-            Items: =Filter(ColGoalProgress,SubGoalId.Id=Value(gal_MyActiveGoals.Selected.ID))
+            Items: |+
+                =//Filter(ColGoalProgress,SubGoalId.Id=Value(gal_MyActiveGoals.Selected.ID))
+                
+                Filter(ColGoalProgress,SubGoalId.Id=Value(editGoalRecord.ID))
+                
             Layout: =Layout.Vertical
             OnSelect: |+
                 =Set(

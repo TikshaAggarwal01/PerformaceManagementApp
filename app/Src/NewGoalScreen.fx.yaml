@@ -1,5 +1,9 @@
 NewGoalScreen As screen:
-    OnVisible: =
+    OnVisible: |-
+        = If(IsBlankOrError(Office365Users.DirectReportsV2(Office365Users.Manager(User().Email).DisplayName).value),
+            ClearCollect(CollGoalUser,Office365Users.MyProfile());
+            ,ClearCollect(CollGoalUser,Office365Users.DirectReportsV2(Office365Users.Manager(User().Email).DisplayName).value)
+            );
 
     backgroundComponent_1 As backgroundComponent:
         Default: ="Goals"
@@ -716,13 +720,16 @@ NewGoalScreen As screen:
             Height: =ContainerNewGoal.Height/20
             HoverFill: =ColorFade(Self.Fill,40%)
             InputTextPlaceholder: ="Add owner"
-            Items: =Office365Users.SearchUser()
+            IsSearchable: =false
+            Items: |-
+                =//Office365Users.SearchUser()
+                CollGoalUser
             OnChange: =Set(ComboBox1Item,LookUp(Office365Users.SearchUser(), DisplayName=User().FullName))
             PaddingLeft: =10
             PressedFill: =RGBA(255, 255, 255, 1)
             Reset: =ResetControl
             SearchFields: =["DisplayName"]
-            SearchItems: =Search(Office365Users.SearchUser(),ComBox_AddOwner.SearchText,"DisplayName")
+            SearchItems: =[]
             SelectionColor: =_primaryColor
             SelectionFill: =Self.Fill
             SelectMultiple: =false
