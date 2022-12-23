@@ -16,18 +16,6 @@ NewGoalScreen As screen:
         Y: =70
         ZIndex: =2
 
-        lbl_NewGoals As label:
-            Align: =Align.Center
-            Font: =Font.'Segoe UI'
-            FontWeight: =FontWeight.Semibold
-            Height: =ContainerNewGoal.Height/18
-            Size: =20
-            Text: =If(createSubGoal,"New subgoal",_editGoalRequest,"Edit Goal","New Goal")
-            Width: =200
-            X: =ContainerNewGoal.Width/2-Self.Width/2
-            Y: =5
-            ZIndex: =1
-
         lbl_Owner As label:
             Color: =_labelColor
             Font: =Font.'Segoe UI'
@@ -36,19 +24,8 @@ NewGoalScreen As screen:
             Size: =14
             Text: ="Owner *"
             X: =25
-            Y: =lbl_NewGoals.Y+lbl_NewGoals.Height
+            Y: =20
             ZIndex: =2
-
-        lbl_Type As label:
-            Color: =_labelColor
-            Font: =Font.'Segoe UI'
-            FontWeight: =FontWeight.Semibold
-            Height: =ContainerNewGoal.Height/22
-            Size: =14
-            Text: ="Type *"
-            X: =lbl_Owner.X
-            Y: =ComBox_AddOwner.Y+ComBox_AddOwner.Height+5
-            ZIndex: =4
 
         gal_Type As gallery.galleryHorizontal:
             Default: |
@@ -66,7 +43,7 @@ NewGoalScreen As screen:
             TemplateSize: =Self.Width/2- (Self.TemplatePadding+5)
             Width: =ContainerNewGoal.Width-50
             X: =lbl_Owner.X
-            Y: =lbl_Type.Y+lbl_Type.Height
+            Y: =ComBox_AddOwner.Y+ComBox_AddOwner.Height+20
             ZIndex: =5
 
             Button1_1 As button:
@@ -92,7 +69,6 @@ NewGoalScreen As screen:
                 RadiusBottomRight: =2
                 RadiusTopLeft: =2
                 RadiusTopRight: =2
-                Size: =12
                 Text: =ThisItem.Value
                 Width: =gal_Type.TemplateWidth
                 ZIndex: =1
@@ -725,7 +701,7 @@ NewGoalScreen As screen:
             RadiusTopRight: =5
             Text: =If(_editGoalRequest,"Update","Create")
             X: =ContainerNewGoal.Width-Self.Width-40
-            Y: =ContainerNewGoal.Height-Self.Height-30
+            Y: =DatePicker_End.Y+DatePicker_End.Height+10
             ZIndex: =24
 
         ComBox_AddOwner As combobox:

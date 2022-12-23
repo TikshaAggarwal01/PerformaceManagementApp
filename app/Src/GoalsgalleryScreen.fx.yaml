@@ -211,32 +211,32 @@ GoalsgalleryScreen As screen:
                   CountRows(
                     Filter(
                         CollCountGoals,
-                        Status.Value=  ThisItem.Value &&   (OwnerName.DisplayName = User().FullName||'Created By'.DisplayName = User().FullName)
+                        Status.Value=  ThisItem.Value &&   (OwnerName.DisplayName = User().FullName||'Created By'.DisplayName = User().FullName) &&Types="Company Goal"
                      
                     )),
                     "Off track",
                     CountRows(
                     Filter(
                         CollCountGoals,
-                          Status.Value=  ThisItem.Value &&   (OwnerName.DisplayName = User().FullName||'Created By'.DisplayName = User().FullName)
+                          Status.Value=  ThisItem.Value &&   (OwnerName.DisplayName = User().FullName||'Created By'.DisplayName = User().FullName)&&Types="Company Goal"
                     )),
                     "Closed",
                     CountRows(
                     Filter(
                         CollCountGoals,
-                          Status.Value=  ThisItem.Value &&  (OwnerName.DisplayName = User().FullName||'Created By'.DisplayName = User().FullName)
+                          Status.Value=  ThisItem.Value &&  (OwnerName.DisplayName = User().FullName||'Created By'.DisplayName = User().FullName)&&Types="Company Goal"
                     )),
                     "No Status",
                     CountRows(
                     Filter(
                         CollCountGoals,
-                         Status.Value=  ThisItem.Value &&   (OwnerName.DisplayName = User().FullName||'Created By'.DisplayName = User().FullName)
+                         Status.Value=  ThisItem.Value &&   (OwnerName.DisplayName = User().FullName||'Created By'.DisplayName = User().FullName)&&Types="Company Goal"
                     )),
                     "At risk",
                    CountRows(
                     Filter(
                         CollCountGoals,
-                          Status.Value=  ThisItem.Value &&  (OwnerName.DisplayName = User().FullName||'Created By'.DisplayName = User().FullName)
+                          Status.Value=  ThisItem.Value &&  (OwnerName.DisplayName = User().FullName||'Created By'.DisplayName = User().FullName)&&Types="Company Goal"
                     ))
                 )
                 
@@ -331,7 +331,7 @@ GoalsgalleryScreen As screen:
                                 "SearchbyOwner",
                                 OwnerName.DisplayName,"SearchbyTitle",Title
                             ),
-                           ( OwnerName.DisplayName = User().FullName||'Created By'.DisplayName = User().FullName) && Status.Value = gal_CountTypeGoalGallery.Selected.Value
+                           ( OwnerName.DisplayName = User().FullName||'Created By'.DisplayName = User().FullName) && Status.Value = gal_CountTypeGoalGallery.Selected.Value && Types="Company Goal"
                         ),
                         tct_SearchGoalGallery.Text,
                         "SearchbyOwner","SearchbyTitle"
@@ -493,14 +493,15 @@ GoalsgalleryScreen As screen:
                                     SubGoalId.Id = Value(ThisItem.ID)
                                 ),
                                 Target
-                            ) },
+                            ) 
+                            },
                             If(_Initial=0||_Target=0||IsBlank(_Initial)||IsBlank(_Target),0,
                 RoundUp(
                             _Initial / _Target * 100,
                             0
                         ))),
                         With({_Initial:ThisItem.Initial,_Target:ThisItem.Target},
-                         If(_Initial=0||_Target=0,0,
+                         If(_Initial=0||_Target=0||IsBlank(_Initial)||IsBlank(_Target),0,
                              RoundUp(_Initial/_Target*100,0) ))))&" %"
                 
             Width: =100

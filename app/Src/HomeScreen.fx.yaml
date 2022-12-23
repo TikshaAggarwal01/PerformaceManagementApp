@@ -49,14 +49,14 @@ HomeScreen As screen:
         SetMenuWidth: =backgroundComponent_HomeScreen.MenuWidth
 
     gal_Main As gallery.galleryHorizontal:
-        Height: =Parent.Height-180
+        Height: =Parent.Height-90
         Items: |-
             =Table({Id:1, Value:"My active goals"},{Id:2,Value: "My tasks"})
         TemplatePadding: =8
         TemplateSize: =Self.Width/2- (Self.TemplatePadding+10)
         Width: = If(backgroundComponent_HomeScreen.MenuWidth>80,(Parent.Width-180-100)/1.2,(Parent.Width-150)/1.2)
         X: =backgroundComponent_HomeScreen.MenuWidth+20
-        Y: =105
+        Y: =80
         ZIndex: =2
 
         btn_Homegal_Background As button:
@@ -511,11 +511,11 @@ HomeScreen As screen:
             PaddingLeft: =15
             Text: =Switch(ThisItem.Id,1,"Goals progress", 2,"Tasks progress")
             Width: =gal_Progress.TemplateWidth
-            Y: =10
+            Y: =5
             ZIndex: =3
 
         "gal_Overallprogress As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
-            Height: =gal_Progress.TemplateWidth/1.4
+            Height: =gal_Progress.TemplateWidth/1.45
             Items: |-
                 =Switch(lbl_Progress.Text,"Goals progress", 
                 ["Off track","No Status","On track","At risk","Closed"],"Tasks progress",  ["Completed","Not completed"])
