@@ -360,7 +360,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btn_AddGoalComment",
-      "ParentIndex": 46,
+      "ParentIndex": 19,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -708,7 +708,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btn_AddNew",
-      "ParentIndex": 36,
+      "ParentIndex": 18,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -1036,7 +1036,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btn_AddRelatedTasks",
-      "ParentIndex": 44,
+      "ParentIndex": 49,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -1336,7 +1336,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btn_BackgroungImgDelete",
-      "ParentIndex": 0,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -2025,7 +2025,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btn_Close",
-      "ParentIndex": 32,
+      "ParentIndex": 17,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -3435,7 +3435,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btn_EditDelete",
-      "ParentIndex": 8,
+      "ParentIndex": 28,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -4145,7 +4145,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btn_MainPercentageBar",
-      "ParentIndex": 19,
+      "ParentIndex": 40,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -5118,7 +5118,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btn_PercentageCurrentBar",
-      "ParentIndex": 18,
+      "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -5838,7 +5838,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btn_UpdateProgress",
-      "ParentIndex": 28,
+      "ParentIndex": 16,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -7170,7 +7170,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "cirGoalType",
-      "ParentIndex": 5,
+      "ParentIndex": 25,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -7479,7 +7479,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ContainerGoalCommentDelete",
-      "ParentIndex": 16,
+      "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -7665,7 +7665,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ContainerParentGoal",
-      "ParentIndex": 37,
+      "ParentIndex": 46,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -7929,7 +7929,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "gal_BtnStatus",
-      "ParentIndex": 31,
+      "ParentIndex": 12,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -8153,7 +8153,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "gal_EditDelete",
-      "ParentIndex": 12,
+      "ParentIndex": 34,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -8394,7 +8394,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "gal_EditDelete_1",
-      "ParentIndex": 38,
+      "ParentIndex": 29,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -8627,7 +8627,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "gal_GoalComments",
-      "ParentIndex": 50,
+      "ParentIndex": 33,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -8863,7 +8863,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "gal_GoalRelatedTask",
-      "ParentIndex": 48,
+      "ParentIndex": 50,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -9300,7 +9300,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "gal_Subgoals",
-      "ParentIndex": 40,
+      "ParentIndex": 10,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -9853,7 +9853,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Icn_AddComment",
-      "ParentIndex": 47,
+      "ParentIndex": 20,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -10310,7 +10310,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "icn_EditGoalScreenBack",
-      "ParentIndex": 2,
+      "ParentIndex": 21,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -11058,7 +11058,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "imgGoalType",
-      "ParentIndex": 6,
+      "ParentIndex": 26,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -11511,7 +11511,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "imgUserImageEditGoalScreen",
-      "ParentIndex": 10,
+      "ParentIndex": 31,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -11734,7 +11734,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "imgUserImageGoalEditScreen",
-      "ParentIndex": 7,
+      "ParentIndex": 27,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -12258,7 +12258,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lbl_/",
-      "ParentIndex": 26,
+      "ParentIndex": 14,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -13873,7 +13873,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lbl_Comments",
-      "ParentIndex": 41,
+      "ParentIndex": 9,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -14846,7 +14846,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lbl_Created",
-      "ParentIndex": 4,
+      "ParentIndex": 24,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -15165,7 +15165,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lbl_CurrentValue",
-      "ParentIndex": 24,
+      "ParentIndex": 5,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -16053,7 +16053,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lbl_EndDate",
-      "ParentIndex": 29,
+      "ParentIndex": 43,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -16357,7 +16357,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lbl_Goal",
-      "ParentIndex": 21,
+      "ParentIndex": 22,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -16654,7 +16654,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lbl_GoalDate",
-      "ParentIndex": 11,
+      "ParentIndex": 32,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -17651,7 +17651,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lbl_NoCommentsEditTaskScreen_1",
-      "ParentIndex": 51,
+      "ParentIndex": 35,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -17973,7 +17973,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lbl_NoGoalsRelated",
-      "ParentIndex": 39,
+      "ParentIndex": 8,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -18298,7 +18298,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lbl_NoTask",
-      "ParentIndex": 49,
+      "ParentIndex": 51,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -18628,7 +18628,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lbl_NoTask_2",
-      "ParentIndex": 1,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -19238,7 +19238,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lbl_OwnerDeatilsScreen",
-      "ParentIndex": 9,
+      "ParentIndex": 30,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -20233,7 +20233,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lbl_ParentGoalStartDate",
-      "ParentIndex": 8,
+      "ParentIndex": 7,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -20558,7 +20558,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lbl_ParentGoalStatus",
-      "ParentIndex": 7,
+      "ParentIndex": 8,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -20869,7 +20869,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lbl_ParentsGoals",
-      "ParentIndex": 34,
+      "ParentIndex": 45,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -21216,7 +21216,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lbl_ProgressEditGoalScreen",
-      "ParentIndex": 17,
+      "ParentIndex": 39,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -21532,7 +21532,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lbl_RelatedTasks",
-      "ParentIndex": 43,
+      "ParentIndex": 48,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -21851,7 +21851,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lbl_Start",
-      "ParentIndex": 20,
+      "ParentIndex": 4,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -22174,7 +22174,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lbl_StartDate",
-      "ParentIndex": 15,
+      "ParentIndex": 38,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -22485,7 +22485,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lbl_Status",
-      "ParentIndex": 30,
+      "ParentIndex": 6,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -22796,7 +22796,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lbl_SubGoals",
-      "ParentIndex": 35,
+      "ParentIndex": 7,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -23100,7 +23100,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lbl_TitleEndDate",
-      "ParentIndex": 22,
+      "ParentIndex": 41,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -23426,7 +23426,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lbl_TitleGoalDetailScreen",
-      "ParentIndex": 13,
+      "ParentIndex": 36,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -23735,7 +23735,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lbl_TitleStartDate",
-      "ParentIndex": 14,
+      "ParentIndex": 37,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -24074,7 +24074,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "rad_ProgressMeasureEditGoalScreen",
-      "ParentIndex": 23,
+      "ParentIndex": 42,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -24633,7 +24633,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "shpseparator_EditGoalScreen",
-      "ParentIndex": 42,
+      "ParentIndex": 47,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -24779,7 +24779,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "shpseparator_EditGoalScreen1",
-      "ParentIndex": 33,
+      "ParentIndex": 44,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -24925,7 +24925,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "shpseparator_EditGoalScreen2",
-      "ParentIndex": 3,
+      "ParentIndex": 23,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -25210,7 +25210,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "txt_Comments",
-      "ParentIndex": 45,
+      "ParentIndex": 11,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -25622,7 +25622,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "txt_InitialValue",
-      "ParentIndex": 25,
+      "ParentIndex": 13,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -26029,7 +26029,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "txt_TargetValue",
-      "ParentIndex": 27,
+      "ParentIndex": 15,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {

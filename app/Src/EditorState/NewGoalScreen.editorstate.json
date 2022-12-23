@@ -402,7 +402,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btn_AddMySelf",
-      "ParentIndex": 4,
+      "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -2006,7 +2006,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ComBox_AddOwner",
-      "ParentIndex": 3,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -3345,7 +3345,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "drp_Goalcurrency",
-      "ParentIndex": 16,
+      "ParentIndex": 17,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -4975,7 +4975,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "gal_Type",
-      "ParentIndex": 0,
+      "ParentIndex": 4,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -5431,7 +5431,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "icn_GoalBack",
-      "ParentIndex": 1,
+      "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -7243,7 +7243,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lbl_Owner",
-      "ParentIndex": 2,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -7561,7 +7561,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lbl_ParentGoals",
-      "ParentIndex": 17,
+      "ParentIndex": 16,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {

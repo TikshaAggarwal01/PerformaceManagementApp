@@ -3303,7 +3303,7 @@
       },
       "UserVisible"
     ],
-    "LastModifiedTimestamp": "638073669688720485",
+    "LastModifiedTimestamp": "638073699062837102",
     "Name": "backgroundComponent",
     "Rules": [
       {
@@ -3475,7 +3475,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638073669688720485",
+  "LastModifiedTimestamp": "638073699062837102",
   "Name": "83c4d2df01424f5389230c22d31b5bcf",
   "OverridableProperties": {},
   "SourceLibraryId": "0d1f75ae-96cd-46a4-90a8-50acbe68abed",
