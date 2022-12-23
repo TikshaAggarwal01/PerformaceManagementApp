@@ -15,17 +15,6 @@ NewTaskScreen As screen:
         Y: =70
         ZIndex: =2
 
-        lbl_NewEditTask As label:
-            Align: =Align.Center
-            Font: =Font.'Segoe UI'
-            FontWeight: =FontWeight.Semibold
-            Height: =ContainerNewTask.Height/18
-            Size: =18
-            Text: =If(VarNewtask,"New Task","Edit Task")
-            X: =ContainerNewTask.Width/2-Self.Width/2
-            Y: =5
-            ZIndex: =1
-
         lbl_To As label:
             Color: =_labelColor
             Font: =Font.'Segoe UI'

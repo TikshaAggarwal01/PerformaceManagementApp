@@ -121,6 +121,7 @@
     "GoalsgalleryScreen",
     "EditGoalScreen",
     "TasksgalleryScreen",
-    "EditTaskScreen"
+    "EditTaskScreen",
+    "Screen1"
   ]
 }
