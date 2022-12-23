@@ -455,7 +455,7 @@ EditGoalScreen As screen:
 
         gal_BtnStatus As gallery.galleryHorizontal:
             Default: |-
-                ={Value:editGoalRecord.Status.Value}
+                =If(_editGoalRequest,{Value:editGoalRecord.Status.Value})
             Height: =41
             Items: =["No Status","On track","At risk","Off track"]
             TemplateSize: =37
@@ -471,8 +471,7 @@ EditGoalScreen As screen:
                 Height: =25
                 HoverFill: =Transparent
                 OnSelect: |-
-                    =If(ThisItem.IsSelected,Gray,LightGreen);
-                    //Switch(ThisItem.Status,"No Status",Gray,"On track",LightGreen,"At risk",Yellow,"Off track",OrangeRed,White)
+                    =
                     Patch(Goals,LookUp(Goals,ID=editGoalRecord.ID),{
                         Status:{Value:ThisItem.Value}
                     });

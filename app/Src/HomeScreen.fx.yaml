@@ -632,6 +632,7 @@ HomeScreen As screen:
                 editGoalRecord,
                 ThisItem
             );
+            Set(_editGoalRequest,true);
             Set(
                 VarEditDelete,
                 false
