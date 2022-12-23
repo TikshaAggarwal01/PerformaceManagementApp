@@ -701,7 +701,7 @@ NewGoalScreen As screen:
             RadiusTopRight: =5
             Text: =If(_editGoalRequest,"Update","Create")
             X: =ContainerNewGoal.Width-Self.Width-40
-            Y: =DatePicker_End.Y+DatePicker_End.Height+10
+            Y: =ContainerNewGoal.Height-3*Self.Height/2
             ZIndex: =24
 
         ComBox_AddOwner As combobox:
