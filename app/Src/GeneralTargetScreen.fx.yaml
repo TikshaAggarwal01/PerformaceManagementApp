@@ -188,29 +188,30 @@ GeneralTargetScreen As screen:
                 BorderStyle: =BorderStyle.None
                 Color: =RGBA(0, 0, 0, 0)
                 Default: |-
-                    =Switch(ThisItem.Id,1,Switch(First(CollEmpGeneralData).Accountability,3,"Exceeds",2,"Meet",3,"N. I."),2
-                    ,Switch(First(CollEmpGeneralData).'Punctuality & Attendance',3,"Exceeds",2,"Meet",3,"N. I."),3,
-                    Switch(First(CollEmpGeneralData).Cooperation,3,"Exceeds",2,"Meet",3,"N. I."),4,
-                    Switch(First(CollEmpGeneralData).'Attitude/Respectfulness',3,"Exceeds",2,"Meet",3,"N. I."),5,
-                    Switch(First(CollEmpGeneralData).'Accepts Criticism',3,"Exceeds",2,"Meet",3,"N. I."),6,
-                    Switch(First(CollEmpGeneralData).Flexibility,3,"Exceeds",2,"Meet",3,"N. I."),7,
-                    Switch(First(CollEmpGeneralData).'Policy & Procedures',3,"Exceeds",2,"Meet",3,"N. I."),8,
-                    Switch(First(CollEmpGeneralData).'Completion of Assignments',3,"Exceeds",2,"Meet",3,"N. I."),9,
-                    Switch(First(CollEmpGeneralData).'Patient Interaction',3,"Exceeds",2,"Meet",3,"N. I."),10,
-                    Switch(First(CollEmpGeneralData).'Quality of Work',3,"Exceeds",2,"Meet",3,"N. I."),11,
-                    Switch(First(CollEmpGeneralData).'Willingness to Develop Skills',3,"Exceeds",2,"Meet",3,"N. I."),12,
-                    Switch(First(CollEmpGeneralData).'Communication Skills',3,"Exceeds",2,"Meet",3,"N. I."),13,
-                    Switch(First(CollEmpGeneralData).'Organizational Skills',3,"Exceeds",2,"Meet",3,"N. I."),14,
-                    Switch(First(CollEmpGeneralData).Confidentiality,3,"Exceeds",2,"Meet",3,"N. I."),15,
-                    Switch(First(CollEmpGeneralData).'Appearance/Dress Code',3,"Exceeds",2,"Meet",3,"N. I."),16,
-                    Switch(First(CollEmpGeneralData).'Appearance of Work Area',3,"Exceeds",2,"Meet",3,"N. I."),17,
-                    Switch(First(CollEmpGeneralData).'Conflict Resolution',3,"Exceeds",2,"Meet",3,"N. I."),18,
-                    Switch(First(CollEmpGeneralData).Safety,3,"Exceeds",2,"Meet",3,"N. I."),19,
-                    Switch(First(CollEmpGeneralData).'Job Knowledge',3,"Exceeds",2,"Meet",3,"N. I."),20,
-                    Switch(First(CollEmpGeneralData).'OSHA & HIPPA',3,"Exceeds",2,"Meet",3,"N. I."),21,
-                    Switch(First(CollEmpGeneralData).'Expense Management',3,"Exceeds",2,"Meet",3,"N. I."),22,
-                    Switch(First(CollEmpGeneralData).Inventory,3,"Exceeds",2,"Meet",3,"N. I."),23,
-                    Switch(First(CollEmpGeneralData).Availability,3,"Exceeds",2,"Meet",3,"N. I.")
+                    =Switch(
+                    ThisItem.Id,1,First(CollEmpGeneralData).Accountability,2
+                    ,First(CollEmpGeneralData).'Punctuality & Attendance',3,
+                    First(CollEmpGeneralData).Cooperation,4,
+                    First(CollEmpGeneralData).'Attitude/Respectfulness',5,
+                    First(CollEmpGeneralData).'Accepts Criticism',6,
+                    First(CollEmpGeneralData).Flexibility,7,
+                    First(CollEmpGeneralData).'Policy & Procedures',8,
+                    First(CollEmpGeneralData).'Completion of Assignments',9,
+                    First(CollEmpGeneralData).'Patient Interaction',10,
+                    First(CollEmpGeneralData).'Quality of Work',11,
+                    First(CollEmpGeneralData).'Willingness to Develop Skills',12,
+                    First(CollEmpGeneralData).'Communication Skills',13,
+                    First(CollEmpGeneralData).'Organizational Skills',14,
+                    First(CollEmpGeneralData).Confidentiality,15,
+                    First(CollEmpGeneralData).'Appearance/Dress Code',16,
+                    First(CollEmpGeneralData).'Appearance of Work Area',17,
+                    First(CollEmpGeneralData).'Conflict Resolution',18,
+                    First(CollEmpGeneralData).Safety,19,
+                    First(CollEmpGeneralData).'Job Knowledge',20,
+                    First(CollEmpGeneralData).'OSHA & HIPPA',21,
+                    First(CollEmpGeneralData).'Expense Management',22,
+                    First(CollEmpGeneralData).Inventory,23,
+                    First(CollEmpGeneralData).Availability
                     )
                 Height: =htmGeneralQuestions.Height
                 HoverColor: =RGBA(0, 0, 0, 0)
