@@ -463,7 +463,31 @@ EditTaskScreen As screen:
                 Height: =45
                 HoverFill: =ColorFade(_txtColorFill, -20%)
                 OnSelect: |
-                    =Set(VarEditDelete,!VarEditDelete);Switch(ThisItem.Value,"Edit",Reset(ComBox_To);Set(VarNewtask, false );Set(VarRelatedtask,false);Navigate(NewTaskScreen,ScreenTransition.Cover, {_startDate:TaskInfo.'Due date'}),"Delete",UpdateContext({_deleteTask: true }));
+                    =Set(
+                        VarEditDelete,
+                        !VarEditDelete
+                    );
+                    //ClearCollect(colVarRelatedGoal,TaskInfo.'Related Goal');
+                    Switch(
+                        ThisItem.Value,
+                        "Edit",
+                        Reset(ComBox_To);
+                        Set(
+                            VarNewtask,
+                            false
+                        );
+                        Set(
+                            VarRelatedtask,
+                            false
+                        );
+                        Navigate(
+                            NewTaskScreen,
+                            ScreenTransition.Cover,
+                            {_startDate: TaskInfo.'Due date'}
+                        ),
+                        "Delete",
+                        UpdateContext({_deleteTask: true})
+                    );
                 PaddingLeft: =20
                 PaddingRight: =20
                 RadiusBottomLeft: =0

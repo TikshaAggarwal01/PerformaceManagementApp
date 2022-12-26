@@ -12,8 +12,8 @@ JobDescriptionScreen As screen:
         OnChange: =
         Size: =14
         Width: =Parent.Width/1.4
-        X: =Parent.Width/2-Self.Width/2+65
-        Y: =100
+        X: =225
+        Y: =145
         ZIndex: =2
 
     Icn_Edit As icon.Edit:
@@ -30,4 +30,66 @@ JobDescriptionScreen As screen:
         X: =RichTextEditor1.X+RichTextEditor1.Width
         Y: =RichTextEditor1.Y
         ZIndex: =3
+
+    lbl_MyActiveGoalTask_2 As label:
+        Font: =Font.Lato
+        FontWeight: =FontWeight.Bold
+        Height: =37
+        OnSelect: =
+        Size: =14.5
+        Text: ="Select Employee"
+        Width: =180
+        X: =225
+        Y: =84
+        ZIndex: =4
+
+    ComBox_AddOwner_2 As combobox:
+        BorderColor: =_txtColorFill
+        ChevronBackground: =Black
+        ChevronFill: =ColorFade(_txtColorFill,50%)
+        ChevronHoverBackground: =White
+        ChevronHoverFill: =RGBA(0, 13, 75, 1)
+        Default: =First(CollGoalUser)
+        DefaultSelectedItems: =First(CollGoalUser)
+        DisabledFill: =RGBA(244, 244, 244, 0.78)
+        DisplayFields: =["DisplayName","Mail"]
+        Fill: =White
+        Height: =35
+        HoverFill: =RGBA(230, 230, 230, 1)
+        InputTextPlaceholder: ="Add owner"
+        IsSearchable: =false
+        Items: |-
+            =//Office365Users.SearchUser()
+            CollGoalUser
+        OnChange: |-
+            =//Set(ComboBox1Item,LookUp(Office365Users.SearchUser(), DisplayName=User().FullName))
+            ClearCollect(CollEmpGeneralData,LookUp('General Target List',Title=ComBox_AddOwner_2.Selected.Email));
+        PaddingLeft: =10
+        PressedFill: =RGBA(255, 255, 255, 1)
+        Reset: =ResetControl
+        SearchFields: =["DisplayName"]
+        SearchItems: =[]
+        SelectionColor: =_primaryColor
+        SelectionFill: =Self.Fill
+        SelectMultiple: =false
+        Template: =ListItemTemplate.Person
+        Width: =300
+        X: =405
+        Y: =86
+        ZIndex: =5
+
+    TextInput1 As text:
+        BorderThickness: =0
+        Color: =RGBA(204, 204, 204, 1)
+        Default: =""
+        HintText: ="Enter your Description Here"
+        HoverBorderColor: =RGBA(0, 0, 0, 0)
+        HoverFill: =RGBA(0, 0, 0, 0)
+        OnChange: =
+        OnSelect: |-
+            =UpdateContext({SetVar:!SetVar})
+        Visible: =!SetVar
+        X: =276
+        Y: =225
+        ZIndex: =6
 

@@ -360,7 +360,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btn_AddGoalComment",
-      "ParentIndex": 46,
+      "ParentIndex": 43,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -708,7 +708,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btn_AddNew",
-      "ParentIndex": 35,
+      "ParentIndex": 36,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -1036,7 +1036,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btn_AddRelatedTasks",
-      "ParentIndex": 44,
+      "ParentIndex": 48,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -2025,7 +2025,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btn_Close",
-      "ParentIndex": 31,
+      "ParentIndex": 32,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -7929,7 +7929,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "gal_BtnStatus",
-      "ParentIndex": 30,
+      "ParentIndex": 31,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -8627,7 +8627,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "gal_GoalComments",
-      "ParentIndex": 50,
+      "ParentIndex": 46,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -8863,7 +8863,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "gal_GoalRelatedTask",
-      "ParentIndex": 48,
+      "ParentIndex": 50,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -9853,7 +9853,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Icn_AddComment",
-      "ParentIndex": 47,
+      "ParentIndex": 44,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -16357,7 +16357,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lbl_Goal",
-      "ParentIndex": 20,
+      "ParentIndex": 19,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -17651,7 +17651,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lbl_NoCommentsEditTaskScreen_1",
-      "ParentIndex": 51,
+      "ParentIndex": 49,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -18298,7 +18298,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lbl_NoTask",
-      "ParentIndex": 49,
+      "ParentIndex": 51,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -18628,7 +18628,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lbl_NoTask_2",
-      "ParentIndex": 36,
+      "ParentIndex": 34,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -21532,7 +21532,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lbl_RelatedTasks",
-      "ParentIndex": 43,
+      "ParentIndex": 47,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -21851,7 +21851,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lbl_Start",
-      "ParentIndex": 19,
+      "ParentIndex": 18,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -22485,7 +22485,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lbl_Status",
-      "ParentIndex": 29,
+      "ParentIndex": 30,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -22796,7 +22796,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lbl_SubGoals",
-      "ParentIndex": 34,
+      "ParentIndex": 35,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -23100,7 +23100,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lbl_TitleEndDate",
-      "ParentIndex": 18,
+      "ParentIndex": 20,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -24633,7 +24633,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "shpseparator_EditGoalScreen",
-      "ParentIndex": 42,
+      "ParentIndex": 45,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -24779,7 +24779,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "shpseparator_EditGoalScreen1",
-      "ParentIndex": 32,
+      "ParentIndex": 29,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -25210,7 +25210,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "txt_Comments",
-      "ParentIndex": 45,
+      "ParentIndex": 42,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {

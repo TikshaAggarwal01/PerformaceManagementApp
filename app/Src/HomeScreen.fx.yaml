@@ -649,6 +649,7 @@ HomeScreen As screen:
                 VarSubGoals,
                 false
             );
+            
             Set(
                 VarId,
                 Value(gal_MyActiveGoals.Selected.ID)

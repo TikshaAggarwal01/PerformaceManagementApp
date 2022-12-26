@@ -584,19 +584,48 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "GoalsgalleryScreen.gal_GoalsGallery.AccessibleLabel"
+                  "fullyQualifiedName": "Screen1"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "GoalsgalleryScreen.gal_GoalsGallery.AccessibleLabel",
+                  "fullyQualifiedName": "Screen1",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "module": "Screen1",
+                "type": "Screen1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Low"
+          },
+          "ruleId": "acc-ReadableScreenNameNeeded",
+          "ruleIndex": 3
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "TasksgalleryScreen.Gallery4_1.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "TasksgalleryScreen.Gallery4_1.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
-                "module": "GoalsgalleryScreen",
-                "type": "GoalsgalleryScreen.gal_GoalsGallery"
+                "module": "TasksgalleryScreen",
+                "type": "TasksgalleryScreen.Gallery4_1"
               }
             }
           ],
@@ -614,19 +643,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "GoalsgalleryScreen.gal_GoalsGallery.TabIndex"
+                  "fullyQualifiedName": "TasksgalleryScreen.Gallery4_1.TabIndex"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "GoalsgalleryScreen.gal_GoalsGallery.TabIndex",
+                  "fullyQualifiedName": "TasksgalleryScreen.Gallery4_1.TabIndex",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "TabIndex",
-                "module": "GoalsgalleryScreen",
-                "type": "GoalsgalleryScreen.gal_GoalsGallery"
+                "module": "TasksgalleryScreen",
+                "type": "TasksgalleryScreen.Gallery4_1"
               }
             }
           ],
@@ -644,19 +673,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "GoalsgalleryScreen.tct_SearchGoalGallery.AccessibleLabel"
+                  "fullyQualifiedName": "TasksgalleryScreen.txt_Title_2.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "GoalsgalleryScreen.tct_SearchGoalGallery.AccessibleLabel",
+                  "fullyQualifiedName": "TasksgalleryScreen.txt_Title_2.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
-                "module": "GoalsgalleryScreen",
-                "type": "GoalsgalleryScreen.tct_SearchGoalGallery"
+                "module": "TasksgalleryScreen",
+                "type": "TasksgalleryScreen.txt_Title_2"
               }
             }
           ],
@@ -674,19 +703,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "GoalsgalleryScreen.gal_CountTypeGoalGallery.AccessibleLabel"
+                  "fullyQualifiedName": "TasksgalleryScreen.drp_SelectDate_2.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "GoalsgalleryScreen.gal_CountTypeGoalGallery.AccessibleLabel",
+                  "fullyQualifiedName": "TasksgalleryScreen.drp_SelectDate_2.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
-                "module": "GoalsgalleryScreen",
-                "type": "GoalsgalleryScreen.gal_CountTypeGoalGallery"
+                "module": "TasksgalleryScreen",
+                "type": "TasksgalleryScreen.drp_SelectDate_2"
               }
             }
           ],
@@ -704,19 +733,109 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "GoalsgalleryScreen.gal_CountTypeGoalGallery.TabIndex"
+                  "fullyQualifiedName": "TasksgalleryScreen.DatePicker_Start_2.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "GoalsgalleryScreen.gal_CountTypeGoalGallery.TabIndex",
+                  "fullyQualifiedName": "TasksgalleryScreen.DatePicker_Start_2.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "TasksgalleryScreen",
+                "type": "TasksgalleryScreen.DatePicker_Start_2"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "TasksgalleryScreen.DatePicker_End_2.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "TasksgalleryScreen.DatePicker_End_2.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "TasksgalleryScreen",
+                "type": "TasksgalleryScreen.DatePicker_End_2"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "TasksgalleryScreen.Gallery2.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "TasksgalleryScreen.Gallery2.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "TasksgalleryScreen",
+                "type": "TasksgalleryScreen.Gallery2"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "TasksgalleryScreen.Gallery2.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "TasksgalleryScreen.Gallery2.TabIndex",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "TabIndex",
-                "module": "GoalsgalleryScreen",
-                "type": "GoalsgalleryScreen.gal_CountTypeGoalGallery"
+                "module": "TasksgalleryScreen",
+                "type": "TasksgalleryScreen.Gallery2"
               }
             }
           ],
@@ -734,19 +853,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "GoalsgalleryScreen.drp_SelectDateGoalGallery.AccessibleLabel"
+                  "fullyQualifiedName": "TasksgalleryScreen.gal_NotCompleted.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "GoalsgalleryScreen.drp_SelectDateGoalGallery.AccessibleLabel",
+                  "fullyQualifiedName": "TasksgalleryScreen.gal_NotCompleted.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
-                "module": "GoalsgalleryScreen",
-                "type": "GoalsgalleryScreen.drp_SelectDateGoalGallery"
+                "module": "TasksgalleryScreen",
+                "type": "TasksgalleryScreen.gal_NotCompleted"
               }
             }
           ],
@@ -764,109 +883,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "GoalsgalleryScreen.DatePicker_StartGoalGallery.AccessibleLabel"
+                  "fullyQualifiedName": "TasksgalleryScreen.gal_NotCompleted.TabIndex"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "GoalsgalleryScreen.DatePicker_StartGoalGallery.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "GoalsgalleryScreen",
-                "type": "GoalsgalleryScreen.DatePicker_StartGoalGallery"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "GoalsgalleryScreen.DatePicker_EndGoalGallery_1.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "GoalsgalleryScreen.DatePicker_EndGoalGallery_1.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "GoalsgalleryScreen",
-                "type": "GoalsgalleryScreen.DatePicker_EndGoalGallery_1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "GoalsgalleryScreen.gal_Goals.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "GoalsgalleryScreen.gal_Goals.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "GoalsgalleryScreen",
-                "type": "GoalsgalleryScreen.gal_Goals"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "GoalsgalleryScreen.gal_Goals.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "GoalsgalleryScreen.gal_Goals.TabIndex",
+                  "fullyQualifiedName": "TasksgalleryScreen.gal_NotCompleted.TabIndex",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "TabIndex",
-                "module": "GoalsgalleryScreen",
-                "type": "GoalsgalleryScreen.gal_Goals"
+                "module": "TasksgalleryScreen",
+                "type": "TasksgalleryScreen.gal_NotCompleted"
               }
             }
           ],
@@ -884,19 +913,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.icn_EditTaskScreenBack.AccessibleLabel"
+                  "fullyQualifiedName": "TasksgalleryScreen.gal_NotCompleted.Gallery11.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.icn_EditTaskScreenBack.AccessibleLabel",
+                  "fullyQualifiedName": "TasksgalleryScreen.gal_NotCompleted.Gallery11.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
-                "module": "EditTaskScreen",
-                "type": "EditTaskScreen.ContainerEditTaskScreen.icn_EditTaskScreenBack"
+                "module": "TasksgalleryScreen",
+                "type": "TasksgalleryScreen.gal_NotCompleted.Gallery11"
               }
             }
           ],
@@ -914,19 +943,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.icn_EditTaskScreenBack.TabIndex"
+                  "fullyQualifiedName": "TasksgalleryScreen.gal_NotCompleted.Gallery11.TabIndex"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.icn_EditTaskScreenBack.TabIndex",
+                  "fullyQualifiedName": "TasksgalleryScreen.gal_NotCompleted.Gallery11.TabIndex",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "TabIndex",
-                "module": "EditTaskScreen",
-                "type": "EditTaskScreen.ContainerEditTaskScreen.icn_EditTaskScreenBack"
+                "module": "TasksgalleryScreen",
+                "type": "TasksgalleryScreen.gal_NotCompleted.Gallery11"
               }
             }
           ],
@@ -944,19 +973,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.gal_EditDeleteEditTaskScreen.AccessibleLabel"
+                  "fullyQualifiedName": "TasksgalleryScreen.Gallery2_2.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.gal_EditDeleteEditTaskScreen.AccessibleLabel",
+                  "fullyQualifiedName": "TasksgalleryScreen.Gallery2_2.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
-                "module": "EditTaskScreen",
-                "type": "EditTaskScreen.ContainerEditTaskScreen.gal_EditDeleteEditTaskScreen"
+                "module": "TasksgalleryScreen",
+                "type": "TasksgalleryScreen.Gallery2_2"
               }
             }
           ],
@@ -974,19 +1003,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.gal_EditDeleteEditTaskScreen.TabIndex"
+                  "fullyQualifiedName": "TasksgalleryScreen.Gallery2_2.TabIndex"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.gal_EditDeleteEditTaskScreen.TabIndex",
+                  "fullyQualifiedName": "TasksgalleryScreen.Gallery2_2.TabIndex",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "TabIndex",
-                "module": "EditTaskScreen",
-                "type": "EditTaskScreen.ContainerEditTaskScreen.gal_EditDeleteEditTaskScreen"
+                "module": "TasksgalleryScreen",
+                "type": "TasksgalleryScreen.Gallery2_2"
               }
             }
           ],
@@ -1004,19 +1033,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.gal_ToEditTaskScreen.AccessibleLabel"
+                  "fullyQualifiedName": "TasksgalleryScreen.Gallery8_3.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.gal_ToEditTaskScreen.AccessibleLabel",
+                  "fullyQualifiedName": "TasksgalleryScreen.Gallery8_3.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
-                "module": "EditTaskScreen",
-                "type": "EditTaskScreen.ContainerEditTaskScreen.gal_ToEditTaskScreen"
+                "module": "TasksgalleryScreen",
+                "type": "TasksgalleryScreen.Gallery8_3"
               }
             }
           ],
@@ -1034,19 +1063,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.gal_ToEditTaskScreen.TabIndex"
+                  "fullyQualifiedName": "TasksgalleryScreen.Gallery8_3.TabIndex"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.gal_ToEditTaskScreen.TabIndex",
+                  "fullyQualifiedName": "TasksgalleryScreen.Gallery8_3.TabIndex",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "TabIndex",
-                "module": "EditTaskScreen",
-                "type": "EditTaskScreen.ContainerEditTaskScreen.gal_ToEditTaskScreen"
+                "module": "TasksgalleryScreen",
+                "type": "TasksgalleryScreen.Gallery8_3"
               }
             }
           ],
@@ -1064,19 +1093,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.txt_Comments_1.AccessibleLabel"
+                  "fullyQualifiedName": "TasksgalleryScreen.Gallery8_3.Gallery11_1.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.txt_Comments_1.AccessibleLabel",
+                  "fullyQualifiedName": "TasksgalleryScreen.Gallery8_3.Gallery11_1.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
-                "module": "EditTaskScreen",
-                "type": "EditTaskScreen.ContainerEditTaskScreen.txt_Comments_1"
+                "module": "TasksgalleryScreen",
+                "type": "TasksgalleryScreen.Gallery8_3.Gallery11_1"
               }
             }
           ],
@@ -1094,169 +1123,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.icn_AddCommentEditTaskScreen.AccessibleLabel"
+                  "fullyQualifiedName": "TasksgalleryScreen.Gallery8_3.Gallery11_1.TabIndex"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.icn_AddCommentEditTaskScreen.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "EditTaskScreen",
-                "type": "EditTaskScreen.ContainerEditTaskScreen.icn_AddCommentEditTaskScreen"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.icn_AddCommentEditTaskScreen.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.icn_AddCommentEditTaskScreen.TabIndex",
+                  "fullyQualifiedName": "TasksgalleryScreen.Gallery8_3.Gallery11_1.TabIndex",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "TabIndex",
-                "module": "EditTaskScreen",
-                "type": "EditTaskScreen.ContainerEditTaskScreen.icn_AddCommentEditTaskScreen"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 1
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.Gallery9_1.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.Gallery9_1.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "EditTaskScreen",
-                "type": "EditTaskScreen.ContainerEditTaskScreen.Gallery9_1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.Gallery9_1.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.Gallery9_1.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "EditTaskScreen",
-                "type": "EditTaskScreen.ContainerEditTaskScreen.Gallery9_1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 1
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.Gallery9_1.Icon1_5.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.Gallery9_1.Icon1_5.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "EditTaskScreen",
-                "type": "EditTaskScreen.ContainerEditTaskScreen.Gallery9_1.Icon1_5"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.Gallery9_1.Icon1_5.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.Gallery9_1.Icon1_5.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "EditTaskScreen",
-                "type": "EditTaskScreen.ContainerEditTaskScreen.Gallery9_1.Icon1_5"
+                "module": "TasksgalleryScreen",
+                "type": "TasksgalleryScreen.Gallery8_3.Gallery11_1"
               }
             }
           ],
@@ -1994,19 +1873,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "JobDescriptionScreen.RichTextEditor1.AccessibleLabel"
+                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.icn_EditTaskScreenBack.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "JobDescriptionScreen.RichTextEditor1.AccessibleLabel",
+                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.icn_EditTaskScreenBack.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
-                "module": "JobDescriptionScreen",
-                "type": "JobDescriptionScreen.RichTextEditor1"
+                "module": "EditTaskScreen",
+                "type": "EditTaskScreen.ContainerEditTaskScreen.icn_EditTaskScreenBack"
               }
             }
           ],
@@ -2024,49 +1903,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "JobDescriptionScreen.Icn_Edit.AccessibleLabel"
+                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.icn_EditTaskScreenBack.TabIndex"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "JobDescriptionScreen.Icn_Edit.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "JobDescriptionScreen",
-                "type": "JobDescriptionScreen.Icn_Edit"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "JobDescriptionScreen.Icn_Edit.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "JobDescriptionScreen.Icn_Edit.TabIndex",
+                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.icn_EditTaskScreenBack.TabIndex",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "TabIndex",
-                "module": "JobDescriptionScreen",
-                "type": "JobDescriptionScreen.Icn_Edit"
+                "module": "EditTaskScreen",
+                "type": "EditTaskScreen.ContainerEditTaskScreen.icn_EditTaskScreenBack"
               }
             }
           ],
@@ -2084,19 +1933,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "TasksgalleryScreen.Gallery4_1.AccessibleLabel"
+                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.gal_EditDeleteEditTaskScreen.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "TasksgalleryScreen.Gallery4_1.AccessibleLabel",
+                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.gal_EditDeleteEditTaskScreen.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
-                "module": "TasksgalleryScreen",
-                "type": "TasksgalleryScreen.Gallery4_1"
+                "module": "EditTaskScreen",
+                "type": "EditTaskScreen.ContainerEditTaskScreen.gal_EditDeleteEditTaskScreen"
               }
             }
           ],
@@ -2114,19 +1963,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "TasksgalleryScreen.Gallery4_1.TabIndex"
+                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.gal_EditDeleteEditTaskScreen.TabIndex"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "TasksgalleryScreen.Gallery4_1.TabIndex",
+                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.gal_EditDeleteEditTaskScreen.TabIndex",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "TabIndex",
-                "module": "TasksgalleryScreen",
-                "type": "TasksgalleryScreen.Gallery4_1"
+                "module": "EditTaskScreen",
+                "type": "EditTaskScreen.ContainerEditTaskScreen.gal_EditDeleteEditTaskScreen"
               }
             }
           ],
@@ -2144,19 +1993,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "TasksgalleryScreen.txt_Title_2.AccessibleLabel"
+                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.gal_ToEditTaskScreen.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "TasksgalleryScreen.txt_Title_2.AccessibleLabel",
+                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.gal_ToEditTaskScreen.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
-                "module": "TasksgalleryScreen",
-                "type": "TasksgalleryScreen.txt_Title_2"
+                "module": "EditTaskScreen",
+                "type": "EditTaskScreen.ContainerEditTaskScreen.gal_ToEditTaskScreen"
               }
             }
           ],
@@ -2174,139 +2023,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "TasksgalleryScreen.drp_SelectDate_2.AccessibleLabel"
+                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.gal_ToEditTaskScreen.TabIndex"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "TasksgalleryScreen.drp_SelectDate_2.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "TasksgalleryScreen",
-                "type": "TasksgalleryScreen.drp_SelectDate_2"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "TasksgalleryScreen.DatePicker_Start_2.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "TasksgalleryScreen.DatePicker_Start_2.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "TasksgalleryScreen",
-                "type": "TasksgalleryScreen.DatePicker_Start_2"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "TasksgalleryScreen.DatePicker_End_2.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "TasksgalleryScreen.DatePicker_End_2.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "TasksgalleryScreen",
-                "type": "TasksgalleryScreen.DatePicker_End_2"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "TasksgalleryScreen.Gallery2.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "TasksgalleryScreen.Gallery2.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "TasksgalleryScreen",
-                "type": "TasksgalleryScreen.Gallery2"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "TasksgalleryScreen.Gallery2.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "TasksgalleryScreen.Gallery2.TabIndex",
+                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.gal_ToEditTaskScreen.TabIndex",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "TabIndex",
-                "module": "TasksgalleryScreen",
-                "type": "TasksgalleryScreen.Gallery2"
+                "module": "EditTaskScreen",
+                "type": "EditTaskScreen.ContainerEditTaskScreen.gal_ToEditTaskScreen"
               }
             }
           ],
@@ -2324,19 +2053,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "TasksgalleryScreen.gal_NotCompleted.AccessibleLabel"
+                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.txt_Comments_1.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "TasksgalleryScreen.gal_NotCompleted.AccessibleLabel",
+                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.txt_Comments_1.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
-                "module": "TasksgalleryScreen",
-                "type": "TasksgalleryScreen.gal_NotCompleted"
+                "module": "EditTaskScreen",
+                "type": "EditTaskScreen.ContainerEditTaskScreen.txt_Comments_1"
               }
             }
           ],
@@ -2354,19 +2083,49 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "TasksgalleryScreen.gal_NotCompleted.TabIndex"
+                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.icn_AddCommentEditTaskScreen.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "TasksgalleryScreen.gal_NotCompleted.TabIndex",
+                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.icn_AddCommentEditTaskScreen.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "EditTaskScreen",
+                "type": "EditTaskScreen.ContainerEditTaskScreen.icn_AddCommentEditTaskScreen"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.icn_AddCommentEditTaskScreen.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.icn_AddCommentEditTaskScreen.TabIndex",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "TabIndex",
-                "module": "TasksgalleryScreen",
-                "type": "TasksgalleryScreen.gal_NotCompleted"
+                "module": "EditTaskScreen",
+                "type": "EditTaskScreen.ContainerEditTaskScreen.icn_AddCommentEditTaskScreen"
               }
             }
           ],
@@ -2384,19 +2143,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "TasksgalleryScreen.gal_NotCompleted.Gallery11.AccessibleLabel"
+                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.Gallery9_1.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "TasksgalleryScreen.gal_NotCompleted.Gallery11.AccessibleLabel",
+                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.Gallery9_1.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
-                "module": "TasksgalleryScreen",
-                "type": "TasksgalleryScreen.gal_NotCompleted.Gallery11"
+                "module": "EditTaskScreen",
+                "type": "EditTaskScreen.ContainerEditTaskScreen.Gallery9_1"
               }
             }
           ],
@@ -2414,19 +2173,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "TasksgalleryScreen.gal_NotCompleted.Gallery11.TabIndex"
+                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.Gallery9_1.TabIndex"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "TasksgalleryScreen.gal_NotCompleted.Gallery11.TabIndex",
+                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.Gallery9_1.TabIndex",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "TabIndex",
-                "module": "TasksgalleryScreen",
-                "type": "TasksgalleryScreen.gal_NotCompleted.Gallery11"
+                "module": "EditTaskScreen",
+                "type": "EditTaskScreen.ContainerEditTaskScreen.Gallery9_1"
               }
             }
           ],
@@ -2444,19 +2203,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "TasksgalleryScreen.Gallery2_2.AccessibleLabel"
+                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.Gallery9_1.Icon1_5.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "TasksgalleryScreen.Gallery2_2.AccessibleLabel",
+                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.Gallery9_1.Icon1_5.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
-                "module": "TasksgalleryScreen",
-                "type": "TasksgalleryScreen.Gallery2_2"
+                "module": "EditTaskScreen",
+                "type": "EditTaskScreen.ContainerEditTaskScreen.Gallery9_1.Icon1_5"
               }
             }
           ],
@@ -2474,139 +2233,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "TasksgalleryScreen.Gallery2_2.TabIndex"
+                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.Gallery9_1.Icon1_5.TabIndex"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "TasksgalleryScreen.Gallery2_2.TabIndex",
+                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.Gallery9_1.Icon1_5.TabIndex",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "TabIndex",
-                "module": "TasksgalleryScreen",
-                "type": "TasksgalleryScreen.Gallery2_2"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 1
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "TasksgalleryScreen.Gallery8_3.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "TasksgalleryScreen.Gallery8_3.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "TasksgalleryScreen",
-                "type": "TasksgalleryScreen.Gallery8_3"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "TasksgalleryScreen.Gallery8_3.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "TasksgalleryScreen.Gallery8_3.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "TasksgalleryScreen",
-                "type": "TasksgalleryScreen.Gallery8_3"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 1
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "TasksgalleryScreen.Gallery8_3.Gallery11_1.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "TasksgalleryScreen.Gallery8_3.Gallery11_1.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "TasksgalleryScreen",
-                "type": "TasksgalleryScreen.Gallery8_3.Gallery11_1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "TasksgalleryScreen.Gallery8_3.Gallery11_1.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "TasksgalleryScreen.Gallery8_3.Gallery11_1.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "TasksgalleryScreen",
-                "type": "TasksgalleryScreen.Gallery8_3.Gallery11_1"
+                "module": "EditTaskScreen",
+                "type": "EditTaskScreen.ContainerEditTaskScreen.Gallery9_1.Icon1_5"
               }
             }
           ],
@@ -2924,18 +2563,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "Screen1"
+                  "fullyQualifiedName": "GoalsgalleryScreen.gal_GoalsGallery.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "Screen1",
+                  "fullyQualifiedName": "GoalsgalleryScreen.gal_GoalsGallery.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
-                "module": "Screen1",
-                "type": "Screen1"
+                "member": "AccessibleLabel",
+                "module": "GoalsgalleryScreen",
+                "type": "GoalsgalleryScreen.gal_GoalsGallery"
               }
             }
           ],
@@ -2943,10 +2583,280 @@
             "id": "issue"
           },
           "properties": {
-            "level": "Low"
+            "level": "Medium"
           },
-          "ruleId": "acc-ReadableScreenNameNeeded",
-          "ruleIndex": 3
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "GoalsgalleryScreen.gal_GoalsGallery.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "GoalsgalleryScreen.gal_GoalsGallery.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "GoalsgalleryScreen",
+                "type": "GoalsgalleryScreen.gal_GoalsGallery"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "GoalsgalleryScreen.tct_SearchGoalGallery.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "GoalsgalleryScreen.tct_SearchGoalGallery.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "GoalsgalleryScreen",
+                "type": "GoalsgalleryScreen.tct_SearchGoalGallery"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "GoalsgalleryScreen.gal_CountTypeGoalGallery.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "GoalsgalleryScreen.gal_CountTypeGoalGallery.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "GoalsgalleryScreen",
+                "type": "GoalsgalleryScreen.gal_CountTypeGoalGallery"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "GoalsgalleryScreen.gal_CountTypeGoalGallery.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "GoalsgalleryScreen.gal_CountTypeGoalGallery.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "GoalsgalleryScreen",
+                "type": "GoalsgalleryScreen.gal_CountTypeGoalGallery"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "GoalsgalleryScreen.drp_SelectDateGoalGallery.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "GoalsgalleryScreen.drp_SelectDateGoalGallery.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "GoalsgalleryScreen",
+                "type": "GoalsgalleryScreen.drp_SelectDateGoalGallery"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "GoalsgalleryScreen.DatePicker_StartGoalGallery.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "GoalsgalleryScreen.DatePicker_StartGoalGallery.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "GoalsgalleryScreen",
+                "type": "GoalsgalleryScreen.DatePicker_StartGoalGallery"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "GoalsgalleryScreen.DatePicker_EndGoalGallery_1.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "GoalsgalleryScreen.DatePicker_EndGoalGallery_1.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "GoalsgalleryScreen",
+                "type": "GoalsgalleryScreen.DatePicker_EndGoalGallery_1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "GoalsgalleryScreen.gal_Goals.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "GoalsgalleryScreen.gal_Goals.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "GoalsgalleryScreen",
+                "type": "GoalsgalleryScreen.gal_Goals"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "GoalsgalleryScreen.gal_Goals.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "GoalsgalleryScreen.gal_Goals.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "GoalsgalleryScreen",
+                "type": "GoalsgalleryScreen.gal_Goals"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 1
         },
         {
           "locations": [
@@ -3236,6 +3146,96 @@
                 "member": "TabIndex",
                 "module": "HomeScreen",
                 "type": "HomeScreen.gal_MyTask"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JobDescriptionScreen.RichTextEditor1.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "JobDescriptionScreen.RichTextEditor1.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "JobDescriptionScreen",
+                "type": "JobDescriptionScreen.RichTextEditor1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JobDescriptionScreen.Icn_Edit.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "JobDescriptionScreen.Icn_Edit.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "JobDescriptionScreen",
+                "type": "JobDescriptionScreen.Icn_Edit"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JobDescriptionScreen.Icn_Edit.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "JobDescriptionScreen.Icn_Edit.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "JobDescriptionScreen",
+                "type": "JobDescriptionScreen.Icn_Edit"
               }
             }
           ],
@@ -3733,6 +3733,66 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "JobDescriptionScreen.ComBox_AddOwner_2.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "JobDescriptionScreen.ComBox_AddOwner_2.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "JobDescriptionScreen",
+                "type": "JobDescriptionScreen.ComBox_AddOwner_2"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JobDescriptionScreen.TextInput1.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "JobDescriptionScreen.TextInput1.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "JobDescriptionScreen",
+                "type": "JobDescriptionScreen.TextInput1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "App._1212"
                 }
               ],
@@ -3823,36 +3883,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "App._DeleteGoal"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "App._DeleteGoal",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "_DeleteGoal",
-                "module": "App",
-                "type": "App"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-UnusedVariables",
-          "ruleIndex": 4
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "App._InitialValue"
                 }
               ],
@@ -3894,6 +3924,36 @@
               },
               "properties": {
                 "member": "MeasureProgerssSubGaols",
+                "module": "App",
+                "type": "App"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-UnusedVariables",
+          "ruleIndex": 4
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "App._DeleteGoal"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "App._DeleteGoal",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "_DeleteGoal",
                 "module": "App",
                 "type": "App"
               }
@@ -4033,36 +4093,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "App.DP_Brandmark_160x160_RGB"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "App.DP_Brandmark_160x160_RGB",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "DP_Brandmark_160x160_RGB",
-                "module": "App",
-                "type": "App"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-UnusedMediaResources",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "App.chat"
                 }
               ],
@@ -4093,167 +4123,17 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "App.rbc_bg"
+                  "fullyQualifiedName": "App.DP_Brandmark_160x160_RGB"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "App.rbc_bg",
+                  "fullyQualifiedName": "App.DP_Brandmark_160x160_RGB",
                   "relativeAddress": 0
                 }
               },
               "properties": {
-                "member": "rbc_bg",
-                "module": "App",
-                "type": "App"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-UnusedMediaResources",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "App.pexels-jot-singh-2179483"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "App.pexels-jot-singh-2179483",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "pexels-jot-singh-2179483",
-                "module": "App",
-                "type": "App"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-UnusedMediaResources",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "App.pexels-anni-roenkae-3109807"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "App.pexels-anni-roenkae-3109807",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "pexels-anni-roenkae-3109807",
-                "module": "App",
-                "type": "App"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-UnusedMediaResources",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "App.pexels-adrien-olichon-2931251"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "App.pexels-adrien-olichon-2931251",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "pexels-adrien-olichon-2931251",
-                "module": "App",
-                "type": "App"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-UnusedMediaResources",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "App.pexels-daniel-frank-688830"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "App.pexels-daniel-frank-688830",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "pexels-daniel-frank-688830",
-                "module": "App",
-                "type": "App"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-UnusedMediaResources",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "App.pexels-nick-collins-1293120"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "App.pexels-nick-collins-1293120",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "pexels-nick-collins-1293120",
+                "member": "DP_Brandmark_160x160_RGB",
                 "module": "App",
                 "type": "App"
               }
@@ -4303,19 +4183,199 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "TasksgalleryScreen.OnVisible"
+                  "fullyQualifiedName": "App.pexels-adrien-olichon-2931251"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "TasksgalleryScreen.OnVisible",
+                  "fullyQualifiedName": "App.pexels-adrien-olichon-2931251",
                   "relativeAddress": 0
                 }
               },
               "properties": {
-                "member": "OnVisible",
-                "module": "TasksgalleryScreen",
-                "type": "TasksgalleryScreen"
+                "member": "pexels-adrien-olichon-2931251",
+                "module": "App",
+                "type": "App"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-UnusedMediaResources",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "App.pexels-anni-roenkae-3109807"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "App.pexels-anni-roenkae-3109807",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "pexels-anni-roenkae-3109807",
+                "module": "App",
+                "type": "App"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-UnusedMediaResources",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "App.pexels-daniel-frank-688830"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "App.pexels-daniel-frank-688830",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "pexels-daniel-frank-688830",
+                "module": "App",
+                "type": "App"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-UnusedMediaResources",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "App.pexels-jot-singh-2179483"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "App.pexels-jot-singh-2179483",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "pexels-jot-singh-2179483",
+                "module": "App",
+                "type": "App"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-UnusedMediaResources",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "App.pexels-nick-collins-1293120"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "App.pexels-nick-collins-1293120",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "pexels-nick-collins-1293120",
+                "module": "App",
+                "type": "App"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-UnusedMediaResources",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "App.rbc_bg"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "App.rbc_bg",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "rbc_bg",
+                "module": "App",
+                "type": "App"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-UnusedMediaResources",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "App.OnStart"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "App.OnStart",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "OnStart",
+                "module": "App",
+                "type": "App"
               }
             }
           ],
@@ -4423,6 +4483,36 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "GoalsgalleryScreen.OnVisible"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "GoalsgalleryScreen.OnVisible",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "OnVisible",
+                "module": "GoalsgalleryScreen",
+                "type": "GoalsgalleryScreen"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-CollectDelegatableDataSource",
+          "ruleIndex": 6
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "HomeScreen.OnVisible"
                 }
               ],
@@ -4513,49 +4603,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "App.OnStart"
+                  "fullyQualifiedName": "TasksgalleryScreen.OnVisible"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "App.OnStart",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "OnStart",
-                "module": "App",
-                "type": "App"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-CollectDelegatableDataSource",
-          "ruleIndex": 6
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "GoalsgalleryScreen.OnVisible"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "GoalsgalleryScreen.OnVisible",
+                  "fullyQualifiedName": "TasksgalleryScreen.OnVisible",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "OnVisible",
-                "module": "GoalsgalleryScreen",
-                "type": "GoalsgalleryScreen"
+                "module": "TasksgalleryScreen",
+                "type": "TasksgalleryScreen"
               }
             }
           ],
@@ -4813,19 +4873,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "GoalsgalleryScreen.drp_SelectDateGoalGallery.Width"
+                  "fullyQualifiedName": "TasksgalleryScreen.txt_Title_2.DelayOutput"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "GoalsgalleryScreen.drp_SelectDateGoalGallery.Width",
+                  "fullyQualifiedName": "TasksgalleryScreen.txt_Title_2.DelayOutput",
                   "relativeAddress": 0
                 }
               },
               "properties": {
-                "member": "Width",
-                "module": "GoalsgalleryScreen",
-                "type": "GoalsgalleryScreen.drp_SelectDateGoalGallery"
+                "member": "DelayOutput",
+                "module": "TasksgalleryScreen",
+                "type": "TasksgalleryScreen.txt_Title_2"
               }
             }
           ],
@@ -4835,7 +4895,7 @@
           "properties": {
             "level": "Medium"
           },
-          "ruleId": "app-InefficientDelayLoading",
+          "ruleId": "app-TextInputIsNotDelayOutput",
           "ruleIndex": 7
         },
         {
@@ -4843,79 +4903,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "GoalsgalleryScreen.drp_SelectDateGoalGallery.Height"
+                  "fullyQualifiedName": "TasksgalleryScreen.drp_SelectDate_2.Height"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "GoalsgalleryScreen.drp_SelectDateGoalGallery.Height",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "Height",
-                "module": "GoalsgalleryScreen",
-                "type": "GoalsgalleryScreen.drp_SelectDateGoalGallery"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-InefficientDelayLoading",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "GoalsgalleryScreen.DatePicker_StartGoalGallery.Width"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "GoalsgalleryScreen.DatePicker_StartGoalGallery.Width",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "Width",
-                "module": "GoalsgalleryScreen",
-                "type": "GoalsgalleryScreen.DatePicker_StartGoalGallery"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-InefficientDelayLoading",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "GoalsgalleryScreen.DatePicker_StartGoalGallery.Height"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "GoalsgalleryScreen.DatePicker_StartGoalGallery.Height",
+                  "fullyQualifiedName": "TasksgalleryScreen.drp_SelectDate_2.Height",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "Height",
-                "module": "GoalsgalleryScreen",
-                "type": "GoalsgalleryScreen.DatePicker_StartGoalGallery"
+                "module": "TasksgalleryScreen",
+                "type": "TasksgalleryScreen.drp_SelectDate_2"
               }
             }
           ],
@@ -4926,56 +4926,26 @@
             "level": "Medium"
           },
           "ruleId": "app-InefficientDelayLoading",
-          "ruleIndex": 7
+          "ruleIndex": 8
         },
         {
           "locations": [
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "GoalsgalleryScreen.DatePicker_EndGoalGallery_1.Width"
+                  "fullyQualifiedName": "TasksgalleryScreen.DatePicker_Start_2.Height"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "GoalsgalleryScreen.DatePicker_EndGoalGallery_1.Width",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "Width",
-                "module": "GoalsgalleryScreen",
-                "type": "GoalsgalleryScreen.DatePicker_EndGoalGallery_1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-InefficientDelayLoading",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "GoalsgalleryScreen.DatePicker_EndGoalGallery_1.Height"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "GoalsgalleryScreen.DatePicker_EndGoalGallery_1.Height",
+                  "fullyQualifiedName": "TasksgalleryScreen.DatePicker_Start_2.Height",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "Height",
-                "module": "GoalsgalleryScreen",
-                "type": "GoalsgalleryScreen.DatePicker_EndGoalGallery_1"
+                "module": "TasksgalleryScreen",
+                "type": "TasksgalleryScreen.DatePicker_Start_2"
               }
             }
           ],
@@ -4986,26 +4956,26 @@
             "level": "Medium"
           },
           "ruleId": "app-InefficientDelayLoading",
-          "ruleIndex": 7
+          "ruleIndex": 8
         },
         {
           "locations": [
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "GoalsgalleryScreen.gal_Goals.lbl_TaskTitleGoalsGallery.Height"
+                  "fullyQualifiedName": "TasksgalleryScreen.DatePicker_End_2.Height"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "GoalsgalleryScreen.gal_Goals.lbl_TaskTitleGoalsGallery.Height",
+                  "fullyQualifiedName": "TasksgalleryScreen.DatePicker_End_2.Height",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "Height",
-                "module": "GoalsgalleryScreen",
-                "type": "GoalsgalleryScreen.gal_Goals.lbl_TaskTitleGoalsGallery"
+                "module": "TasksgalleryScreen",
+                "type": "TasksgalleryScreen.DatePicker_End_2"
               }
             }
           ],
@@ -5016,26 +4986,26 @@
             "level": "Medium"
           },
           "ruleId": "app-InefficientDelayLoading",
-          "ruleIndex": 7
+          "ruleIndex": 8
         },
         {
           "locations": [
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.btn_EditDeleteTaskScreen.X"
+                  "fullyQualifiedName": "TasksgalleryScreen.gal_NotCompleted.NextArrow1_2.X"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.btn_EditDeleteTaskScreen.X",
+                  "fullyQualifiedName": "TasksgalleryScreen.gal_NotCompleted.NextArrow1_2.X",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "X",
-                "module": "EditTaskScreen",
-                "type": "EditTaskScreen.ContainerEditTaskScreen.btn_EditDeleteTaskScreen"
+                "module": "TasksgalleryScreen",
+                "type": "TasksgalleryScreen.gal_NotCompleted.NextArrow1_2"
               }
             }
           ],
@@ -5046,206 +5016,26 @@
             "level": "Medium"
           },
           "ruleId": "app-InefficientDelayLoading",
-          "ruleIndex": 7
+          "ruleIndex": 8
         },
         {
           "locations": [
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.txt_Comments_1.Width"
+                  "fullyQualifiedName": "TasksgalleryScreen.Gallery8_3.Checkbox1_3.Height"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.txt_Comments_1.Width",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "Width",
-                "module": "EditTaskScreen",
-                "type": "EditTaskScreen.ContainerEditTaskScreen.txt_Comments_1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-InefficientDelayLoading",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.lbl_NoTask_1.Width"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.lbl_NoTask_1.Width",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "Width",
-                "module": "EditTaskScreen",
-                "type": "EditTaskScreen.ContainerEditTaskScreen.lbl_NoTask_1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-InefficientDelayLoading",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.ContainerRelatedGoal.X"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.ContainerRelatedGoal.X",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "X",
-                "module": "EditTaskScreen",
-                "type": "EditTaskScreen.ContainerEditTaskScreen.ContainerRelatedGoal"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-InefficientDelayLoading",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.ContainerRelatedGoal.btn_AddRelatedTasks_3.Width"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.ContainerRelatedGoal.btn_AddRelatedTasks_3.Width",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "Width",
-                "module": "EditTaskScreen",
-                "type": "EditTaskScreen.ContainerEditTaskScreen.ContainerRelatedGoal.btn_AddRelatedTasks_3"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-InefficientDelayLoading",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.Gallery9_1.X"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.Gallery9_1.X",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "X",
-                "module": "EditTaskScreen",
-                "type": "EditTaskScreen.ContainerEditTaskScreen.Gallery9_1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-InefficientDelayLoading",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.Gallery9_1.Width"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.Gallery9_1.Width",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "Width",
-                "module": "EditTaskScreen",
-                "type": "EditTaskScreen.ContainerEditTaskScreen.Gallery9_1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-InefficientDelayLoading",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.Gallery9_1.Height"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.Gallery9_1.Height",
+                  "fullyQualifiedName": "TasksgalleryScreen.Gallery8_3.Checkbox1_3.Height",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "Height",
-                "module": "EditTaskScreen",
-                "type": "EditTaskScreen.ContainerEditTaskScreen.Gallery9_1"
+                "module": "TasksgalleryScreen",
+                "type": "TasksgalleryScreen.Gallery8_3.Checkbox1_3"
               }
             }
           ],
@@ -5256,26 +5046,26 @@
             "level": "Medium"
           },
           "ruleId": "app-InefficientDelayLoading",
-          "ruleIndex": 7
+          "ruleIndex": 8
         },
         {
           "locations": [
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.Gallery9_1.lbl_OwnerDeatilsScreen_5.Width"
+                  "fullyQualifiedName": "TasksgalleryScreen.Gallery8_3.NextArrow1_3.X"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.Gallery9_1.lbl_OwnerDeatilsScreen_5.Width",
+                  "fullyQualifiedName": "TasksgalleryScreen.Gallery8_3.NextArrow1_3.X",
                   "relativeAddress": 0
                 }
               },
               "properties": {
-                "member": "Width",
-                "module": "EditTaskScreen",
-                "type": "EditTaskScreen.ContainerEditTaskScreen.Gallery9_1.lbl_OwnerDeatilsScreen_5"
+                "member": "X",
+                "module": "TasksgalleryScreen",
+                "type": "TasksgalleryScreen.Gallery8_3.NextArrow1_3"
               }
             }
           ],
@@ -5286,7 +5076,7 @@
             "level": "Medium"
           },
           "ruleId": "app-InefficientDelayLoading",
-          "ruleIndex": 7
+          "ruleIndex": 8
         },
         {
           "locations": [
@@ -5346,7 +5136,7 @@
             "level": "Medium"
           },
           "ruleId": "app-InefficientDelayLoading",
-          "ruleIndex": 7
+          "ruleIndex": 8
         },
         {
           "locations": [
@@ -5376,7 +5166,487 @@
             "level": "Medium"
           },
           "ruleId": "app-InefficientDelayLoading",
-          "ruleIndex": 7
+          "ruleIndex": 8
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.btn_EditDeleteTaskScreen.X"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.btn_EditDeleteTaskScreen.X",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "X",
+                "module": "EditTaskScreen",
+                "type": "EditTaskScreen.ContainerEditTaskScreen.btn_EditDeleteTaskScreen"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-InefficientDelayLoading",
+          "ruleIndex": 8
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.txt_Comments_1.Width"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.txt_Comments_1.Width",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "Width",
+                "module": "EditTaskScreen",
+                "type": "EditTaskScreen.ContainerEditTaskScreen.txt_Comments_1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-InefficientDelayLoading",
+          "ruleIndex": 8
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.lbl_NoTask_1.Width"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.lbl_NoTask_1.Width",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "Width",
+                "module": "EditTaskScreen",
+                "type": "EditTaskScreen.ContainerEditTaskScreen.lbl_NoTask_1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-InefficientDelayLoading",
+          "ruleIndex": 8
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.ContainerRelatedGoal.X"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.ContainerRelatedGoal.X",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "X",
+                "module": "EditTaskScreen",
+                "type": "EditTaskScreen.ContainerEditTaskScreen.ContainerRelatedGoal"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-InefficientDelayLoading",
+          "ruleIndex": 8
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.ContainerRelatedGoal.btn_AddRelatedTasks_3.Width"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.ContainerRelatedGoal.btn_AddRelatedTasks_3.Width",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "Width",
+                "module": "EditTaskScreen",
+                "type": "EditTaskScreen.ContainerEditTaskScreen.ContainerRelatedGoal.btn_AddRelatedTasks_3"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-InefficientDelayLoading",
+          "ruleIndex": 8
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.Gallery9_1.X"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.Gallery9_1.X",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "X",
+                "module": "EditTaskScreen",
+                "type": "EditTaskScreen.ContainerEditTaskScreen.Gallery9_1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-InefficientDelayLoading",
+          "ruleIndex": 8
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.Gallery9_1.Width"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.Gallery9_1.Width",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "Width",
+                "module": "EditTaskScreen",
+                "type": "EditTaskScreen.ContainerEditTaskScreen.Gallery9_1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-InefficientDelayLoading",
+          "ruleIndex": 8
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.Gallery9_1.Height"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.Gallery9_1.Height",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "Height",
+                "module": "EditTaskScreen",
+                "type": "EditTaskScreen.ContainerEditTaskScreen.Gallery9_1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-InefficientDelayLoading",
+          "ruleIndex": 8
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.Gallery9_1.lbl_OwnerDeatilsScreen_5.Width"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.Gallery9_1.lbl_OwnerDeatilsScreen_5.Width",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "Width",
+                "module": "EditTaskScreen",
+                "type": "EditTaskScreen.ContainerEditTaskScreen.Gallery9_1.lbl_OwnerDeatilsScreen_5"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-InefficientDelayLoading",
+          "ruleIndex": 8
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "GoalsgalleryScreen.drp_SelectDateGoalGallery.Width"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "GoalsgalleryScreen.drp_SelectDateGoalGallery.Width",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "Width",
+                "module": "GoalsgalleryScreen",
+                "type": "GoalsgalleryScreen.drp_SelectDateGoalGallery"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-InefficientDelayLoading",
+          "ruleIndex": 8
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "GoalsgalleryScreen.drp_SelectDateGoalGallery.Height"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "GoalsgalleryScreen.drp_SelectDateGoalGallery.Height",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "Height",
+                "module": "GoalsgalleryScreen",
+                "type": "GoalsgalleryScreen.drp_SelectDateGoalGallery"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-InefficientDelayLoading",
+          "ruleIndex": 8
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "GoalsgalleryScreen.DatePicker_StartGoalGallery.Width"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "GoalsgalleryScreen.DatePicker_StartGoalGallery.Width",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "Width",
+                "module": "GoalsgalleryScreen",
+                "type": "GoalsgalleryScreen.DatePicker_StartGoalGallery"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-InefficientDelayLoading",
+          "ruleIndex": 8
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "GoalsgalleryScreen.DatePicker_StartGoalGallery.Height"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "GoalsgalleryScreen.DatePicker_StartGoalGallery.Height",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "Height",
+                "module": "GoalsgalleryScreen",
+                "type": "GoalsgalleryScreen.DatePicker_StartGoalGallery"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-InefficientDelayLoading",
+          "ruleIndex": 8
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "GoalsgalleryScreen.DatePicker_EndGoalGallery_1.Width"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "GoalsgalleryScreen.DatePicker_EndGoalGallery_1.Width",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "Width",
+                "module": "GoalsgalleryScreen",
+                "type": "GoalsgalleryScreen.DatePicker_EndGoalGallery_1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-InefficientDelayLoading",
+          "ruleIndex": 8
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "GoalsgalleryScreen.DatePicker_EndGoalGallery_1.Height"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "GoalsgalleryScreen.DatePicker_EndGoalGallery_1.Height",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "Height",
+                "module": "GoalsgalleryScreen",
+                "type": "GoalsgalleryScreen.DatePicker_EndGoalGallery_1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-InefficientDelayLoading",
+          "ruleIndex": 8
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "GoalsgalleryScreen.gal_Goals.lbl_TaskTitleGoalsGallery.Height"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "GoalsgalleryScreen.gal_Goals.lbl_TaskTitleGoalsGallery.Height",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "Height",
+                "module": "GoalsgalleryScreen",
+                "type": "GoalsgalleryScreen.gal_Goals.lbl_TaskTitleGoalsGallery"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-InefficientDelayLoading",
+          "ruleIndex": 8
         },
         {
           "locations": [
@@ -5407,216 +5677,6 @@
           },
           "ruleId": "app-UnusedVariables",
           "ruleIndex": 4
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "TasksgalleryScreen.txt_Title_2.DelayOutput"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "TasksgalleryScreen.txt_Title_2.DelayOutput",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "DelayOutput",
-                "module": "TasksgalleryScreen",
-                "type": "TasksgalleryScreen.txt_Title_2"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-TextInputIsNotDelayOutput",
-          "ruleIndex": 8
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "TasksgalleryScreen.drp_SelectDate_2.Height"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "TasksgalleryScreen.drp_SelectDate_2.Height",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "Height",
-                "module": "TasksgalleryScreen",
-                "type": "TasksgalleryScreen.drp_SelectDate_2"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-InefficientDelayLoading",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "TasksgalleryScreen.DatePicker_Start_2.Height"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "TasksgalleryScreen.DatePicker_Start_2.Height",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "Height",
-                "module": "TasksgalleryScreen",
-                "type": "TasksgalleryScreen.DatePicker_Start_2"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-InefficientDelayLoading",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "TasksgalleryScreen.DatePicker_End_2.Height"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "TasksgalleryScreen.DatePicker_End_2.Height",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "Height",
-                "module": "TasksgalleryScreen",
-                "type": "TasksgalleryScreen.DatePicker_End_2"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-InefficientDelayLoading",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "TasksgalleryScreen.gal_NotCompleted.NextArrow1_2.X"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "TasksgalleryScreen.gal_NotCompleted.NextArrow1_2.X",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "X",
-                "module": "TasksgalleryScreen",
-                "type": "TasksgalleryScreen.gal_NotCompleted.NextArrow1_2"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-InefficientDelayLoading",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "TasksgalleryScreen.Gallery8_3.Checkbox1_3.Height"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "TasksgalleryScreen.Gallery8_3.Checkbox1_3.Height",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "Height",
-                "module": "TasksgalleryScreen",
-                "type": "TasksgalleryScreen.Gallery8_3.Checkbox1_3"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-InefficientDelayLoading",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "TasksgalleryScreen.Gallery8_3.NextArrow1_3.X"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "TasksgalleryScreen.Gallery8_3.NextArrow1_3.X",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "X",
-                "module": "TasksgalleryScreen",
-                "type": "TasksgalleryScreen.Gallery8_3.NextArrow1_3"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-InefficientDelayLoading",
-          "ruleIndex": 7
         },
         {
           "locations": [
@@ -5796,28 +5856,11 @@
               "properties": {
                 "componentType": "app",
                 "howToFix": [
-                  "Limit the data collected from the data source by updating the formula \"ClearCollect(CollTasksComments, 'Tasks Comments')\" to include a filtering function, such as 'Filter' or 'Search'."
+                  "Limit the data collected from the data source by updating the formula \"ClearCollect(ActiveData, Goals)\" to include a filtering function, such as 'Filter' or 'Search'."
                 ],
                 "level": "Medium",
                 "primaryCategory": "performance",
                 "whyFix": "Using the 'Collect' function to create a collection directly from a connected data source may not load every row if the data source is too large."
-              }
-            },
-            {
-              "id": "app-InefficientDelayLoading",
-              "messageStrings": {
-                "issue": {
-                  "text": "Inefficient delay loading"
-                }
-              },
-              "properties": {
-                "componentType": "app",
-                "howToFix": [
-                  "Use variables, collections, and navigation context to share state across screens instead."
-                ],
-                "level": "Medium",
-                "primaryCategory": "performance",
-                "whyFix": "Controls that reference controls on other screens can slow down app loading and navigation. Doing this may force the app to load the other screens immediately, rather than waiting until the user navigates to that screen."
               }
             },
             {
@@ -5835,6 +5878,23 @@
                 "level": "Medium",
                 "primaryCategory": "performance",
                 "whyFix": "When a text input control has many controls that depend on its value, typing into that input can slow down the app. Setting DelayOutput to true prevents this problem by only updating dependant controls when typing stops."
+              }
+            },
+            {
+              "id": "app-InefficientDelayLoading",
+              "messageStrings": {
+                "issue": {
+                  "text": "Inefficient delay loading"
+                }
+              },
+              "properties": {
+                "componentType": "app",
+                "howToFix": [
+                  "Use variables, collections, and navigation context to share state across screens instead."
+                ],
+                "level": "Medium",
+                "primaryCategory": "performance",
+                "whyFix": "Controls that reference controls on other screens can slow down app loading and navigation. Doing this may force the app to load the other screens immediately, rather than waiting until the user navigates to that screen."
               }
             }
           ],

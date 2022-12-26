@@ -1,6 +1,7 @@
 NewTaskScreen As screen:
     OnVisible: |
         =Reset(ComBox_To);
+        Select(ComBox_RelatedGoals);
 
     backgroundComponent_2 As backgroundComponent:
         Default: ="Tasks"
@@ -236,7 +237,8 @@ NewTaskScreen As screen:
                                             Value: TxtRelatedGoal.Text
                                         },
                                         {
-                                            Id: If(
+                                            Id: // LookUp('Tasks Management',Value(txtTaskId.Text)=ID,'Related Goal'.Id) 
+                                            If(
                                                 !IsBlank(ComBox_RelatedGoals.Selected.Title),
                                                 LookUp(
                                                     Goals,
@@ -244,20 +246,18 @@ NewTaskScreen As screen:
                                                     ID
                                                 ),
                                                 LookUp(
-                                                    'Tasks Management',
-                                                     ID=Value(txtTaskId.Text) ,
-                                                    Value('Related Goal'.Id)
+                                                   Goals,
+                                                     ComBox_RelatedGoals.Selected.Title = Title,
+                                                    ID 
+                                                    
                                                 )
                                             ),
-                                            Value: If(
+                                            Value://LookUp('Tasks Management',Value(txtTaskId.Text)=ID,'Related Goal'.Value) 
+                                             If(
                                                 !IsBlank(ComBox_RelatedGoals.Selected.Title),
                                                 ComBox_RelatedGoals.Selected.Title,
-                                                LookUp(
-                                                    'Tasks Management',
-                                                     ID=Value(txtTaskId.Text),
-                                                    ('Related Goal'.Value)
-                                                )
-                                            )
+                                          ComBox_RelatedGoals.Selected.Title)
+                                            
                                         }
                                     )
                                         // ComBox_RelatedGoals.Selected.Title
@@ -434,12 +434,11 @@ NewTaskScreen As screen:
             Fill: =ColorFade(_txtColorFill,60%)
             Height: = ContainerNewTask.Height/20
             HoverFill: =_txtColorFill
-            IsSearchable: =false
             Items: =Goals.Title 
             PressedFill: =_txtColorFill
             Reset: =ResetControl
             SearchFields: =["Title"]
-            SearchItems: =[]
+            SearchItems: =Search(Goals.Title ,ComBox_RelatedGoals.SearchText,"Title")
             SelectionColor: |
                 =_primaryColor
             SelectionFill: =Self.Fill
@@ -528,8 +527,14 @@ NewTaskScreen As screen:
             ZIndex: =19
 
     Label11 As label:
-        Text: =Value(txtTaskId.Text)
+        Text: =ComBox_RelatedGoals.Selected.Title
         X: =103
         Y: =30
         ZIndex: =3
+
+    Label4 As label:
+        Text: =
+        X: =288
+        Y: =216
+        ZIndex: =4
 
