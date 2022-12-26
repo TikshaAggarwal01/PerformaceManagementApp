@@ -254,726 +254,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.icn_EditGoalScreenBack.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.icn_EditGoalScreenBack.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "EditGoalScreen",
-                "type": "EditGoalScreen.ContainerEditGoalScreen.icn_EditGoalScreenBack"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.icn_EditGoalScreenBack.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.icn_EditGoalScreenBack.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "EditGoalScreen",
-                "type": "EditGoalScreen.ContainerEditGoalScreen.icn_EditGoalScreenBack"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 1
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_EditDelete.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_EditDelete.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "EditGoalScreen",
-                "type": "EditGoalScreen.ContainerEditGoalScreen.gal_EditDelete"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_EditDelete.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_EditDelete.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "EditGoalScreen",
-                "type": "EditGoalScreen.ContainerEditGoalScreen.gal_EditDelete"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 1
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.rad_ProgressMeasureEditGoalScreen.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.rad_ProgressMeasureEditGoalScreen.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "EditGoalScreen",
-                "type": "EditGoalScreen.ContainerEditGoalScreen.rad_ProgressMeasureEditGoalScreen"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.txt_InitialValue.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.txt_InitialValue.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "EditGoalScreen",
-                "type": "EditGoalScreen.ContainerEditGoalScreen.txt_InitialValue"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.txt_TargetValue.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.txt_TargetValue.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "EditGoalScreen",
-                "type": "EditGoalScreen.ContainerEditGoalScreen.txt_TargetValue"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_BtnStatus.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_BtnStatus.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "EditGoalScreen",
-                "type": "EditGoalScreen.ContainerEditGoalScreen.gal_BtnStatus"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_BtnStatus.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_BtnStatus.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "EditGoalScreen",
-                "type": "EditGoalScreen.ContainerEditGoalScreen.gal_BtnStatus"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 1
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_EditDelete_1.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_EditDelete_1.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "EditGoalScreen",
-                "type": "EditGoalScreen.ContainerEditGoalScreen.gal_EditDelete_1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_EditDelete_1.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_EditDelete_1.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "EditGoalScreen",
-                "type": "EditGoalScreen.ContainerEditGoalScreen.gal_EditDelete_1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 1
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_Subgoals.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_Subgoals.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "EditGoalScreen",
-                "type": "EditGoalScreen.ContainerEditGoalScreen.gal_Subgoals"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_Subgoals.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_Subgoals.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "EditGoalScreen",
-                "type": "EditGoalScreen.ContainerEditGoalScreen.gal_Subgoals"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 1
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.txt_Comments.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.txt_Comments.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "EditGoalScreen",
-                "type": "EditGoalScreen.ContainerEditGoalScreen.txt_Comments"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.Icn_AddComment.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.Icn_AddComment.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "EditGoalScreen",
-                "type": "EditGoalScreen.ContainerEditGoalScreen.Icn_AddComment"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.Icn_AddComment.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.Icn_AddComment.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "EditGoalScreen",
-                "type": "EditGoalScreen.ContainerEditGoalScreen.Icn_AddComment"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 1
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_GoalComments.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_GoalComments.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "EditGoalScreen",
-                "type": "EditGoalScreen.ContainerEditGoalScreen.gal_GoalComments"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_GoalComments.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_GoalComments.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "EditGoalScreen",
-                "type": "EditGoalScreen.ContainerEditGoalScreen.gal_GoalComments"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 1
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_GoalComments.icn_Delete.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_GoalComments.icn_Delete.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "EditGoalScreen",
-                "type": "EditGoalScreen.ContainerEditGoalScreen.gal_GoalComments.icn_Delete"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_GoalComments.icn_Delete.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_GoalComments.icn_Delete.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "EditGoalScreen",
-                "type": "EditGoalScreen.ContainerEditGoalScreen.gal_GoalComments.icn_Delete"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 1
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_GoalRelatedTask.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_GoalRelatedTask.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "EditGoalScreen",
-                "type": "EditGoalScreen.ContainerEditGoalScreen.gal_GoalRelatedTask"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_GoalRelatedTask.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_GoalRelatedTask.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "EditGoalScreen",
-                "type": "EditGoalScreen.ContainerEditGoalScreen.gal_GoalRelatedTask"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 1
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_GoalRelatedTask.gal_RelatedTaskGal.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_GoalRelatedTask.gal_RelatedTaskGal.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "EditGoalScreen",
-                "type": "EditGoalScreen.ContainerEditGoalScreen.gal_GoalRelatedTask.gal_RelatedTaskGal"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_GoalRelatedTask.gal_RelatedTaskGal.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_GoalRelatedTask.gal_RelatedTaskGal.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "EditGoalScreen",
-                "type": "EditGoalScreen.ContainerEditGoalScreen.gal_GoalRelatedTask.gal_RelatedTaskGal"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 1
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "NewTaskScreen.ContainerNewTask.Icn_TaskBack.AccessibleLabel"
                 }
               ],
@@ -1994,6 +1274,726 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.icn_EditGoalScreenBack.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.icn_EditGoalScreenBack.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "EditGoalScreen",
+                "type": "EditGoalScreen.ContainerEditGoalScreen.icn_EditGoalScreenBack"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.icn_EditGoalScreenBack.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.icn_EditGoalScreenBack.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "EditGoalScreen",
+                "type": "EditGoalScreen.ContainerEditGoalScreen.icn_EditGoalScreenBack"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_EditDelete.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_EditDelete.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "EditGoalScreen",
+                "type": "EditGoalScreen.ContainerEditGoalScreen.gal_EditDelete"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_EditDelete.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_EditDelete.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "EditGoalScreen",
+                "type": "EditGoalScreen.ContainerEditGoalScreen.gal_EditDelete"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.rad_ProgressMeasureEditGoalScreen.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.rad_ProgressMeasureEditGoalScreen.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "EditGoalScreen",
+                "type": "EditGoalScreen.ContainerEditGoalScreen.rad_ProgressMeasureEditGoalScreen"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.txt_InitialValue.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.txt_InitialValue.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "EditGoalScreen",
+                "type": "EditGoalScreen.ContainerEditGoalScreen.txt_InitialValue"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.txt_TargetValue.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.txt_TargetValue.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "EditGoalScreen",
+                "type": "EditGoalScreen.ContainerEditGoalScreen.txt_TargetValue"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_BtnStatus.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_BtnStatus.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "EditGoalScreen",
+                "type": "EditGoalScreen.ContainerEditGoalScreen.gal_BtnStatus"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_BtnStatus.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_BtnStatus.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "EditGoalScreen",
+                "type": "EditGoalScreen.ContainerEditGoalScreen.gal_BtnStatus"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_EditDelete_1.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_EditDelete_1.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "EditGoalScreen",
+                "type": "EditGoalScreen.ContainerEditGoalScreen.gal_EditDelete_1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_EditDelete_1.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_EditDelete_1.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "EditGoalScreen",
+                "type": "EditGoalScreen.ContainerEditGoalScreen.gal_EditDelete_1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_Subgoals.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_Subgoals.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "EditGoalScreen",
+                "type": "EditGoalScreen.ContainerEditGoalScreen.gal_Subgoals"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_Subgoals.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_Subgoals.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "EditGoalScreen",
+                "type": "EditGoalScreen.ContainerEditGoalScreen.gal_Subgoals"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.txt_Comments.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.txt_Comments.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "EditGoalScreen",
+                "type": "EditGoalScreen.ContainerEditGoalScreen.txt_Comments"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.Icn_AddComment.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.Icn_AddComment.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "EditGoalScreen",
+                "type": "EditGoalScreen.ContainerEditGoalScreen.Icn_AddComment"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.Icn_AddComment.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.Icn_AddComment.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "EditGoalScreen",
+                "type": "EditGoalScreen.ContainerEditGoalScreen.Icn_AddComment"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_GoalRelatedTask.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_GoalRelatedTask.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "EditGoalScreen",
+                "type": "EditGoalScreen.ContainerEditGoalScreen.gal_GoalRelatedTask"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_GoalRelatedTask.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_GoalRelatedTask.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "EditGoalScreen",
+                "type": "EditGoalScreen.ContainerEditGoalScreen.gal_GoalRelatedTask"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_GoalRelatedTask.gal_RelatedTaskGal.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_GoalRelatedTask.gal_RelatedTaskGal.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "EditGoalScreen",
+                "type": "EditGoalScreen.ContainerEditGoalScreen.gal_GoalRelatedTask.gal_RelatedTaskGal"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_GoalRelatedTask.gal_RelatedTaskGal.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_GoalRelatedTask.gal_RelatedTaskGal.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "EditGoalScreen",
+                "type": "EditGoalScreen.ContainerEditGoalScreen.gal_GoalRelatedTask.gal_RelatedTaskGal"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_GoalComments.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_GoalComments.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "EditGoalScreen",
+                "type": "EditGoalScreen.ContainerEditGoalScreen.gal_GoalComments"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_GoalComments.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_GoalComments.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "EditGoalScreen",
+                "type": "EditGoalScreen.ContainerEditGoalScreen.gal_GoalComments"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_GoalComments.icn_Delete.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_GoalComments.icn_Delete.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "EditGoalScreen",
+                "type": "EditGoalScreen.ContainerEditGoalScreen.gal_GoalComments.icn_Delete"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_GoalComments.icn_Delete.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_GoalComments.icn_Delete.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "EditGoalScreen",
+                "type": "EditGoalScreen.ContainerEditGoalScreen.gal_GoalComments.icn_Delete"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "JobDescriptionScreen.RichTextEditor1.AccessibleLabel"
                 }
               ],
@@ -2264,6 +2264,66 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "TasksgalleryScreen.Gallery2.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "TasksgalleryScreen.Gallery2.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "TasksgalleryScreen",
+                "type": "TasksgalleryScreen.Gallery2"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "TasksgalleryScreen.Gallery2.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "TasksgalleryScreen.Gallery2.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "TasksgalleryScreen",
+                "type": "TasksgalleryScreen.Gallery2"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "TasksgalleryScreen.gal_NotCompleted.AccessibleLabel"
                 }
               ],
@@ -2367,66 +2427,6 @@
                 "member": "TabIndex",
                 "module": "TasksgalleryScreen",
                 "type": "TasksgalleryScreen.gal_NotCompleted.Gallery11"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 1
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "TasksgalleryScreen.Gallery2.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "TasksgalleryScreen.Gallery2.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "TasksgalleryScreen",
-                "type": "TasksgalleryScreen.Gallery2"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "TasksgalleryScreen.Gallery2.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "TasksgalleryScreen.Gallery2.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "TasksgalleryScreen",
-                "type": "TasksgalleryScreen.Gallery2"
               }
             }
           ],
@@ -2708,6 +2708,36 @@
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
           "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "GeneralTargetScreen.ContainerTargets.icnSaveTargetScore.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "GeneralTargetScreen.ContainerTargets.icnSaveTargetScore.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "GeneralTargetScreen",
+                "type": "GeneralTargetScreen.ContainerTargets.icnSaveTargetScore"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
         },
         {
           "locations": [
@@ -3703,36 +3733,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "GeneralTargetScreen.ContainerTargets.icnSaveTargetScore.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "GeneralTargetScreen.ContainerTargets.icnSaveTargetScore.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "GeneralTargetScreen",
-                "type": "GeneralTargetScreen.ContainerTargets.icnSaveTargetScore"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "App._1212"
                 }
               ],
@@ -3744,6 +3744,96 @@
               },
               "properties": {
                 "member": "_1212",
+                "module": "App",
+                "type": "App"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-UnusedVariables",
+          "ruleIndex": 4
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "App.ComboBox1Item"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "App.ComboBox1Item",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "ComboBox1Item",
+                "module": "App",
+                "type": "App"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-UnusedVariables",
+          "ruleIndex": 4
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "App.VarTo"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "App.VarTo",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "VarTo",
+                "module": "App",
+                "type": "App"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-UnusedVariables",
+          "ruleIndex": 4
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "App._DeleteGoal"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "App._DeleteGoal",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "_DeleteGoal",
                 "module": "App",
                 "type": "App"
               }
@@ -3823,36 +3913,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "App._DeleteGoal"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "App._DeleteGoal",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "_DeleteGoal",
-                "module": "App",
-                "type": "App"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-UnusedVariables",
-          "ruleIndex": 4
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "App.VarSubGoals"
                 }
               ],
@@ -3894,66 +3954,6 @@
               },
               "properties": {
                 "member": "VarSubgalRequest",
-                "module": "App",
-                "type": "App"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-UnusedVariables",
-          "ruleIndex": 4
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "App.VarTo"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "App.VarTo",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "VarTo",
-                "module": "App",
-                "type": "App"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-UnusedVariables",
-          "ruleIndex": 4
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "App.ComboBox1Item"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "App.ComboBox1Item",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "ComboBox1Item",
                 "module": "App",
                 "type": "App"
               }
@@ -4543,6 +4543,36 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "GoalsgalleryScreen.OnVisible"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "GoalsgalleryScreen.OnVisible",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "OnVisible",
+                "module": "GoalsgalleryScreen",
+                "type": "GoalsgalleryScreen"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-CollectDelegatableDataSource",
+          "ruleIndex": 6
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.gal_BtnStatus.Button6.OnSelect"
                 }
               ],
@@ -4616,36 +4646,6 @@
                 "member": "OnUncheck",
                 "module": "EditGoalScreen",
                 "type": "EditGoalScreen.ContainerEditGoalScreen.gal_GoalRelatedTask.chk_RealtedTask"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-CollectDelegatableDataSource",
-          "ruleIndex": 6
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "GoalsgalleryScreen.OnVisible"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "GoalsgalleryScreen.OnVisible",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "OnVisible",
-                "module": "GoalsgalleryScreen",
-                "type": "GoalsgalleryScreen"
               }
             }
           ],
@@ -4807,96 +4807,6 @@
           },
           "ruleId": "app-UnusedVariables",
           "ruleIndex": 4
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "EditGoalScreen.GoalRecordViaParent"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "EditGoalScreen.GoalRecordViaParent",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "GoalRecordViaParent",
-                "module": "EditGoalScreen",
-                "type": "EditGoalScreen"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-UnusedVariables",
-          "ruleIndex": 4
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.lbl_TitleGoalDetailScreen.Height"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.lbl_TitleGoalDetailScreen.Height",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "Height",
-                "module": "EditGoalScreen",
-                "type": "EditGoalScreen.ContainerEditGoalScreen.lbl_TitleGoalDetailScreen"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-InefficientDelayLoading",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.lbl_NoTask_2.Y"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.lbl_NoTask_2.Y",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "Y",
-                "module": "EditGoalScreen",
-                "type": "EditGoalScreen.ContainerEditGoalScreen.lbl_NoTask_2"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-InefficientDelayLoading",
-          "ruleIndex": 7
         },
         {
           "locations": [
@@ -5173,6 +5083,36 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.lbl_NoTask_1.Width"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.lbl_NoTask_1.Width",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "Width",
+                "module": "EditTaskScreen",
+                "type": "EditTaskScreen.ContainerEditTaskScreen.lbl_NoTask_1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-InefficientDelayLoading",
+          "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.ContainerRelatedGoal.X"
                 }
               ],
@@ -5216,36 +5156,6 @@
                 "member": "Width",
                 "module": "EditTaskScreen",
                 "type": "EditTaskScreen.ContainerEditTaskScreen.ContainerRelatedGoal.btn_AddRelatedTasks_3"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-InefficientDelayLoading",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.lbl_NoTask_1.Width"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "EditTaskScreen.ContainerEditTaskScreen.lbl_NoTask_1.Width",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "Width",
-                "module": "EditTaskScreen",
-                "type": "EditTaskScreen.ContainerEditTaskScreen.lbl_NoTask_1"
               }
             }
           ],
@@ -5366,6 +5276,96 @@
                 "member": "Width",
                 "module": "EditTaskScreen",
                 "type": "EditTaskScreen.ContainerEditTaskScreen.Gallery9_1.lbl_OwnerDeatilsScreen_5"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-InefficientDelayLoading",
+          "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "EditGoalScreen.GoalRecordViaParent"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "EditGoalScreen.GoalRecordViaParent",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "GoalRecordViaParent",
+                "module": "EditGoalScreen",
+                "type": "EditGoalScreen"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-UnusedVariables",
+          "ruleIndex": 4
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.lbl_TitleGoalDetailScreen.Height"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.lbl_TitleGoalDetailScreen.Height",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "Height",
+                "module": "EditGoalScreen",
+                "type": "EditGoalScreen.ContainerEditGoalScreen.lbl_TitleGoalDetailScreen"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-InefficientDelayLoading",
+          "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.lbl_NoTask_2.Y"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "EditGoalScreen.ContainerEditGoalScreen.lbl_NoTask_2.Y",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "Y",
+                "module": "EditGoalScreen",
+                "type": "EditGoalScreen.ContainerEditGoalScreen.lbl_NoTask_2"
               }
             }
           ],
@@ -5563,19 +5563,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "TasksgalleryScreen.Gallery8_3.NextArrow1_3.X"
+                  "fullyQualifiedName": "TasksgalleryScreen.Gallery8_3.Checkbox1_3.Height"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "TasksgalleryScreen.Gallery8_3.NextArrow1_3.X",
+                  "fullyQualifiedName": "TasksgalleryScreen.Gallery8_3.Checkbox1_3.Height",
                   "relativeAddress": 0
                 }
               },
               "properties": {
-                "member": "X",
+                "member": "Height",
                 "module": "TasksgalleryScreen",
-                "type": "TasksgalleryScreen.Gallery8_3.NextArrow1_3"
+                "type": "TasksgalleryScreen.Gallery8_3.Checkbox1_3"
               }
             }
           ],
@@ -5593,19 +5593,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "TasksgalleryScreen.Gallery8_3.Checkbox1_3.Height"
+                  "fullyQualifiedName": "TasksgalleryScreen.Gallery8_3.NextArrow1_3.X"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "TasksgalleryScreen.Gallery8_3.Checkbox1_3.Height",
+                  "fullyQualifiedName": "TasksgalleryScreen.Gallery8_3.NextArrow1_3.X",
                   "relativeAddress": 0
                 }
               },
               "properties": {
-                "member": "Height",
+                "member": "X",
                 "module": "TasksgalleryScreen",
-                "type": "TasksgalleryScreen.Gallery8_3.Checkbox1_3"
+                "type": "TasksgalleryScreen.Gallery8_3.NextArrow1_3"
               }
             }
           ],
