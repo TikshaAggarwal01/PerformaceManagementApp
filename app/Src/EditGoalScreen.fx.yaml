@@ -587,6 +587,7 @@ EditGoalScreen As screen:
                     MeasureProgerssSubGaols,
                     true
                 );
+                Set(parentVar, true);
                 Navigate(NewGoalScreen);
             RadiusBottomLeft: =5
             RadiusBottomRight: =5

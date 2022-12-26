@@ -758,11 +758,12 @@ NewGoalScreen As screen:
             ChevronHoverBackground: =Self.Fill
             ChevronHoverFill: =RGBA(0, 0, 0, 1)
             DefaultSelectedItems: |-
-                =If(_editGoalRequest,LookUp(Goals,ID=Value(editGoalRecord.ParentGoals.Value)))
+                =If(_editGoalRequest,LookUp(Goals,ID=Value(editGoalRecord.ParentGoals.Value)),parentVar,LookUp(Goals,ID=Value(editGoalRecord.ID)))
                 //LookUp(Goals,ID=Value(TextInput2.Text),Title)
                 
                 //If(_editGoalRequest,If(editRelatedGoal,_editRelatedGoalRecord.Title,LookUp(Goals,ID=gal_MyActiveGoals.Selected.ID),""))
             DisplayFields: =["Title"]
+            DisplayMode: =If(parentVar,DisplayMode.Disabled,DisplayMode.Edit)
             Fill: =ColorFade(_txtColorFill,60%)
             Height: =ContainerNewGoal.Height/20
             HoverFill: =_txtColorFill
@@ -789,6 +790,7 @@ NewGoalScreen As screen:
             OnSelect: |+
                 =Reset(ComBox_AddOwner);
                 If(ViaEditGoal||!_editGoalRequest,UpdateContext({ViaEditGoal:false});Back(),
+                Set(parentVar,false);
                 Set(
                     editGoalRecord,
                     LookUp(

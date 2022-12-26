@@ -213,7 +213,7 @@ HomeScreen As screen:
 
     gal_MyTask As gallery.variableTemplateHeightGallery:
         Height: =gal_Main.TemplateHeight-lbl_MyActiveGoalTask.Height-Btn_ViewAll.Height-40
-        Items: =Filter(ColTaskProgress,User().FullName in To.DisplayName)
+        Items: =SortByColumns(Filter(ColTaskProgress,User().FullName in To.DisplayName),"Created",Descending)
         Layout: =Layout.Vertical
         OnSelect: |-
             =Set(
